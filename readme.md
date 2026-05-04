@@ -6,11 +6,19 @@ just somewhere to put the stuff I learn about Cisco and networking plus badges, 
 
 ## Packet Tracer
 
-1
+<img src="packetTracer/images/badge-packet-tracer.png" alt="Packet Tracer Badge" height="120px">
 
-2
+### 1.Intro to
 
-### 3. IoT:
+Skills Learned: Cisco Packet Tracer to visualize and simulate a network using everyday examples.
+
+### 2.Exploring Networking
+
+Skills Learned: connect, configure network devices, wireless devices, verify connectivity.
+
+### 3.IoT
+
+Skills Learned: IoT, Network Simulation, Environmental Controls, Programming, JavaScript, Python, Visual Blocky.
 
 #### Module 1: Create Your Own Smart Home Network
 
