@@ -48,7 +48,9 @@ In the Physical Workspace there are containers. Containers include the intercity
 
 ## Networking Basics
 
-Module1 Learning outcomes:
+### Module 1
+
+#### Learning outcomes
 
 Network Types
 
@@ -81,9 +83,8 @@ The amount of data being sent and received over the connection
 The latency created by the number of network devices encountered between source and destination
 Latency refers to the amount of time, including delays, for data to travel from one given point to another.
 
-Module 2 Learning outcomes:
+### Module 2: Network Components, Types, Connections
 
-Network Components, Types, and Connections
 Module Objective:
 Explain network types, components, and connections.
 
@@ -125,7 +126,7 @@ Satellite service is a good option for homes or offices that do not have access 
 dialup
 An inexpensive option that uses any phone line and a modem. To connect to the ISP, a user calls the ISP access phone number. The low bandwidth provided by a dial-up modem connection is usually not sufficient for large data transfer, although it is useful for mobile access while traveling. A modem dial-up connection should only be considered when higher speed connection options are not available.
 
-Learning outcomes:
+#### Learning outcomes
 
 Clients and Servers:
 All computers connected to a network that participate directly in network communication are classified as hosts. Hosts can send and receive messages on the network. In modern networks, computer hosts can act as a client, a server, or both. The software installed on the computer determines which role the computer plays.
@@ -144,3 +145,40 @@ ISP Connectivity Options:
 An ISP provides the link between the home network and the internet. An ISP can be the local cable provider, a landline telephone service provider, the cellular network that provides your smartphone service, or an independent provider who leases bandwidth on the physical network infrastructure of another company. Each ISP connects to other ISPs to form a network of links that interconnect users all over the world. ISPs are connected in a hierarchical manner that ensures that internet traffic generally takes the shortest path from the source to the destination.
 The interconnection of ISPs that forms the backbone of the internet is a complex web of fiber-optic cables with expensive networking switches and routers that direct the flow of information between source and destination hosts.
 For a home user, connecting to the ISP is a fairly uncomplicated process. This is the most common connection option. It consists of using a wireless integrated router to connect to the ISP. The router includes a switch to connect wired hosts and a wireless AP to connect wireless hosts. The router also provides client IP addressing information and security for inside hosts. The two most common methods are cable and DSL. Other options include cellular, satellite, and dial-up telephone.
+
+### Module 3: Wireless and Mobile Networks
+
+Module Objective:
+wireless networks - different network types used by cell, mobile devices
+Mobile device Connectivity - configuring mobile devices for wireless connectivity
+
+#### Learning Outcomes
+
+Wireless Networks:
+Mobile phones use radio waves to transmit voice signals to antennas mounted on towers located in specific geographic areas. When a telephone call is made, the voice signal is relayed from one tower to another tower until it is delivered to its destination. This type of network is used when you make a phone call to another mobile phone or to a wired telephone. It is also used to send text messages directly from the phone. The most common type of cellular telephone network is called a GSM network. The abbreviations 3G, 4G, 4G-LTE, and 5G are used to describe enhanced cell phone networks that are optimized for the fast transmission of data. Currently, 4G still dominates as the current mobile network used by most phones.
+In addition to the GSM and 4G/5G transmitters and receivers, smartphones make connections in a variety of ways.
+Wi-Fi transmitters and receivers located within the smartphone enable the phone to connect to local networks and the internet. Wi-Fi networks are usually privately owned but often provide guest or public access hotspots. A hotspot is an area where Wi-Fi signals are available.
+Bluetooth is wireless technology that allows devices to communicate over short distances. Multiple devices can be connected at the same time with Bluetooth.
+NFC is a wireless communication technology that enables data to be exchanged by devices that are in very close proximity to each other, usually less than a few centimeters.
+
+Mobile Device Connectivity
+Almost all mobile devices are capable of connecting to Wi-Fi networks. These precautions should be taken to protect Wi-Fi communications on mobile devices:
+Never send login or password information using unencrypted text (plaintext).
+Use a VPN connection when possible if you are sending sensitive data.
+Enable security on home networks.
+Use WPA2 or higher encryption for security.
+Two of the most popular operating systems for mobile devices are Android and Apple iOS. Mobile devices are preprogrammed to use a Wi-Fi network for the internet if one is available, and the device can connect to the access point and receive an IP address. If no Wi-Fi network is available, the device uses the cellular data capability if it is configured.
+Bluetooth technology provides a simple way for mobile devices to connect to each other and to wireless accessories. Bluetooth is wireless, automatic, and uses very little power, which helps conserve battery life. Some examples of devices that use Bluetooth include hands-free headsets, keyboards, a mouse, stereo controls, car speakerphones, and mobile speakers.
+Bluetooth pairing occurs when two Bluetooth devices establish a connection to share resources. In order for the devices to pair, the Bluetooth radios are turned on, and one device begins searching for other devices. Other devices must be set to discoverable mode, also called visible, so that they can be detected.
+When a Bluetooth device is in discoverable mode, it transmits the following information when another Bluetooth device requests it:
+Name
+Bluetooth class
+Services that the device can use
+Technical information, such as the features or the Bluetooth specification that it supports
+During the pairing process, a PIN may be requested to authenticate the pairing process.
+
+### Module 4: Build a Home Network
+
+Module Objective: Configure integrated wireless router and wireless Client for home network connectivity
+
+#### Learning Outcomes
