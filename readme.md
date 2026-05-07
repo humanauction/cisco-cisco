@@ -236,3 +236,11 @@ What types of devices will attach to my network?
 Wireless devices contain radio transmitter/receivers that function within a specific frequency range. If a device only has the necessary radio for 802.11 b/g, it will not connect if the wireless router or access point is configured to only accept 802.11n or 802.11ac standards. If all devices support the same standard, the network will work at its optimum speed. If you have devices that do not support the n or ac standards, then you will have to enable legacy mode. A legacy mode wireless network environment varies between router models but can include a combination of 802.11a, 802.11b, 802.11g, 802.11n, and 802.11ac. This environment provides easy access for legacy devices that need a wireless connection.
 
 #### Learning Outcomes
+
+<img src="networkingBasics/images/module4Pass.png" alt="module4Pass" height="240px">
+
+### Module 5: Communication Principles
+
+Communication Protocols
+Communication Standards
+Network Communication Models - compare OSI and TCP/IP models
