@@ -369,4 +369,28 @@ TIA (Telecommunications Industry Association) - develops standards for telecommu
 
 OSI Model Layer Descriptions
 
+<img src="networkingBasics/images/module5Pass.png" alt="module5Pass" height="240px">
+
 ### Module 6: Network Media
+
+objective: Network Media types
+
+UTP - unshielded twisted pair
+Coaxial cable - an inner wire surrounded by a tubular insulating layer, that is then surrounded by a tubular conducting shield. Most coax cables also have an external insulating sheath or jacket.
+fiber-optic cables - can be either glass or plastic with a diameter about the same as a human hair and it can carry digital information at very high speeds over long distances. Fiber-optic cables have a very high bandwidth, which enables them to carry very large amounts of data.
+
+3 media cables:
+Modern networks primarily use three types of media to interconnect devices, as shown in the figure:
+
+Metal wires within cables - Data is encoded into electrical impulses.
+Glass or plastic fibers within cables (fiber-optic cable) - Data is encoded into pulses of light.
+Wireless transmission - Data is encoded via modulation of specific frequencies of electromagnetic waves.
+
+The four main criteria for choosing network media are DEASC:
+
+D, Distance: What is the maximum distance that the media can successfully carry a signal?
+E, Environment: What is the environment in which the media will be installed?
+AS, Amount of Data: What is the amount of data and at what speed must it be transmitted?
+C, Cost: What is the cost of the media and installation?
+
+<img src="networkingBasics/images/module6Pass.png" alt="module6Pass" height="240px">
