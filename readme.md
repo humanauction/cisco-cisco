@@ -27,7 +27,7 @@ In simple terms, the IoT is a collection of networked sensors, actuators, and sm
 - Physical tab – The device has an internet port, four LAN ports, and multiple antennae.
   Config tab – This shows the interfaces and network settings that are configurable.
   GUI tab – This shows the registration server inside the device that allows for interaction with IoT devices. It is on by default but can be turned off.
-  Attributes tab – This is blank by default but can show features and values such as MTBF, cost, power source, and wattage. IoT devices can also be registered to a dedicated Registration Server for remote monitoring, control, or programming. The dedicated registration server has the additional benefit of being able to provide many other services to your network, such as Web, DHCP, DNS, email, and FTP.
+  Attributes tab – This is blank by default but can show features and values e.g. MTBF, cost, power source, and wattage. IoT devices can also be registered to a dedicated Registration Server for remote monitoring, control, or programming. The dedicated registration server has the additional benefit of being able to provide many other services to your network, e.g. Web, DHCP, DNS, email, and FTP.
 
 #### Module 2: Environmental Controls and IoT Things in Packet Tracer
 
@@ -55,15 +55,15 @@ In the Physical Workspace there are containers. Containers include the intercity
 Network Types
 
 The internet is not owned by any individual or group. The internet is a worldwide collection of interconnected networks (internetwork or internet for short), cooperating with each other to exchange information using common standards. Through telephone wires, fiber-optic cables, wireless transmissions, and satellite links, internet users can exchange information in a variety of forms.
-Small home networks connect a few computers to each other and to the internet. The SOHO network allows computers in a home office or a remote office to connect to a corporate network, or access centralized, shared resources. Medium to large networks, such as those used by corporations and schools, can have many locations with hundreds or thousands of interconnected hosts. The internet is a network of networks that connects hundreds of millions of computers world-wide.
-There are devices all around that you may interact with on a daily basis that are also connected to the internet. These include mobile devices such as smartphones, tablets, smartwatches, and smart glasses. Things in your home can be connected to the internet such as a security system, appliances, your smart TV, and your gaming console. Outside your home there are smart cars, RFID tags, sensors and actuators, and even medical devices which can be connected.
+Small home networks connect a few computers to each other and to the internet. The SOHO network allows computers in a home office or a remote office to connect to a corporate network, or access centralized, shared resources. Medium to large networks, e.g. those used by corporations and schools, can have many locations with hundreds or thousands of interconnected hosts. The internet is a network of networks that connects hundreds of millions of computers world-wide.
+There are devices all around that you may interact with on a daily basis that are also connected to the internet. These include mobile devices e.g. smartphones, tablets, smartwatches, and smart glasses. Things in your home can be connected to the internet e.g. a security system, appliances, your smart TV, and your gaming console. Outside your home there are smart cars, RFID tags, sensors and actuators, and even medical devices which can be connected.
 
 Data Transmission
 
 The following categories are used to classify types of personal data:
-Volunteered data - This is created and explicitly shared by individuals, such as social network profiles. This type of data might include video files, pictures, text, or audio files.
-Observed data - This is captured by recording the actions of individuals, such as location data when using cell phones.
-Inferred data -This is data such as a credit score, which is based on analysis of volunteered or observed data.
+Volunteered data - This is created and explicitly shared by individuals, e.g. social network profiles. This type of data might include video files, pictures, text, or audio files.
+Observed data - This is captured by recording the actions of individuals, e.g. location data when using cell phones.
+Inferred data -This is data e.g. a credit score, which is based on analysis of volunteered or observed data.
 
 The term bit is an abbreviation of “binary digit” and represents the smallest piece of data. Each bit can only have one of two possible values, 0 or 1.
 
@@ -130,16 +130,16 @@ An inexpensive option that uses any phone line and a modem. To connect to the IS
 
 Clients and Servers:
 All computers connected to a network that participate directly in network communication are classified as hosts. Hosts can send and receive messages on the network. In modern networks, computer hosts can act as a client, a server, or both. The software installed on the computer determines which role the computer plays.
-Client and server software usually run on separate computers, but it is also possible for one computer to run both client and server software at the same time. In small businesses and homes, many computers function as the servers and clients on the network. This type of network is called a P2P network. In larger businesses, because of the potential for high amounts of network traffic, it is often necessary to have dedicated servers to support the number of service requests. P2P networks are easy to set up, less complex, lower in cost, and can be used for simple tasks such as transferring files and sharing printers. However, there is no centralized administration. They have less security, are not scalable, and can perform slower.
+Client and server software usually run on separate computers, but it is also possible for one computer to run both client and server software at the same time. In small businesses and homes, many computers function as the servers and clients on the network. This type of network is called a P2P network. In larger businesses, because of the potential for high amounts of network traffic, it is often necessary to have dedicated servers to support the number of service requests. P2P networks are easy to set up, less complex, lower in cost, and can be used for simple tasks e.g. transferring files and sharing printers. However, there is no centralized administration. They have less security, are not scalable, and can perform slower.
 
 Network Components:
-There are symbols that represent various types of networking equipment. The network infrastructure is the platform that supports the network. It provides the stable and reliable channel over which our communications can occur. The network infrastructure contains three categories of hardware components: end devices, intermediate devices, and network media. Hardware is often the visible components of the network platform such as a laptop, PC, switch, router, wireless access point, or the cabling used to connect the devices. Components that are not visible include wireless media.
+There are symbols that represent various types of networking equipment. The network infrastructure is the platform that supports the network. It provides the stable and reliable channel over which our communications can occur. The network infrastructure contains three categories of hardware components: end devices, intermediate devices, and network media. Hardware is often the visible components of the network platform e.g. a laptop, PC, switch, router, wireless access point, or the cabling used to connect the devices. Components that are not visible include wireless media.
 End devices, or hosts, form the interface between users and the underlying communication network. Some examples of end devices include:
 Computers (workstations, laptops, file servers, web servers)
 Network printers
 Telephones and teleconferencing equipment
 Security cameras
-Mobile devices (such as smartphones, tablets, PDAs, and wireless debit/credit card readers and barcode scanners)
+Mobile devices (e.g. smartphones, tablets, PDAs, and wireless debit/credit card readers and barcode scanners)
 
 ISP Connectivity Options:
 An ISP provides the link between the home network and the internet. An ISP can be the local cable provider, a landline telephone service provider, the cellular network that provides your smartphone service, or an independent provider who leases bandwidth on the physical network infrastructure of another company. Each ISP connects to other ISPs to form a network of links that interconnect users all over the world. ISPs are connected in a hierarchical manner that ensures that internet traffic generally takes the shortest path from the source to the destination.
@@ -174,7 +174,7 @@ When a Bluetooth device is in discoverable mode, it transmits the following info
 Name
 Bluetooth class
 Services that the device can use
-Technical information, such as the features or the Bluetooth specification that it supports
+Technical information, e.g. the features or the Bluetooth specification that it supports
 During the pairing process, a PIN may be requested to authenticate the pairing process.
 
 ### Module 4: Build a Home Network
@@ -241,6 +241,132 @@ Wireless devices contain radio transmitter/receivers that function within a spec
 
 ### Module 5: Communication Principles
 
-Communication Protocols
-Communication Standards
+Communication Protocols - Method, Language, Confirmation
+Communication Standards -
 Network Communication Models - compare OSI and TCP/IP models
+
+TEST questions
+TODO: learn protocolsbetter
+Question 2
+Rory is studying the fields inside an Ethernet frame for an upcoming test and notices that the destination Media Access Control (MAC) address is listed first before the source MAC address. Which of the following protocol characteristics is Rory investigating?
+
+message timing
+message pattern
+encapsulation - SELECTED
+encoding
+timing
+
+Question 3
+As Rory continues to study Ethernet, he discovers that a frame can typically be 64 to 1518 bytes of information that is converted into a series of bits before being sent out on the network. Which two protocol characteristics did Rory learn about for Ethernet?
+
+message pattern
+message size - SELECTED
+encapsulation
+encoding - SELECTED
+timing
+
+5.2 Network Standards Organizations
+when a new standard is proposed, each stage of the development and approval process is recorded in a numbered Request for Comments (RFC) document so that the evolution of the standard is tracked. RFCs for internet standards are published and managed by the Internet Engineering Task Force (IETF). orgs: IEEE, IANA, ICAAN, IETF, ITU, TIA.
+
+network protocols
+ETHERNET | IP | TCP | HTTP
+ETHERNET - The Ethernet protocol is used for NIC card, network interface card to network interface card communications in the same network.
+IP - can be IP version 4 or IP version 6. This makes sure that the message gets from the original source to the final destination. Whether or not that message is within the same network or has to go across multiple networks.addressing, routing, fragmentation, reassembly, best effort delivery
+TCP - reordering, reliability, flow control, congestion control
+HTTP - exchange/transfer of HTML. web page requests and responses
+
+TCP/IP model Layers
+Application - HTTP, FTP, SMTP, DNS
+Transport - TCP, UDP
+Internet - IP
+Network Access - Ethernet, Wi-Fi, DSL, Cable
+
+5.3.4 The OSI Reference Model
+Protocol Model - a set of rules that govern how data is transmitted between two points in a network. A protocol model is a framework for understanding how protocols work together to enable communication between devices on a network.
+
+Reference Model - a conceptual model that defines the functions of a communication system in terms of layers. A reference model is a theoretical framework that provides a common language and structure for understanding how different protocols and technologies work together to enable communication between devices on a network.
+
+The OSI model is a theoretical model that characterizes and standardizes the communication functions of a telecommunication or computing system without regard to its underlying internal structure and technology. The OSI model partitions a communication system into seven abstraction layers. The layers are (from top 7 to bottom 1):
+Application - process-to-process communication, e.g. HTTP, FTP, SMTP, DNS
+Presentation - common representation of data transfrered between layer services. e.g. encryption, compression, translation
+Session - provides services to Presentation Layer to organize and synchronize communication between applications. e.g. session establishment, maintenance, and termination
+Transport - defines Services to segement, transfer, and reassemble the data for individual communications between end devices. e.g. TCP, UDP
+Network - services to exchange individual pieces of data over the network between identified end devices. e.g. IP, routing, fragmentation, reassembly, best effort delivery
+Data Link - methods for exchanging data frames between devices over a common media. e.g. Ethernet, Wi-Fi, DSL, Cable
+Physical - mechanical, electical, functional, and procedural means to activate, maintain, and deactivate physical connections for bit transmission to/from end devices. e.g. Ethernet, Wi-Fi, DSL, Cable
+
+TCP/IP vs OSI
+
+```mermaid
+flowchart LR
+    subgraph OSI Model
+        direction TB
+        OSI7["7<br>Application"]
+        OSI6["6<br>Presentation"]
+        OSI5["5<br>Session"]
+        OSI4["4<br>Transport"]
+        OSI3["3<br>Network"]
+        OSI2["2<br>Data Link"]
+        OSI1["1<br>Physical"]
+    end
+    subgraph TCP/IP Model
+        direction TB
+        TCP4["Application"]
+        TCP3["Transport"]
+        TCP2["Internet"]
+        TCP1["Network Access"]
+    end
+    OSI7 --- TCP4
+    OSI6 --- TCP4
+    OSI5 --- TCP4
+    OSI4 --- TCP3
+    OSI3 --- TCP2
+    OSI2 --- TCP1
+    OSI1 --- TCP1
+    style OSI7 fill:#e3e3ff
+    style OSI6 fill:#e3e3ff
+    style OSI5 fill:#e3e3ff
+    style OSI4 fill:#cce5ff
+    style OSI3 fill:#d4edda
+    style OSI2 fill:#fff3cd
+    style OSI1 fill:#fff3cd
+    style TCP4 fill:#e3e3ff
+    style TCP3 fill:#cce5ff
+    style TCP2 fill:#d4edda
+    style TCP1 fill:#fff3cd
+```
+
+The key similarities are in the transport and network layers; however, the two models differ in how they relate to the layers above and below each layer:
+
+OSI Layer 3, the network layer, maps directly to the TCP/IP internet layer. This layer is used to describe protocols that address and route messages through an internetwork.
+OSI Layer 4, the transport layer, maps directly to the TCP/IP transport layer. This layer describes general services and functions that provide ordered and reliable delivery of data between source and destination hosts.
+The TCP/IP application layer includes several protocols that provide specific functionality to a variety of end user applications. The OSI model Layers 5, 6, and 7 are used as references for application software developers and vendors to produce applications that operate on networks.
+Both the TCP/IP and OSI models are commonly used when referring to protocols at various layers. Because the OSI model separates the data link layer from the physical layer, it is commonly used when referring to these lower layers.
+
+learning outcomes:
+Communication Protocols: A protocol is a set of rules that govern how data is transmitted between two points in a network. Protocols are necessary to ensure that devices on a network can communicate with each other effectively. these include:
+message format - the structure of the data being transmitted, including the headers and payload.
+message timing - the timing of when messages are sent and received, including any delays or timeouts that may occur.
+message pattern - the sequence of messages that are exchanged between devices, including any acknowledgments or responses that may be required.
+encapsulation - the process of adding headers and trailers to data as it moves through the layers of a network protocol stack. This allows data to be transmitted across different types of networks and ensures that it is properly formatted for the receiving device.
+encoding - the process of converting data into a specific format for transmission, e.g. converting text into binary code or compressing data to reduce its size for faster transmission.
+Confirmation - the process of acknowledging the receipt of a message or data, which can help ensure that messages are delivered successfully and that any errors or issues can be identified and resolved.
+message pattern - the sequence of messages that are exchanged between devices, including any acknowledgments or responses that may be required. This can include the order in which messages are sent and received, as well as any specific patterns or protocols that must be followed for successful communication.
+message size - the amount of data that is being transmitted in a message, which can affect the speed and efficiency of communication. Protocols may have specific limits on message size, and larger messages may require additional processing or fragmentation to be transmitted successfully.
+encapsulation - the process of adding headers and trailers to data as it moves through the layers of a network protocol stack. This allows data to be transmitted across different types of networks and ensures that it is properly formatted for the receiving device. Encapsulation can also provide additional functionality, e.g. error checking or encryption, to help ensure the integrity and security of the data being transmitted.
+encoding - the process of converting data into a specific format for transmission, e.g. converting text into binary code or compressing data to reduce its size for faster transmission. Encoding can also involve adding error correction codes or other information to help ensure that the data is transmitted accurately and can be properly decoded by the receiving device.
+timing - the timing of when messages are sent and received, including any delays or timeouts that may occur.
+
+Communication Standards
+
+Network communication standards are developed by various organizations to ensure that devices from different manufacturers can communicate with each other effectively. These standards define the protocols, formats, and procedures for communication between devices on a network. Some of the key organizations responsible for developing network communication standards include:
+IEEE (Institute of Electrical and Electronics Engineers) - develops standards for wired and wireless networking technologies, including Ethernet and Wi-Fi.
+IANA (Internet Assigned Numbers Authority) - manages the allocation of IP addresses and other internet protocol resources.
+ICANN (Internet Corporation for Assigned Names and Numbers) - manages the domain name system (DNS) and other internet-related resources.
+IETF (Internet Engineering Task Force) - develops and promotes internet standards, including protocols for communication between devices on a network.
+ITU (International Telecommunication Union) - develops standards for telecommunications and information communication technologies.
+TIA (Telecommunications Industry Association) - develops standards for telecommunications and information communication technologies, including standards for cabling and network infrastructure.
+
+OSI Model Layer Descriptions
+
+### Module 6: Network Media
