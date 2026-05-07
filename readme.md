@@ -394,3 +394,33 @@ AS, Amount of Data: What is the amount of data and at what speed must it be tran
 C, Cost: What is the cost of the media and installation?
 
 <img src="networkingBasics/images/module6Pass.png" alt="module6Pass" height="240px">
+
+### Module 7: Access layer
+
+Learning objectives:
+Encapsualtion and the Ethernet frame
+Access Layer
+
+Ethernet Frame:
+Preamble - 7 bytes used for synchronization
+Start Frame Delimiter (SFD) - 1 byte used to indicate the start of the frame
+Destination MAC Address - 6 bytes used to identify the destination host
+Source MAC Address - 6 bytes used to identify the source host
+Length Type - 2 bytes used to indicate the protocol being encapsulated in the payload OR type of data IPv4, IPv6...
+Data Payload - 46 to 1500 bytes of data being transmitted
+Frame Check Sequence (FCS) - 4 bytes used for error checking
+
+Switches:
+like to learn. but only for about 5 mins.
+Ethernet Switches:
+802.3 Ethernet frame is used for communication between devices on the same network. The Ethernet frame contains a destination MAC address and a source MAC address, which are used to identify the devices that are communicating. When a switch receives an Ethernet frame, it reads the destination MAC address and forwards the frame only to the port that is connected to the device with that MAC address. This process is called switching, and it helps to reduce network congestion and improve performance by ensuring that frames are only sent to the devices that need them.
+MAC address tables:
+
+learning outcomes:
+Encapsulation and the Ethernet Frame: Encapsulation is the process of adding headers and trailers to data as it moves through the layers of a network protocol stack. This allows data to be transmitted across different types of networks and ensures that it is properly formatted for the receiving device. The Ethernet frame is a specific type of data packet used in Ethernet networks. It consists of several fields, including a preamble, start frame delimiter, destination MAC address, source MAC address, length/type field, data payload, and frame check sequence. Each of these fields serves a specific purpose in the encapsulation process, allowing data to be transmitted effectively and efficiently across an Ethernet network.
+
+Access layer: The access layer is the layer of a network that provides connectivity to end devices, e.g. computers, printers, and mobile devices. It is responsible for providing access to the network and ensuring that data is transmitted securely and efficiently between end devices and the rest of the network. The access layer typically includes switches, wireless access points, and other networking devices that connect end devices to the network infrastructure. The access layer also provides features e.g. authentication, authorization, and accounting (AAA) to ensure that only authorized users can access the network and that their activities are monitored and logged for security purposes.
+
+<img src="networkingBasics/images/module7Pass.png" alt="module7Pass" height="240px">
+
+### Module 8
