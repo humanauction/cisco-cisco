@@ -463,3 +463,144 @@ IPv4 Address Structure: An IPv4 address is a 32-bit binary number that is typica
 <img src="networkingBasics/images/module8Pass.png" alt="module8Pass" height="240px">
 
 ### Module 9: IPv4 and Network Segmentation
+
+IPv4 Unicast, Broadcast, Multicast
+Types of IPv4 Addresses - public, private, APIPA
+Network Segmentation - subnetting
+
+Unicast: 1 to 1. ßA unicast address is a unique identifier assigned to a single device on a network. It is used for one-to-one communication, where data is sent from one source to one specific destination. Unicast addresses are typically used for communication between individual devices, such as a computer communicating with a printer or a server communicating with a client.
+
+Broadcast: 1 to all. Broadcast transmission refers to a device sending a message to all the devices on a network in one-to-all communications.
+
+A broadcast packet has a destination IP address with all ones (1s) in the host portion, or 32 one (1) bits.
+
+Note: IPv4 uses broadcast packets. However, there are no broadcast packets with IPv6.
+
+A broadcast packet must be processed by all devices in the same broadcast domain. A broadcast domain identifies all hosts on the same network segment. A broadcast may be directed or limited. A directed broadcast is sent to all hosts on a specific network. For example, a host on the 172.16.4.0/24 network sends a packet to 172.16.4.255. A limited broadcast is sent to 255.255.255.255. By default, routers do not forward broadcasts.
+
+Broadcast packets use resources on the network and make every receiving host on the network process the packet. Therefore, broadcast traffic should be limited so that it does not adversely affect the performance of the network or devices. Because routers separate broadcast domains, subdividing networks can improve network performance by eliminating excessive broadcast traffic.
+
+Multicast: 1 to many 224.0.0.0 to 239.255.255.255
+Multicast transmission reduces traffic by allowing a host to send a single packet to a selected set of hosts that subscribe to a multicast group.
+
+A multicast packet is a packet with a destination IP address that is a multicast address. IPv4 has reserved the 224.0.0.0 to 239.255.255.255 addresses as a multicast range.
+
+Hosts that receive particular multicast packets are called multicast clients. The multicast clients use services requested by a client program to subscribe to the multicast group.
+
+Each multicast group is represented by a single IPv4 multicast destination address. When an IPv4 host subscribes to a multicast group, the host processes packets addressed to this multicast address, and packets addressed to its uniquely allocated unicast address.
+
+Routing protocols such as OSPF use multicast transmissions. For example, routers enabled with OSPF communicate with each other using the reserved OSPF multicast address 224.0.0.5. Only devices enabled with OSPF will process these packets with 224.0.0.5 as the destination IPv4 address. All other devices will ignore these packets.
+
+Network Addresses and prefixes:
+Public IPv4 addresses are globally unique and can be routed on the internet. They are assigned by Internet Service Providers (ISPs) and are used for devices that need to be accessible from outside the local network, such as web servers or email servers. Public IPv4 addresses are necessary for communication over the internet, as they allow devices to be identified and located globally. Private IPv4 addresses are reserved for use within private networks and are not routable on the internet. They are used for devices that do not need to be accessible from outside the local network, such as computers, printers, and other devices within a home or office network. Private IPv4 addresses are defined in the following ranges: 10.0.0.0 to 10.255.255.255, 172.16.0.0 to 172.31.255.255, and 192.168.0.0 to 192.168.255.255.
+
+Note: Private addresses are defined in RFC 1918 and sometimes referred to as RFC 1918 address space.
+
+Private IPv4 Addresses and Network Address Translation (NAT)
+Most internal networks, from large enterprises to home networks, use private IPv4 addresses for addressing all internal devices (intranet) including hosts and routers. However, private addresses are not globally routable.
+
+In the figure, customer networks 1, 2, and 3 are sending packets outside their internal networks. These packets have a source IPv4 address that is a private address and a destination IPv4 address that is public (globally routable). Packets with a private address must be filtered (discarded) or translated to a public address before forwarding the packet to an ISP.
+
+Before the ISP can forward this packet, it must translate the source IPv4 address, which is a private address, to a public IPv4 address using Network Address Translation (NAT). NAT is used to translate between private IPv4 and public IPv4 addresses. This is usually done on the router that connects the internal network to the ISP network. Private IPv4 addresses in the organization’s intranet will be translated to public IPv4 addresses before routing to the internet.
+
+Special Use IPv4 Addresses
+There are certain addresses, such as the network address and broadcast address, that cannot be assigned to hosts. There are also special addresses that can be assigned to hosts, but with restrictions on how those hosts can interact within the network.
+
+Loopback addresses
+
+Loopback addresses (127.0.0.0 /8 or 127.0.0.1 to 127.255.255.254) are more commonly identified as only 127.0.0.1. These are special addresses used by a host to direct traffic to itself. For example, the ping command is commonly used to test connections to other hosts. But you can also use the ping command to test if the IP configuration on your own device, as shown in the figure.
+
+Note: You will learn more about the ping command later in this course.
+Pinging the Loopback Interface
+
+```bash
+C:∖Users∖NetAcad> ping 127.0.0.1
+Pinging 127.0.0.1 with 32 bytes of data:
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Ping statistics for 127.0.0.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+C:∖Users∖NetAcad> ping 127.1.1.1
+Pinging 127.1.1.1 with 32 bytes of data:
+Reply from 127.1.1.1: bytes=32 time<1ms TTL=128
+Reply from 127.1.1.1: bytes=32 time<1ms TTL=128
+Reply from 127.1.1.1: bytes=32 time<1ms TTL=128
+Reply from 127.1.1.1: bytes=32 time<1ms TTL=128
+Ping statistics for 127.1.1.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+C:∖Users∖NetAcad>
+```
+
+Link-Local addresses
+
+Link-local addresses (169.254.0.0 /16 or 169.254.0.1 to 169.254.255.254) are more commonly known as the Automatic Private IP Addressing (APIPA) addresses or self-assigned addresses. They are used by a Windows client to self-configure in the event that the client cannot obtain an IP addressing through other methods. Link-local addresses can be used in a peer-to-peer connection but are not commonly used for this purpose.
+
+Legacy Classful Addressing
+In 1981, IPv4 addresses were assigned using classful addressing as defined in RFC 790 (https://tools.ietf.org/html/rfc790), Assigned Numbers. Customers were allocated a network address based on one of three classes, A, B, or C. The RFC divided the unicast ranges into specific classes as follows:
+
+Class A (0.0.0.0/8 to 127.0.0.0/8) - Designed to support extremely large networks with more than 16 million host addresses. Class A used a fixed /8 prefix with the first octet to indicate the network address and the remaining three octets for host addresses (more than 16 million host addresses per network).
+Class B (128.0.0.0 /16 - 191.255.0.0 /16) - Designed to support the needs of moderate to large size networks with up to approximately 65,000 host addresses. Class B used a fixed /16 prefix with the two high-order octets to indicate the network address and the remaining two octets for host addresses (more than 65,000 host addresses per network).
+Class C (192.0.0.0 /24 - 223.255.255.0 /24) - Designed to support small networks with a maximum of 254 hosts. Class C used a fixed /24 prefix with the first three octets to indicate the network and the remaining octet for the host addresses (only 254 host addresses per network).
+Note: There is also a Class D multicast block consisting of 224.0.0.0 to 239.0.0.0 and a Class E experimental address block consisting of 240.0.0.0 - 255.0.0.0.
+
+At the time, with a limited number of computers using the internet, classful addressing was an effective means to allocate addresses. As shown in the figure, Class A and B networks have a very large number of host addresses and Class C has very few. Class A networks accounted for 50% of the IPv4 networks. This caused most of the available IPv4 addresses to go unused.
+
+The diagram is a pie chart showing the percentage of Class A, B, C, D, & E IPv4 addressing with the total number of networks and hosts per class A, B, and C networks. Percentages are: class A = 50%, class B = 25%, class C = 12.5%, and class D and E = 12.5%. For the total number of networks and total number of hosts per network: class A = 128 networks with 16,777,214 total hosts per network; class B = 16,384 networks with 65,534 total hosts per network; and class C = 2,097,152 networks with 254 total hosts per network.
+Class D & E
+12.5%Class A
+50%Class C
+12.5%Class B
+25%Class ATotal Networks: 128
+Total Hosts/Net: 16,777,214Class BTotal Networks: 16,384
+Total Hosts/Net: 65,534Class CTotal Networks: 2,097,152
+Total Hosts/Net: 254
+In the mid-1990s, with the introduction of the World Wide Web (WWW), classful addressing was deprecated to more efficiently allocate the limited IPv4 address space. Classful address allocation was replaced with classless addressing, which is used today. Classless addressing ignores the rules of classes (A, B, C). Public IPv4 network addresses (network addresses and subnet masks) are allocated based on the number of addresses that can be justified.
+
+Regional Internet Registries
+Public IPv4 addresses are addresses which are globally routed over the internet. Public IPv4 addresses must be unique.
+
+Both IPv4 and IPv6 addresses are managed by the Internet Assigned Numbers Authority (IANA). The IANA manages and allocates blocks of IP addresses to the Regional Internet Registries (RIRs). The five RIRs are shown in the figure.
+
+RIRs are responsible for allocating IP addresses to ISPs who provide IPv4 address blocks to organizations and smaller ISPs. Organizations can also get their addresses directly from an RIR (subject to the policies of that RIR).
+
+Regional Internet Registries
+This figure shows the geographic locations of the Reginal Internet Registries (RIR). The regions governed by each RIR are as follows: AfriNIC (African Network Information Center) - serving the Africa Region, APNIC (Asia Pacific Network Information Centre) - serving the Asia/Pacific Region, ARIN (American Registry for Internet Numbers) - serving the North America Region, LACNIC (Regional Latin-American and Caribbean IP Address Registy) - serving Latin America and some Caribbean Islands, and RIPE NCC (Reseaux IP Europeens Network Coordination Centre) - serving Europe, the Middle East, and Central Asia.
+
+<strong>AfriNIC</strong> (African Network Information Centre) - Africa Region
+<strong>APNIC</strong> (Asia Pacific Network Information Centre) - Asia/Pacific Region
+<strong>ARIN</strong> (American Registry for Internet Numbers) - North America Region
+<strong>LACNIC</strong> (Regional Latin-American and Caribbean IP Address Registry) - Latin America and some Caribbean Islands
+<strong>RIPE NCC</strong> (Réseaux IP Européens Network Coordination Centre) - Europe, the Middle East, and Central Asia
+
+https://datatracker.ietf.org/doc/html/rfc790
+
+### Module 10: IPv6 Address formats and rules
+
+learning objectives:
+IP4 Issues
+IPv6 Addressing
+
+IPv4 and IPv6 Coexistence
+There is no specific date to move to IPv6. Both IPv4 and IPv6 will coexist in the near future and the transition will take several years. The IETF has created various protocols and tools to help network administrators migrate their networks to IPv6. The migration techniques can be divided into three categories:
+
+Dual stack
+Dual stack allows IPv4 and IPv6 to coexist on the same network segment. Dual stack devices run both IPv4 and IPv6 protocol stacks simultaneously. Known as native IPv6, this means the customer network has an IPv6 connection to their ISP and is able to access content found on the internet over IPv6.
+
+Tunneling
+Tunneling is a method of transporting an IPv6 packet over an IPv4 network. The IPv6 packet is encapsulated inside an IPv4 packet, similar to other types of data. Tunneling is used when a customer network has an IPv4 connection to their ISP and needs to access content found on the internet over IPv6.
+
+Translation
+Network Address Translation 64 (NAT64) allows IPv6-enabled devices to communicate with IPv4-enabled devices using a translation technique similar to NAT for IPv4. An IPv6 packet is translated to an IPv4 packet and an IPv4 packet is translated to an IPv6 packet.
+
+The physcial network topology shows on IPv6-only network on the left communication with an IPv4-only network on the right through a NAT64 router.
+PC1
+PC2
+IPv6-only NetworkIPv4-only NetworkNAT64 Router
+
+N.B. Tunneling and translation are for transitioning to native IPv6 and should only be used where needed. The goal should be native IPv6 communications from source to destination.
