@@ -237,7 +237,7 @@ Wireless devices contain radio transmitter/receivers that function within a spec
 
 #### Learning Outcomes
 
-<img src="networkingBasics/images/module4Pass.png" alt="module4Pass" height="240px">
+<img src="networkingBasics/images/checkpointPass1.png" alt="checkpointPass1" height="240px">
 
 ### Module 5: Communication Principles
 
@@ -422,5 +422,9 @@ Encapsulation and the Ethernet Frame: Encapsulation is the process of adding hea
 Access layer: The access layer is the layer of a network that provides connectivity to end devices, e.g. computers, printers, and mobile devices. It is responsible for providing access to the network and ensuring that data is transmitted securely and efficiently between end devices and the rest of the network. The access layer typically includes switches, wireless access points, and other networking devices that connect end devices to the network infrastructure. The access layer also provides features e.g. authentication, authorization, and accounting (AAA) to ensure that only authorized users can access the network and that their activities are monitored and logged for security purposes.
 
 <img src="networkingBasics/images/module7Pass.png" alt="module7Pass" height="240px">
+
+### Checkpoint 2
+
+<img src="networkingBasics/images/checkpointPass2.png" alt="checkpointPass2" height="240px">
 
 ### Module 8
