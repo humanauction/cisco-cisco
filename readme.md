@@ -421,6 +421,26 @@ Encapsulation and the Ethernet Frame: Encapsulation is the process of adding hea
 
 Access layer: The access layer is the layer of a network that provides connectivity to end devices, e.g. computers, printers, and mobile devices. It is responsible for providing access to the network and ensuring that data is transmitted securely and efficiently between end devices and the rest of the network. The access layer typically includes switches, wireless access points, and other networking devices that connect end devices to the network infrastructure. The access layer also provides features e.g. authentication, authorization, and accounting (AAA) to ensure that only authorized users can access the network and that their activities are monitored and logged for security purposes.
 
+MAC Filtering:
+MAC filtering in wireless networks acts as a security access control mechanism that permits or denies access to a network based on a device's unique 48-bit hardware address (MAC address). It functions as a gatekeeper, creating white or blacklists to allow or block specific devices, but it does not provide traffic encryption.
+Key Characteristics of MAC Filtering:
+Access Control Method: It is a security feature, often found on routers and access points, to allow only authorized devices to connect to a Wi-Fi network.Whitelist/Blacklist Functionality: Administrators can create a list of authorized devices (whitelist) to permit access or a list of disallowed devices (blacklist) to block access.
+Hardware Identifier Based: It uses the unique MAC address of a device’s network interface card (NIC) to identify it, regardless of its IP address.
+Limited Security (Weakness): It is considered a weak security measure because MAC addresses can be easily spoofed or cloned by attackers.Maintenance Intensive: Managing MAC address lists is cumbersome in larger networks, requiring constant manual updates.No Encryption: MAC filtering does not encrypt traffic or protect against eavesdropping; it only controls access.
+Limitations:
+Spoofing: Attackers can bypass MAC filters by "spoofing" (impersonating) the MAC address of an authorized device.Complexity: It does not scale well to large environments with many devices, leading to increased management overhead.Randomization Conflict: Modern devices often use randomized MAC addresses for privacy, which can cause connectivity issues when MAC filtering is enabled.It is generally recommended to use MAC filtering as an extra layer in combination with strong encryption protocols like WPA2 or WPA3, rather than as a standalone security measure.
+
+switches:
+A switch keeps its MAC address table current by using the source MAC address and the incoming port of incoming data frames. By examining these two pieces of information, the switch learns which device is connected to which port and updates the table's timestamp to keep entries active.
+
+Key details on how switches maintain this information:
+Source MAC Address: When a frame arrives, the switch examines the source MAC address to identify which device sent the data.
+Incoming Port: The switch records the specific interface (port) on which the frame arrived.
+Association/Learning: The switch pairs the source MAC address with the incoming port in its table, allowing it to know where to send future traffic.
+Aging Mechanism: If a device stops sending frames, the switch will remove that device's MAC address from the table after a certain period (aging time) to keep the table accurate.
+
+While the switch uses the destination MAC address to decide where to send a frame, it specifically uses the source MAC address and incoming port to update and maintain the table.
+
 <img src="networkingBasics/images/module7Pass.png" alt="module7Pass" height="240px">
 
 ### Checkpoint 2
