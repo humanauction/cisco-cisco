@@ -447,4 +447,19 @@ While the switch uses the destination MAC address to decide where to send a fram
 
 <img src="networkingBasics/images/checkpointPass2.png" alt="checkpointPass2" height="240px">
 
-### Module 8
+### Module 8: Internet Protocol
+
+learning objective: IP address features
+
+IPv4 address purpose - logical network address used for routing and addressing,
+
+IPv4 address structure - addresses and subnets used together
+
+learning outcomes:
+IPv4 Address Purpose: An IPv4 address is a logical network address used for routing and addressing in an IP network. It serves as a unique identifier for devices on a network, allowing them to communicate with each other and with devices on other networks. IPv4 addresses are used to identify both the source and destination of data packets as they traverse the internet or other IP-based networks. They are essential for the proper functioning of the internet and enable devices to send and receive data across networks.
+
+IPv4 Address Structure: An IPv4 address is a 32-bit binary number that is typically represented in dotted decimal notation, consisting of four octets separated by periods (e.g., 192.168.1.1). Each octet can range from 0 to 255, allowing for a total of approximately 4.3 billion unique addresses. IPv4 addresses are structured into two main parts: the network portion and the host portion. The network portion identifies the specific network to which the device belongs, while the host portion identifies the individual device within that network. Subnetting is often used to divide larger networks into smaller, more manageable subnets, allowing for more efficient use of IP addresses and improved network performance.
+
+<img src="networkingBasics/images/module8Pass.png" alt="module8Pass" height="240px">
+
+### Module 9: IPv4 and Network Segmentation
