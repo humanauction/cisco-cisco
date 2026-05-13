@@ -542,23 +542,43 @@ Link-Local addresses
 Link-local addresses (169.254.0.0 /16 or 169.254.0.1 to 169.254.255.254) are more commonly known as the Automatic Private IP Addressing (APIPA) addresses or self-assigned addresses. They are used by a Windows client to self-configure in the event that the client cannot obtain an IP addressing through other methods. Link-local addresses can be used in a peer-to-peer connection but are not commonly used for this purpose.
 
 Legacy Classful Addressing
+
+IPv4 Address Classes
+Class A: 0.0.0.0 – 127.255.255.255 (Large networks)
+Class B: 128.0.0.0 – 191.255.255.255 (Medium/large networks)
+Class C: 192.0.0.0 – 223.255.255.255 (Small networks)
+Class D: 224.0.0.0 – 239.255.255.255 (Multicast)
+Class E: 240.0.0.0 – 255.255.255.255 (Experimental)
+Reserved Private IPv4 Ranges (Not routable on the Internet)10.0.0.0 – 10.255.255.255 (10.0.0.0/8)172.16.0.0 – 172.31.255.255 (172.16.0.0/12)192.168.0.0 – 192.168.255.255 (192.168.0.0/16)
+Special IPv4 Address RangesLoopback/Localhost: 127.0.0.0/8 (127.0.0.0 – 127.255.255.255)
+APIPA (Link-Local): 169.254.0.0/16 (169.254.0.0 – 169.254.255.255)
+Broadcast: 255.255.255.255
+
+Key Concepts
+Public vs. Private: Public IPs are reachable on the internet;
+Private IPs are used within local networks.CIDR (Classless Inter-Domain Routing): Replaces the class system to allocate IP addresses more efficiently using a slash notation (e.g., /24).
+
 In 1981, IPv4 addresses were assigned using classful addressing as defined in RFC 790 (https://tools.ietf.org/html/rfc790), Assigned Numbers. Customers were allocated a network address based on one of three classes, A, B, or C. The RFC divided the unicast ranges into specific classes as follows:
 
 Class A (0.0.0.0/8 to 127.0.0.0/8) - Designed to support extremely large networks with more than 16 million host addresses. Class A used a fixed /8 prefix with the first octet to indicate the network address and the remaining three octets for host addresses (more than 16 million host addresses per network).
 Class B (128.0.0.0 /16 - 191.255.0.0 /16) - Designed to support the needs of moderate to large size networks with up to approximately 65,000 host addresses. Class B used a fixed /16 prefix with the two high-order octets to indicate the network address and the remaining two octets for host addresses (more than 65,000 host addresses per network).
 Class C (192.0.0.0 /24 - 223.255.255.0 /24) - Designed to support small networks with a maximum of 254 hosts. Class C used a fixed /24 prefix with the first three octets to indicate the network and the remaining octet for the host addresses (only 254 host addresses per network).
-Note: There is also a Class D multicast block consisting of 224.0.0.0 to 239.0.0.0 and a Class E experimental address block consisting of 240.0.0.0 - 255.0.0.0.
+Class D multicast block consisting of 224.0.0.0 to 239.0.0.0
+Class E experimental address block consisting of 240.0.0.0 - 255.0.0.0.
 
 At the time, with a limited number of computers using the internet, classful addressing was an effective means to allocate addresses. As shown in the figure, Class A and B networks have a very large number of host addresses and Class C has very few. Class A networks accounted for 50% of the IPv4 networks. This caused most of the available IPv4 addresses to go unused.
 
 The diagram is a pie chart showing the percentage of Class A, B, C, D, & E IPv4 addressing with the total number of networks and hosts per class A, B, and C networks. Percentages are: class A = 50%, class B = 25%, class C = 12.5%, and class D and E = 12.5%. For the total number of networks and total number of hosts per network: class A = 128 networks with 16,777,214 total hosts per network; class B = 16,384 networks with 65,534 total hosts per network; and class C = 2,097,152 networks with 254 total hosts per network.
-Class D & E
-12.5%Class A
-50%Class C
-12.5%Class B
-25%Class ATotal Networks: 128
-Total Hosts/Net: 16,777,214Class BTotal Networks: 16,384
-Total Hosts/Net: 65,534Class CTotal Networks: 2,097,152
+Class D & E 12.5%
+Class A 50%
+Class C 12.5%
+Class B 25%
+Class A Total Networks: 128
+Total Hosts/Net: 16,777,214
+Class BTotal Networks: 16,384
+Total Hosts/Net: 65,534
+Class C
+Total Networks: 2,097,152
 Total Hosts/Net: 254
 In the mid-1990s, with the introduction of the World Wide Web (WWW), classful addressing was deprecated to more efficiently allocate the limited IPv4 address space. Classful address allocation was replaced with classless addressing, which is used today. Classless addressing ignores the rules of classes (A, B, C). Public IPv4 network addresses (network addresses and subnet masks) are allocated based on the number of addresses that can be justified.
 
