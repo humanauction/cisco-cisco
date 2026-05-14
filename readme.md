@@ -600,6 +600,8 @@ This figure shows the geographic locations of the Reginal Internet Registries (R
 
 https://datatracker.ietf.org/doc/html/rfc790
 
+<img src="networkingBasics/images/module9Pass.png" alt="module9Pass" height="240px">
+
 ### Module 10: IPv6 Address formats and rules
 
 learning objectives:
@@ -624,3 +626,66 @@ PC2
 IPv6-only NetworkIPv4-only NetworkNAT64 Router
 
 N.B. Tunneling and translation are for transitioning to native IPv6 and should only be used where needed. The goal should be native IPv6 communications from source to destination.
+
+IPv6 Addressing
+IPv6 addresses are represented using hexadecimal numbers. This base sixteen number system uses the digits 0 to 9 and the letters A to F:
+
+0 1 2 3 4 5 6 7 8 9 A B C D E F
+
+In IPv6 addresses, these 16 digits are represented as hextets. IPv6 addresses are 128 bits in length and written as a string of hexadecimal values. Every four bits is represented by a single hexadecimal digit; for a total of 32 hexadecimal values, as shown in the figure. IPv6 addresses are not case-sensitive and can be written in either lowercase or uppercase.
+
+Hextets (16-BIT SEGMENTS)
+
+```mermaid
+flowchart TB
+  subgraph Full_IPv6["Full IPv6 — 8 × 16‑bit hextets"]
+    direction LR
+    F1["X<br>0000"] --> F2["X<br>0000"] --> F3["X<br>0000"] --> F4["X<br>0000"] --> F5["X<br>0000"] --> F6["X<br>0000"] --> F7["X<br>0000"] --> F8["X<br>0000"]
+  end
+
+  subgraph Compressed["Zero-compressed (:: replaces consecutive 0000 hextets)"]
+    direction LR
+    C1["X"] --> C2["::"] --> C3["X"]
+  end
+
+  subgraph IPv4_mapped["IPv4-mapped example"]
+    direction LR
+    M1["::"] --> M2["ffff"] --> M3["1111"] --> M4["0000"]
+  end
+
+  Full_IPv6 -->|"compress zeros"| Compressed
+  Compressed -->|"map IPv4"| IPv4_mapped
+```
+
+examples of IPv6 addresses in the preferred format.
+
+2001 : 0db8 : 0000 : 1111 : 0000 : 0000 : 0000: 0200
+2001 : 0db8 : 0000 : 00a3 : abcd : 0000 : 0000: 1234
+2001 : 0db8 : 000a : 0001 : c012 : 9aff : fe9a: 19ac
+2001 : 0db8 : aaaa : 0001 : 0000 : 0000 : 0000: 0000
+fe80 : 0000 : 0000 : 0000 : 0123 : 4567 : 89ab: cdef
+fe80 : 0000 : 0000 : 0000 : 0000 : 0000 : 0000: 0001
+fe80 : 0000 : 0000 : 0000 : c012 : 9aff : fe9a: 19ac
+fe80 : 0000 : 0000 : 0000 : 0123 : 4567 : 89ab: cdef
+0000 : 0000 : 0000 : 0000 : 0000 : 0000 : 0000: 0001
+0000 : 0000 : 0000 : 0000 : 0000 : 0000 : 0000: 0001
+
+2 rules for compression of IPv6 addresses:
+1 omit leading zeros. e.g. 0db8 can be written as db8, and 0001 can be written as 1. Leading zeros in a hextet can be omitted to simplify the address representation. For example, the hextet 0db8 can be compressed to db8, and the hextet 0001 can be compressed to 1. However, if a hextet is entirely zeros, it can be represented as a single zero (0) or omitted entirely if it is part of a sequence of zeros.
+2 double colon (::) can be used to replace consecutive hextets of zeros, but only once in an address. The double colon can replace one or more consecutive hextets of zeros, but it can only be used once in an address to avoid ambiguity. For example, the address 2001:0db8:0000:0000:0000:0000:0000:0001 can be compressed to 2001:0db8::1, where the double colon replaces the six consecutive hextets of zeros. However, if there were multiple groups of zeros, only one group could be replaced with a double colon (the longer string), and the other group would need to be represented with its full hextet values.
+
+learning outcomes:
+IPv4 Issues: IPv4 has several limitations, including a limited address space (approximately 4.3 billion addresses), which has led to the exhaustion of available IPv4 addresses. Additionally, IPv4 does not have built-in security features, and its header structure is less efficient compared to IPv6. These issues have prompted the development of IPv6 to address the growing needs of the internet and provide improved functionality. e.g.ICMPv6 provides address resolution and neighbor discovery functions that were previously handled by separate protocols in IPv4 (e.g., ARP). IPv6 also includes built-in support for IPsec, which provides enhanced security features compared to IPv4.
+
+migration to IPv6:
+methods include dual stack (mainly), tunneling, and translation.
+
+- Dual stack allows both IPv4 and IPv6 to coexist on the same network segment, enabling devices to communicate using either protocol.
+- Tunneling encapsulates IPv6 packets within IPv4 packets to allow communication over an IPv4 network.
+- Translation, such as NAT64 (network address translation 6 to 4), enables communication between IPv6-enabled devices and IPv4-enabled devices by translating between the two protocols. The goal of these methods is to facilitate a smooth transition to native IPv6 communications while maintaining compatibility with existing IPv4 infrastructure.
+
+IPv6 addressing:
+128-bit addresses represented in hexadecimal format, divided into eight 16-bit hextets. IPv6 addresses can be compressed by omitting leading zeros and using a double colon (::) to replace consecutive hextets of zeros, but the double colon can only be used once in an address to avoid ambiguity. This allows for a more efficient and compact representation of IPv6 addresses while maintaining their uniqueness and functionality. e.g. the IPv6 address 2001:0db8:0000:0000:0000:0000:0000:0001 can be compressed to 2001:0db8::1, where the double colon replaces the six consecutive hextets of zeros.
+if multiple occurunces of zeros, only the longer string can be replaced with a double colon, and the other group would need to be represented with its full hextet values. e.g. the address fe80:0000:0000:0000:0123:4567:89ab:cdef can be compressed to fe80::123:4567:89ab:cdef, where the double colon replaces the three consecutive hextets of zeros. However, if there were multiple groups of zeros, only one group could be replaced with a double colon (the longer string), and the other group would need to be represented with its full hextet values. e.g. the address 2001:0db8:0000:0001:c012:9aff:fe9a:19ac because there are two groups of zeros (0000 and 0000) and only one can be replaced with a double colon, the address would need to be represented as 2001:0db8:0:1:c012:9aff:fe9a:19ac to avoid ambiguity.
+
+<img src="networkingBasics/images/module10Pass.png" alt="module10Pass" height="240px">
