@@ -748,7 +748,7 @@ Destination MAC address of FF:FF:FF:FF:FF:FF (48*1).
 
 All hosts on the local network will receive the DHCP Discover message, but only DHCP servers will respond with a DHCP Offer message. The client will then select one of the offers and send a DHCP Request message to the selected server, which will respond with a DHCP Acknowledgment message to confirm the assignment of the IP address and configuration information. This process allows for efficient and automated management of IP addresses on a network.
 
-for home and small business networks defaults on internak router interface are 192.168.0.1 and subnet mask 255.255.255.0.
+for home and small business networks defaults on internal router interface are 192.168.0.1 and subnet mask 255.255.255.0.
 
 <img src="networkingBasics/images/module11Pass.png" alt="module11Pass" height="240px">
 <img src="networkingBasics/images/module11Bug.png" alt="module11Bug" height="240px">
