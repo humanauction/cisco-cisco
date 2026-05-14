@@ -689,3 +689,68 @@ IPv6 addressing:
 if multiple occurunces of zeros, only the longer string can be replaced with a double colon, and the other group would need to be represented with its full hextet values. e.g. the address fe80:0000:0000:0000:0123:4567:89ab:cdef can be compressed to fe80::123:4567:89ab:cdef, where the double colon replaces the three consecutive hextets of zeros. However, if there were multiple groups of zeros, only one group could be replaced with a double colon (the longer string), and the other group would need to be represented with its full hextet values. e.g. the address 2001:0db8:0000:0001:c012:9aff:fe9a:19ac because there are two groups of zeros (0000 and 0000) and only one can be replaced with a double colon, the address would need to be represented as 2001:0db8:0:1:c012:9aff:fe9a:19ac to avoid ambiguity.
 
 <img src="networkingBasics/images/module10Pass.png" alt="module10Pass" height="240px">
+
+#### module 11: Dynamic Addressing and DHCP
+
+module objective: configure a DHCP server
+
+static and dynamic addressing
+DHCPv4 configuration
+
+Static IPv4 Address Assignment
+IPv4 addresses can be assigned either statically or dynamically.
+
+With a static assignment, the network administrator must manually configure the network information for a host. At a minimum, this includes the following:
+
+IP address - This identifies the host on the network.
+Subnet mask - This is used to identify the network on which the host is connected.
+Default gateway - This identifies the networking device that the host uses to access the internet or another remote network.
+Static addresses have some advantages. For instance, they are useful for printers, servers, and other networking devices that need to be accessible to clients on the network. If hosts normally access a server at a particular IPv4 address, it would not be good if that address changed.
+
+Static assignment of addressing information can provide increased control of network resources, but it can be time consuming to enter the information on each host. When IPv4 addresses are entered statically, the host only performs basic error checks on the IPv4 address. Therefore, errors are more likely to occur.
+
+When using static IPv4 addressing, it is important to maintain an accurate list of which IPv4 addresses are assigned to which devices. Additionally, these are permanent addresses and are not normally reused.
+
+Dynamic IPv4 Address Assignment
+On local networks it is often the case that the user population changes frequently. New users arrive with laptops and need a connection. Others have new workstations that need to be connected. Rather than have the network administrator assign IPv4 addresses for each workstation, it is easier to have IPv4 addresses assigned automatically. This is done using a protocol known as Dynamic Host Configuration Protocol (DHCP).
+
+DHCP automatically assigns addressing information such as IPv4 address, subnet mask, default gateway, DNS server, and other configuration information.
+
+DHCP is generally the preferred method of assigning IPv4 addresses to hosts on large networks because it reduces the burden on network support staff and virtually eliminates entry errors.
+
+Another benefit of DHCP is that an address is not permanently assigned to a host but is only leased for a period of time. If the host is powered down or taken off the network, the address is returned to the pool for reuse. This is especially helpful with mobile users that come and go on a network.
+
+DHCP Servers:
+with a wireless hotspot, DHCP makes it possible for you to access the internet. As you enter the area, your laptop DHCP client contacts the local DHCP server via a wireless connection. The DHCP server assigns an IPv4 address to your laptop.
+
+Various types of devices can be DHCP servers as long as they are running DHCP service software. With most medium to large networks, the DHCP server is usually a local dedicated PC-based server.
+
+With home networks, the DHCP server may be located at the ISP and a host on the home network receives its IPv4 configuration directly from the ISP.
+Many home networks and small businesses use a wireless router and modem. In this case, the wireless router is both a DHCP client and a server. The wireless router acts as a client to receive its IPv4 configuration from the ISP and then acts as a DHCP server for internal hosts on the local network. The router receives the public IPv4 address from the ISP, and in its role as a DHCP server, it distributes private addresses to internal hosts.
+
+In addition to PC-based servers and wireless routers, other types of networking devices such as dedicated routers can provide DHCP services to clients, although this is not as common.
+
+DHCP discover, offer, request, and acknowledgment (DORA) process:
+When a DHCP client connects to the network, it goes through a process to obtain an IP address and other configuration information from the DHCP server. DORA, - Discover, Offer, Request, and Acknowledgment.
+discover - The client sends a DHCP Discover message to the network to find available DHCP servers. This message is broadcasted to all devices on the local network.
+offer - When a DHCP server receives the Discover message, it responds with a DHCP Offer message. This message contains an available IP address and other configuration information that the server is offering to the client.
+request - The client receives the Offer messages from one or more DHCP servers and selects one of the offers. It then sends a DHCP Request message to the selected server, indicating that it accepts the offered IP address and configuration.
+acknowledgment - The DHCP server receives the Request message and responds with a DHCP Acknowledgment message. This message confirms that the IP address has been assigned to the client and includes any additional configuration information, such as the subnet mask, default gateway, and DNS server addresses. Once the client receives the Acknowledgment message, it can begin using the assigned IP address and configuration to communicate on the network.
+
+remember, DORA.
+
+learning outcomes:
+Static IPv4 Address Assignment: Static IPv4 address assignment involves manually configuring the network information for a host, including the IP address, subnet mask, and default gateway. This method provides increased control over network resources and is useful for devices that need to be consistently accessible, such as printers and servers. However, it can be time-consuming and prone to errors, as the network administrator must enter the information for each host individually. Additionally, static addresses are permanent and are not typically reused, which can lead to inefficient use of IP address space if not managed properly.
+Dynamic IPv4 Address Assignment: Dynamic IPv4 address assignment uses the Dynamic Host Configuration Protocol (DHCP) to automatically assign IP addresses and other configuration information to hosts on a network. This method reduces the burden on network support staff and minimizes entry errors, as the DHCP server handles the assignment process. DHCP also allows for efficient use of IP address space, as addresses are leased to hosts for a specific period of time and returned to the pool for reuse when no longer needed. This is particularly beneficial for mobile users who frequently connect and disconnect from the network.
+DHCP Servers: configured on range or pool. client IPv4 need will send DHCP Discover message to find available DHCP servers.
+broadcast with a destination IPv4 address of 255.255.255.255 (32*1)
+Destination MAC address of FF:FF:FF:FF:FF:FF (48*1).
+
+All hosts on the local network will receive the DHCP Discover message, but only DHCP servers will respond with a DHCP Offer message. The client will then select one of the offers and send a DHCP Request message to the selected server, which will respond with a DHCP Acknowledgment message to confirm the assignment of the IP address and configuration information. This process allows for efficient and automated management of IP addresses on a network.
+
+for home and small business networks defaults on internak router interface are 192.168.0.1 and subnet mask 255.255.255.0.
+
+<img src="networkingBasics/images/module11Pass.png" alt="module11Pass" height="240px">
+<img src="networkingBasics/images/module11Bug.png" alt="module11Bug" height="240px">
+
+Module 12
