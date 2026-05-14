@@ -678,7 +678,7 @@ learning outcomes:
 IPv4 Issues: IPv4 has several limitations, including a limited address space (approximately 4.3 billion addresses), which has led to the exhaustion of available IPv4 addresses. Additionally, IPv4 does not have built-in security features, and its header structure is less efficient compared to IPv6. These issues have prompted the development of IPv6 to address the growing needs of the internet and provide improved functionality. e.g.ICMPv6 provides address resolution and neighbor discovery functions that were previously handled by separate protocols in IPv4 (e.g., ARP). IPv6 also includes built-in support for IPsec, which provides enhanced security features compared to IPv4.
 
 migration to IPv6:
-methods include dual stack (mainly), tunneling, and translation.
+methods include dual stack(both), tunneling(encapsulate 6 in 4) and translation(NAT64).
 
 - Dual stack allows both IPv4 and IPv6 to coexist on the same network segment, enabling devices to communicate using either protocol.
 - Tunneling encapsulates IPv6 packets within IPv4 packets to allow communication over an IPv4 network.
