@@ -549,8 +549,12 @@ Class B: 128.0.0.0 – 191.255.255.255 (Medium/large networks)
 Class C: 192.0.0.0 – 223.255.255.255 (Small networks)
 Class D: 224.0.0.0 – 239.255.255.255 (Multicast)
 Class E: 240.0.0.0 – 255.255.255.255 (Experimental)
-Reserved Private IPv4 Ranges (Not routable on the Internet)10.0.0.0 – 10.255.255.255 (10.0.0.0/8)172.16.0.0 – 172.31.255.255 (172.16.0.0/12)192.168.0.0 – 192.168.255.255 (192.168.0.0/16)
-Special IPv4 Address RangesLoopback/Localhost: 127.0.0.0/8 (127.0.0.0 – 127.255.255.255)
+Reserved Private IPv4 Ranges (Not routable on the Internet)
+10.0.0.0 – 10.255.255.255 (10.0.0.0/8)
+172.16.0.0 – 172.31.255.255 (172.16.0.0/12)
+192.168.0.0 – 192.168.255.255 (192.168.0.0/16)
+Special IPv4 Address Ranges
+Loopback/Localhost: 127.0.0.0/8 (127.0.0.0 – 127.255.255.255)
 APIPA (Link-Local): 169.254.0.0/16 (169.254.0.0 – 169.254.255.255)
 Broadcast: 255.255.255.255
 
@@ -753,4 +757,12 @@ for home and small business networks defaults on internal router interface are 1
 <img src="networkingBasics/images/module11Pass.png" alt="module11Pass" height="240px">
 <img src="networkingBasics/images/module11Bug.png" alt="module11Bug" height="240px">
 
-Module 12
+A subnet mask acts in conjunction with an IP address to divide it into a network address and a host address. It tells network devices which part of the address defines the network (e.g., zip code) and which identifies the specific device (e.g., house number), enabling efficient routing and dividing large networks into smaller, manageable subnets.Key Purposes of Subnet Masks:Defining Network Boundaries: It specifies which bits in an IP address are reserved for the network and which are for individual devices (hosts).Determining Local vs. Remote Traffic: It allows a device to determine if another IP address is on the same local network or requires a router to reach a remote network.Subnetting and Organization: It breaks down large networks into smaller, more secure, and manageable subnets to reduce traffic congestion.Routing Optimization: Routers use masks to determine the most efficient path for data packets, ensuring they reach the correct destination network.Example:Using an IP address of \(192.168.1.10\) and a subnet mask of \(255.255.255.0\):The \(255\)s mask the first three octets (\(192.168.1.\)) as the Network ID.The \(0\) indicates the final part (\(.10\)) is the Host ID.A subnet mask ensures proper identification of both the network and the individual device within that network
+
+Normally, DHCP servers and BOOTP relay agents attempt to deliver DHCPOFFER, DHCPACK and DHCPNAK messages directly to the client using uicast delivery. but noit Cisco, Cisco its BROADCAST to the client with a destination IPv4 address of
+
+## Checkpoint 3
+
+<img src="networkingBasics/images/checkpoint3Pass.png" alt="checkpoint3Pass" height="240px">
+
+### Module 12
