@@ -801,3 +801,103 @@ Network Boundries: wireless router serves as the boundary between the local inte
 NAT Operation: wireless router recieves a public IPv4 address from the ISP on its internet interface and assigns private IPv4 addresses to hosts on the internal network. The wireless router can translate many private addresses to a single public address, allowing multiple devices on the internal network to access the internet using one public IP address, while still maintaining security and efficient use of IP address space. NAT (Network Address Translation) is a technique used by routers to allow multiple devices on a local network to access the internet using a single public IP address. The router translates the private IP addresses of the devices on the local network to the public IP address assigned to the router by the ISP. This allows for efficient use of IP address space and provides a layer of security by hiding the internal network structure from external entities on the internet. When a device on the local network sends a request to access the internet, the router modifies the source IP address in the outgoing packets to its own public IP address and keeps track of which internal device made the request. When a response is received from the internet, the router uses this tracking information to forward the response back to the correct internal device. This process allows multiple devices on the local network to share a single public IP address while still being able to access the internet and receive responses correctly.
 
 <img src="networkingBasics/images/module12Pass.png" alt="module12Pass" height="240px">
+
+### Module 13: ARP Address Resolution Protocol
+
+learning objectives:
+
+MAC and IP - compare and contrast
+Broadcast containment - importance of containing broadcasts within a local network
+
+Destination on same network: There are two primary addresses assigned to a device on an Ethernet LAN:
+
+Physical address (MAC address) – Used for NIC-to-NIC communications on the same Ethernet network.
+
+Logical address (IP address) – Used to send the packet from the source device to the destination device.
+
+The destination IP address may be on the same IP network as the source, or it may be on a remote network.
+Layer 2 physical addresses (i.e., Ethernet MAC addresses) are used to deliver the data link frame with the encapsulated IP packet from one NIC to another NIC that is on the same network. If the destination IP address is on the same network, the destination MAC address will be that of the destination device. If the destination IP address is on a different network, the destination MAC address will be that of the default gateway (the router interface connected to the local network). The router will then forward the packet to the next hop toward the destination.
+
+When a host needs to send a packet to another device on the same network, it must first determine the MAC address associated with the destination IP address. This is done using the Address Resolution Protocol (ARP). ARP allows a device to map an IP address to its corresponding MAC address. When a host wants to communicate with another device on the same network, it sends an ARP request broadcast message asking "Who has this IP address?" The device with that IP address responds with an ARP reply containing its MAC address. The sender can then use this MAC address to encapsulate the data link frame and send it directly to the destination device.
+
+Destination on Remote Network
+When the destination IP address (IPv4 or IPv6) is on a remote network, the destination MAC address will be the address of the host default gateway (i.e., the router interface). The router will then forward the packet to the next hop toward the destination. This is because devices on a local network can only communicate directly with other devices on the same network using their MAC addresses. To communicate with devices on different networks, the packet must be sent to the default gateway, which will handle the routing of the packet to its final destination.
+
+How are the IP addresses of the IP packets in a data flow associated with the MAC addresses on each link along the path to the destination?
+IPv4 packets, this is done through a process called Address Resolution Protocol (ARP).
+IPv6 packets, the process is ICMPv6 Neighbor Discovery (ND).
+
+Broadcast Domains
+When a host receives a message addressed to the broadcast address, it accepts and processes the message as though the message was addressed directly to it. When a host sends a broadcast message, switches forward the message to every connected host within the same local network. For this reason, a local area network, a network with one or more Ethernet switches, is also referred to as a broadcast domain.
+
+If too many hosts are connected to the same broadcast domain, broadcast traffic can become excessive. The number of hosts and the amount of network traffic that can be supported on the local network is limited by the capabilities of the switches used to connect them. As the network grows and more hosts are added, network traffic, including broadcast traffic, increases. To improve performance, it is often necessary to divide one local network into multiple networks, or broadcast domains, as shown in the figure. Routers are used to divide the network into multiple broadcast domains. Each router interface creates a new broadcast domain. This means that broadcast messages sent by hosts on one side of the router will not be forwarded to hosts on the other side of the router, effectively containing the broadcast traffic within each local network.
+
+```mermaid
+flowchart LR
+    subgraph Production
+        P1[PC 1]
+        P2[PC 2]
+        P3[PC 3]
+    end
+    subgraph Research
+        R1[PC 4]
+        R2[PC 5]
+    end
+    subgraph Development
+        D1[PC 6]
+        D2[PC 7]
+    end
+    Router((Router))
+    P1 --- Production
+    P2 --- Production
+    P3 --- Production
+    R1 --- Research
+    R2 --- Research
+    D1 --- Development
+    D2 --- Development
+    Production --- Router
+    Research --- Router
+    Development --- Router
+```
+
+Access Layer Communication
+On a local Ethernet network, a NIC only accepts a frame if the destination address is either the broadcast MAC address, or else corresponds to the MAC address of the NIC.
+
+Most network applications, however, rely on the logical destination IP address to identify the location of the servers and clients. The figure illustrates the problem that arises if a sending host only has the logical IP address of the destination host. How does the sending host determine what destination MAC address to place within the frame?
+
+The sending host can use an IPv4 protocol called address resolution protocol (ARP) to discover the MAC address of any host on the same local network. IPv6 uses a similar method known as Neighbor Discovery.
+
+```mermaid
+flowchart LR
+    Router((Router)):::router
+    PCA1[PC-A1<br>fe80::1]:::pc
+    PCA2[PC-A2<br>fe80::2]:::pc
+    PCA3[PC-A3<br>fe80::3]:::pc
+    PCA4[PC-A4<br>fe80::4]:::pc
+
+    Router --- PCA1
+    Router --- PCA2
+    Router --- PCA3
+    Router --- PCA4
+
+    classDef router fill:#cce5ff,stroke:#333,stroke-width:2px;
+    classDef pc fill:#fff3cd,stroke:#333,stroke-width:1px;
+```
+
+ARP
+ARP uses a three step process to discover and store the MAC address of a host on the local network when only the IPv4 address of the host is known:
+
+1. The sending host creates and sends a frame addressed to a broadcast MAC address. Contained in the frame is a message with the IPv4 address of the intended destination host.
+2. Each host on the network receives the broadcast frame and compares the IPv4 address inside the message with its configured IPv4 address. The host with the matching IPv4 address sends its MAC address back to the original sending host.
+3. The sending host receives the message and stores the MAC address and IPv4 address information in a table called an ARP table.
+   When the sending host has the MAC address of the destination host in its ARP table, it can send frames directly to the destination without doing an ARP request. Because ARP messages rely on broadcast frames to deliver the requests, all hosts in the local IPv4 network must be in the same broadcast domain.
+
+learning outcomes:
+
+MAC and IP: MAC addresses are used for NIC-to-NIC communications on the same Ethernet network, while IP addresses are used to send packets from the source device to the destination device across different networks. When a host needs to communicate with another device on the same network, it uses ARP to map the destination IP address to its corresponding MAC address. If the destination IP address is on a remote network, the host sends the packet to the default gateway (router), which then forwards it to the next hop toward the destination.
+
+Broadcast containment: Broadcast messages are sent to all devices within the same local network (broadcast domain). If too many hosts are connected to the same broadcast domain, broadcast traffic can become excessive and degrade network performance. To improve performance, networks can be divided into multiple broadcast domains using routers, which contain the broadcast traffic within each local network and prevent it from affecting other networks. hex notation is FF:FF:FF:FF:FF:FF:FF for MAC and 0.0.0.0 for IP.
+uses NIC-to-NIC communication on the same Ethernet network, while IP addresses are used to send packets from the source device to the destination device across different networks. When a host needs to communicate with another device on the same network, it uses ARP to map the destination IP address to its corresponding MAC address. If the destination IP address is on a remote network, the host sends the packet to the default gateway (router), which then forwards it to the next hop toward the destination.
+ND for IPv6 performs similar functions to ARP for IPv4, allowing devices to discover the MAC address associated with an IPv6 address on the same local network. Both ARP and ND rely on broadcast messages to request address information, and they help ensure that devices can communicate effectively within their local networks by resolving IP addresses to MAC addresses.
+
+A host will send an ARP reply if the IP address in the ARP request matches its own IP address.
