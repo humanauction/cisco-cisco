@@ -906,3 +906,137 @@ Layer 2 - MAC address
 Layer 3 - IP address
 
 <img src="networkingBasics/images/module13Pass.png" alt="module13Pass" height="240px">
+
+### Module 14: Routing between networks
+
+learning objectives:
+need for routing
+routing table
+LAN creation
+
+need for routing:
+A router is a networking device connecting multiple Layer 3, IP networks.
+Distribution layer of the network - routers direct traffic and perform other functions critical to efficient network operation.
+
+Routers, like switches, are able to decode and read the messages sent to them.
+
+switches make forwarding decision based on Layer 2 MAC address
+routers make forwarding decision based on the Layer 3 IP address.
+
+The packet format contains the IP addresses of the destination and source hosts, as well as the message data being sent between them. The router reads the network portion of the destination IP address and uses it to find which one of the attached networks is the best way to forward the message to the destination.
+
+If network portion of IP addresses of source and destination hosts do not match, a router must be used to forward the message.
+e.g. If a host located on network 1.1.1.0 needs to send a message to a host on network 5.5.5.0
+the host will forward the message to the router.
+The router receives the message, de-encapsulates the Ethernet frame, and then reads the destination IP address in the IP packet.
+router determines where to forward message.
+router re-encapsulates the packet into a NEW frame, and forwards the frame to final destination.
+
+Routing Table Entries
+Routers move information between local and remote networks using routing tables to store information.
+Routers use the routing tables to determine which interface to use to forward a message to its intended destination.
+Routing tables dont care about the addresses of individual hosts.
+Routing tables contain the addresses of networks, and the best path to reach those networks.
+Routing table entries can be made in 2 WAYS: 1. dynamically updated by information received from other routers in the network; 2. manually entered by a network administrator.
+
+If the router cannot determine where to forward a message, it will drop it. Network administrators configure a static default route that is placed into the routing table so that a packet will not be dropped due to the destination network not being in the routing table.
+
+A default route is the interface through which the router forwards a packet containing an unknown destination IP network address. This default route usually connects to another router that can forward the packet towards its final destination network.
+
+```mermaid
+flowchart LR
+  subgraph Net10["10.0.0.0/8"]
+    H1["H1<br>10.1.21.1/8"]
+    H2["H2<br>10.1.21.2/8"]
+    H3["H3<br>10.1.21.3/8"]
+    H4["H4<br>10.1.21.4/8"]
+    SW1["Switch 1"]
+  end
+
+  subgraph Net172["172.16.0.0/16"]
+    H5["H5<br>172.16.1.3/16"]
+    H6["H6<br>172.16.1.4/16"]
+    H7["H7<br>172.16.1.5/16"]
+    H8["H8<br>172.16.1.6/16"]
+    SW2["Switch 2"]
+  end
+
+  R1((Router))
+
+  H1 --- SW1
+  H2 --- SW1
+  H3 --- SW1
+  H4 --- SW1
+
+  H5 --- SW2
+  H6 --- SW2
+  H7 --- SW2
+  H8 --- SW2
+
+  SW1 ---|FastEthernet0/0| R1
+  R1 ---|FastEthernet0/1| SW2
+```
+
+The Default Gateway
+The method a host uses to send messages to a destination on a remote network is different to a host sending messages on the same local network. When a host needs to send a message to another host located on the same network, it will forward the message directly. A host will use ARP to discover the MAC address of the destination host. The IPv4 packet contains the destination IPv4 address and encapsulates the packet into a frame containing the MAC address of the destination and forwards it out.
+
+When a host needs to send a message to a remote network, it must use the router. The host still includes the IP address of the destination host within the packet. but when it encapsulates the packet into a frame, it uses the MAC address of the router as the frame destination. the router will receive and accept the frame based on the MAC address.
+
+Source host router MAC address:
+A host is given the IPv4 address of the router through the default gateway address configured in its TCP/IP settings. The default gateway address is the address of the router interface connected to the same local network as the source host.
+
+All hosts on the local network use the default gateway address to send messages to the router.
+
+When the host knows the default gateway IPv4 address, it can use ARP to determine the MAC address. The MAC address of the router is then placed in the frame, destined for another network.
+
+VERY IMPORTANT: the correct default gateway must be configured on each host on the local network. If no default gateway is configured in the host TCP/IP settings, or if the wrong default gateway is specified, messages addressed to hosts on remote networks cannot be delivered.
+
+<img src="networkingBasics/images/defaultGateway.png" alt="defaultGateway" height="440px">
+
+Local Area Networks
+local area network (LAN) refers to a local network, or a group of interconnected local networks under the same administrative control. originally, LANs were defined as small networks existing in a single physical location. now, LANs CAN be a single local network installed in a home or small office, BUT the definition of LAN has EVOLVED to include interconnected local networks, consisting of many hundreds of hosts, installed in multiple buildings and locations.
+
+N.B. all the local networks within a LAN are UNDER 1 ADMIN CONTROL. Common characteristics of LANs: typically use Ethernet or wireless protocols; support high data rates.
+
+Intranet: a private LAN belonging to an organization only accesible toorganization members, employees, or others with authorization.
+
+<img src="networkingBasics/images/locArNet.png" alt="locArNet" height="440px">
+
+Local and Remote Network Segments
+Local Segmentation - Placing all hosts on a single local network allows them to be seen by all other hosts. This is because there is one broadcast domain and hosts use ARP to find each other.
+
+use case: simple network design. As networks grow in size, increased traffic will decrease network performance and speed. thats when you move some hosts onto a remote network.
+
+Advantages of a single local segment:
+Appropriate for simpler networks
+Less complexity, lower network cost
+Allows devices to be "seen" by other devices
+Faster data transfer / more direct communication
+Ease of device access
+
+Disadvantages:
+All hosts are in one broadcast domain which causes more traffic on the segment and may slow network performance
+Harder to implement QoS
+Harder to implement security
+
+Remote Segmentation - Placing additional hosts on a remote network will decrease the impact of traffic demands, but hosts on one network will not be able to communicate with hosts on the other network without routing. Routers increase complexity of network configuration and can introduce latency (time delay) on packets sent from one local network to the other.
+
+use case: larger, more complex network design.
+
+Advantages:
+larger, more complex networks
+Splits up broadcast domains, decreases traffic
+Can improve performance on each segment
+Machines invisible to those on other local network segments
+Can provide increased security
+Can improve network organization
+
+Disadvantages:
+Requires routing (distribution layer)
+Router can slow traffic between segments
+More complexity, cost, hardware (i.e. requires a router)
+
+commands:
+arp -a - displays the ARP table, which contains the mappings of IP addresses to MAC addresses that the host has learned through ARP requests and replies.
+arp -d - deletes an entry from the ARP table, which can be useful for troubleshooting or clearing out stale entries.
+arp -s - allows you to manually add a static entry to the ARP table, specifying the IP address and corresponding MAC address. This can be useful for testing or when you want to ensure that a specific IP address always resolves to a particular MAC address.
