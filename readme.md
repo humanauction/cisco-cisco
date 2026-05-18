@@ -901,3 +901,8 @@ uses NIC-to-NIC communication on the same Ethernet network, while IP addresses a
 ND for IPv6 performs similar functions to ARP for IPv4, allowing devices to discover the MAC address associated with an IPv6 address on the same local network. Both ARP and ND rely on broadcast messages to request address information, and they help ensure that devices can communicate effectively within their local networks by resolving IP addresses to MAC addresses.
 
 A host will send an ARP reply if the IP address in the ARP request matches its own IP address.
+
+Layer 2 - MAC address
+Layer 3 - IP address
+
+<img src="networkingBasics/images/module13Pass.png" alt="module13Pass" height="240px">
