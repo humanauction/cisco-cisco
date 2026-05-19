@@ -1124,6 +1124,116 @@ Hostname - w​ww.example.com
 Path and file name - /author/book.html
 Fragment - #page155
 
+**Common Network Application Services**
+services such as internet searches, social media sites, video and audio streaming, on-line shopping sites, email and messaging. Each of these services relies on protocols from the TCP/IP protocol suite to reliably communicate the information between the clients and the servers.
+<img src="networkingBasics/images/cnas.png" alt="appLayer" height="240px">
+
+| Protocol                                       | Description                                                                                                                                 |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Domain Name System (DNS)**                   | Resolves internet names to IP addresses.                                                                                                    |
+| **Secure Shell (SSH)**                         | Used to provide remote access to servers and networking devices.                                                                            |
+| **Simple Mail Transfer Protocol (SMTP)**       | Sends email messages and attachments from clients to servers and from servers to other email servers.                                       |
+| **Post Office Protocol (POP)**                 | Used by email clients to retrieve email and attachments from a remote server.                                                               |
+| **Internet Message Access Protocol (IMAP)**    | Used by email clients to retrieve email and attachments from a remote server.                                                               |
+| **Dynamic Host Configuration Protocol (DHCP)** | Used to automatically configure devices with IP addressing and other necessary information to enable them to communicate over the internet. |
+| **Hypertext Transfer Protocol (HTTP)**         | Used by web browsers to request web pages and web servers to transfer the files that make up web pages of the World Wide Web.               |
+| **File Transfer Protocol (FTP)**               | Used for interactive file transfer between systems.                                                                                         |
+
+**Syntax Checker - The nslookup Command**
+When you manually configure a device for network connectivity, recall that you also include a DNS server address. For home networks, this configuration is typically handled by DHCP running on the home router. Your ISP provides the DNS server address to your home router, and then your home router uses DHCP to send the configuration to all the devices connected to its network. When you type the name for a website, e.g. www.cisco.com, the DNS client running on your device first asks the DNS server for the IP address, e.g. 172.230.155.162, before sending out your HTTP request.
+
+```bash
+C:\>nslookup
+
+Default Server: Unknown
+Address: 10.10.10.1
+# The output lists the name and IP address of the DNS server configured in the client. Note that the DNS server address can be manually configured, or dynamically learned, through DHCP. You are now in nslookup mode. Enter the domain name www.cisco[]().com.
+
+>www.cisco.com
+Server:  UnKnown
+Address:  10.10.10.1
+Non-authoritative answer:
+Name:    e2867.dsca.akamaiedge.net
+Addresses:  2600:1404:a:395::b33
+          2600:1404:a:38e::b33
+          172.230.155.162
+Aliases:  www.cisco.com
+          www.cisco.com.akadns.net
+          wwwds.cisco.com.edgekey.net
+          wwwds.cisco.com.edgekey.net.globalredir.akadns.net
+# The output lists IP addresses related to www.cisco[]().com that the server 'e2867' currently has in its database. Notice that IPv6 addresses are also listed. In addition, various aliases are shown that will resolve to www.cisco[]().com.
+
+# Enter the exit command to leave nslookup mode and return to the Windows command line.
+>exit
+# You can directly query the DNS servers by simply adding the domain name to the nslookup command.
+
+# Enter nslookup www.google[]().com.
+
+C:\>nslookup www.google.com
+Server:  UnKnown
+Address:  10.10.10.1
+Non-authoritative answer:
+Name:    www.google.com
+Addresses:  2607:f8b0:4000:80f::2004
+          172.217.12.36
+
+
+=========================================
+# You are now working from Linux command prompt. The nslookup command is the same.
+
+# Enter the nslookup command to begin a manual query of the name servers.
+# Enter www.cisco[]().com at the \> prompt.
+# Enter the exit command to leave nslookup mode and return to the Linux command line.
+user@cisconetacad$nslookup
+Server: 127.0.1.1
+Address: 127.0.1.1#53
+>www.cisco.com
+Non-authoritative answer:
+www.cisco.com canonical name = www.cisco.com.akadns.net.
+www.cisco.com.akadns.net canonical name = wwwds.cisco.com.edgekey.net.
+wwwds.cisco.com.edgekey.net canonical name = wwwds.cisco.com.edgekey.net.globalredir.akadns.net.
+wwwds.cisco.com.edgekey.net.globalredir.akadns.net canonical name = e144.dscb.akamaiedge.net.
+Name: e144.dscb.akamaiedge.net
+Address: 23.60.112.170
+>exit
+
+# As in Windows, you can directly query the DNS servers by simply adding the domain name to the nslookup command. Enter nslookup www.google[]().com.
+
+user@cisconetacad$nslookup www.google.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	www.google.com
+Address: 172.217.6.164
+Name:	www.google.com
+Address: 2607:f8b0:4000:812::2004
+# You successfully used the nslookup command to verify the status of domain names.
+
+```
+
+**HTTP and HTML**
+When a web client receives the IP address of a web server, the client browser uses that IP address and port 80 to request web services. This request is sent to the server using the Hypertext Transfer Protocol (HTTP).
+
+When the server receives a port 80 request, the server responds to the client request and sends the web page to the client. The information content of a web page is encoded using specialized 'mark-up' languages. The HyperText Markup Language (HTML) coding tells the browser how to format the web page and what graphics and fonts to use. HTML is the most commonly used language.
+
+The HTTP protocol is not a secure protocol; information could easily be intercepted by other users as data is sent over the network. In order to provide security for the data, HTTP can be used with secure transport protocols. Requests for secure HTTP are sent to port 443. These requests use https in the site address in the browser, rather than http.
+
+There are many different web servers and web clients available. The HTTP protocol and HTML standards make it possible for these servers and clients from many different manufacturers to work together seamlessly.
+
+**File Transfer Protocol**
+In addition to web services, another common service used across the internet is one that allows users to transfer files.
+
+File Transfer Protocol (FTP) provides an easy method to transfer files from one computer to another. A host running FTP client software can access an FTP server to perform various file management functions including file uploads and downloads.
+
+The FTP server enables a client to exchange files between devices. It also enables clients to manage files remotely by sending file management commands such as delete or rename. To accomplish this, the FTP service uses two different ports to communicate between client and server.
+
+The example in the figure illustrates how FTP operates. To begin an FTP session, control connection requests are sent to the server using destination TCP port 21. When the session is opened, the server uses TCP port 20 to transfer the data files.
+
+<img src="networkingBasics/images/ftp.png" alt="ftp" height="240px">
+
+FTP client software is built into computer operating systems and into most web browsers. Stand-alone FTP clients offer many options in an easy-to-use GUI-based interface.
+
 **Learning outcomes**  
 TBD
 
