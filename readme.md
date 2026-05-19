@@ -1200,13 +1200,13 @@ Address: 23.60.112.170
 # As in Windows, you can directly query the DNS servers by simply adding the domain name to the nslookup command. Enter nslookup www.google[]().com.
 
 user@cisconetacad$nslookup www.google.com
-Server:		127.0.0.53
-Address:	127.0.0.53#53
+Server: 127.0.0.53
+Address: 127.0.0.53#53
 
 Non-authoritative answer:
-Name:	www.google.com
+Name: www.google.com
 Address: 172.217.6.164
-Name:	www.google.com
+Name: www.google.com
 Address: 2607:f8b0:4000:812::2004
 # You successfully used the nslookup command to verify the status of domain names.
 
@@ -1233,6 +1233,20 @@ The example in the figure illustrates how FTP operates. To begin an FTP session,
 <img src="networkingBasics/images/ftp.png" alt="ftp" height="240px">
 
 FTP client software is built into computer operating systems and into most web browsers. Stand-alone FTP clients offer many options in an easy-to-use GUI-based interface.
+
+**Telnet**
+Telnet dates back to the early 1970s and is among the oldest of the application layer protocols and services in the TCP/IP suite. Telnet provides a standard method of emulating text-based terminal devices over the data network. Both the protocol itself and the client software that implements the protocol are commonly referred to as Telnet. Telnet servers listen for client requests on TCP port 23.
+
+a connection using Telnet is called a virtual terminal (vty) session, or connection. Rather than using a physical device to connect to the server, Telnet uses software to create a virtual device that provides the same features of a terminal session with access to the server’s command line interface (CLI).
+
+Note: Telnet is not considered to be a secure protocol. SSH should be used in most environments instead of Telnet.
+
+**Security Issues with Telnet**
+After a Telnet connection is established, users can perform any authorized function on the server, just as if they were using a command line session on the server itself. If authorized, they can start and stop processes, configure the device, and even shut down the system.
+
+Although the Telnet protocol can require a user to login, it does not support transporting encrypted data. All data exchanged during Telnet sessions is transported as plaintext across the network. This means that the data can be easily intercepted and understood.
+
+The Secure Shell (SSH) protocol offers an alternate and secure method for server access. SSH provides the structure for secure remote login and other secure network services. It also provides stronger authentication than Telnet and supports transporting session data using encryption. As a best practice, network professionals should always use SSH in place of Telnet, whenever possible.
 
 **Learning outcomes**  
 TBD
