@@ -1099,6 +1099,30 @@ An example of client software is a web browser, like Chrome or Firefox. A single
 | Web   | The web server runs web server software. Clients use browser software, such as Chrome or Firefox, to access web pages on the server.                                 |
 | File  | The file server stores corporate and user files in a central location. The client devices access these files with client software such as the Windows File Explorer. |
 
+**URI, URN, and URL**
+Components of a URI
+Web resources and web services such as RESTful APIs are identified using a Uniform Resource Identifier (URI). A URI is a string of characters that identifies a specific network resource. As shown in the figure, a URI has two specializations:
+
+Uniform Resource Name (URN) - This identifies only the namespace of the resource (web page, document, image, etc.) without reference to the protocol.
+
+Uniform Resource Locator (URL) - This defines the network location of a specific resource on the network. HTTP or HTTPS URLs are typically used with web browsers. Other protocols such as FTP, SFTP, SSH, and others can be used as a URL. A URL using SFTP might look like: sftp://sftp.example.com.
+
+These are the parts of a URI, as shown in the figure:
+<img src="networkingBasics/images/uri.png" alt="uri" height="140px">
+
+```mermaid
+  flowchart LR
+    URI["URI"] --> Scheme["Protocol/Scheme<br>https, ftp, sftp, mailto, nntp"]
+    URI --> Host["Hostname<br>www.example.com"]
+    URI --> Path["Path and file name<br>/author/book.html"]
+    URI --> Frag["Fragment<br>#page155"]
+```
+
+Protocol/scheme - HTTPS or other protocols such as FTP, SFTP, mailto, and NNTP
+Hostname - w​ww.example.com
+Path and file name - /author/book.html
+Fragment - #page155
+
 **Learning outcomes**  
 TBD
 
