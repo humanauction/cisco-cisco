@@ -1169,6 +1169,7 @@ learning outcomes:
 ## Glossary
 
 ARP: Address Resolution Protocol, a protocol used to map an IP address to a MAC address on a local network.
+DORA: Discover, Offer, Request, Acknowledge, the four-step process used by DHCP to assign an IP address to a client device on a network.
 DNS: Domain Name System, a hierarchical and decentralized naming system for computers, services, or other resources connected to the internet or a private network.
 DHCP: Dynamic Host Configuration Protocol, a network management protocol used to automate the process of configuring devices on IP networks, allowing them to use network services such as DNS, NTP, and default gateway.
 ICMP: Internet Control Message Protocol, a network layer protocol used by network devices to diagnose network communication issues and report errors.
