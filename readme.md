@@ -1108,6 +1108,7 @@ Uniform Resource Name (URN) - This identifies only the namespace of the resource
 Uniform Resource Locator (URL) - This defines the network location of a specific resource on the network. HTTP or HTTPS URLs are typically used with web browsers. Other protocols such as FTP, SFTP, SSH, and others can be used as a URL. A URL using SFTP might look like: sftp://sftp.example.com.
 
 These are the parts of a URI, as shown in the figure:
+
 <img src="networkingBasics/images/uri.png" alt="uri" height="140px">
 
 ```mermaid
