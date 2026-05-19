@@ -1067,3 +1067,5 @@ Placing additional hosts on a remote network will decrease the impact of traffic
 <img src="networkingBasics/images/module14Pass.png" alt="module14Pass" height="240px">
 
 ## Checkpoint 4
+
+<img src="networkingBasics/images/checkpoint4Pass.png" alt="checkpoint4Pass" height="240px">
