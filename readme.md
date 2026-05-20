@@ -1248,6 +1248,19 @@ Although the Telnet protocol can require a user to login, it does not support tr
 
 The Secure Shell (SSH) protocol offers an alternate and secure method for server access. SSH provides the structure for secure remote login and other secure network services. It also provides stronger authentication than Telnet and supports transporting session data using encryption. As a best practice, network professionals should always use SSH in place of Telnet, whenever possible.
 
+<img src="networkingBasics/images/telnetVsSSH.png" alt="telnetVsSSH" height="240px">
+
+<img src="networkingBasics/images/sshLab.png" alt="sshLab" height="240px">
+
+**Email Clients and Servers**
+Email is one of the most popular client/server applications on the internet. Email servers run server software that enables them to interact with clients and with other email servers over the network.
+
+Each mail server receives and stores mail for users who have mailboxes configured on the mail server. Each user with a mailbox must then use an email client to access the mail server and read these messages. Many internet messaging systems use a web-based client to access email. Examples of this type of client include Microsoft 365, Yahoo, and Gmail.
+
+Mailboxes are identified by the format: user@c​ompany.domain
+
+Various application protocols used in processing email include SMTP, POP3, and IMAP4.
+
 **Learning outcomes**  
 TBD
 
