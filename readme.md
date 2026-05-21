@@ -1261,8 +1261,148 @@ Mailboxes are identified by the format: user@c​ompany.domain
 
 Various application protocols used in processing email include SMTP, POP3, and IMAP4.
 
+**Email Protocols**
+
+Simple Mail Transfer Protocol (SMTP) port 25
+
+- SMTP is used by an email client to send messages to its local email server. The local server then decides if the message is destined for a local mailbox or if the message is addressed to a mailbox on another server.
+
+- If the server has to send the message to a different server, SMTP is used between those two servers as well. SMTP requests are sent to port 25.
+
+Post Office Protocol (POP3) port 110
+
+- A server that supports POP clients receives and stores messages addressed to its users. When the client connects to the email server, the messages are downloaded to the client. By default, messages are not kept on the server after they have been accessed by the client. Clients contact POP3 servers on port 110.
+
+Internet Message Access Protocol (IMAP4) port 143
+
+- A server that supports IMAP clients also receives and stores messages addressed to its users. However, unlike POP, IMAP keeps the messages in the mailboxes on the server, unless they are deleted by the user. instead it downloads a copy of any message to the client. The most current version of IMAP is IMAP4 which listens for client requests on port 143.
+
+Many different email servers exist for the various network operating system platforms.
+
+**Text Messaging**
+Text messaging, shown in the figure, is one of the most popular communication tools in use today. In addition, text messaging software is built into many online applications, smartphone apps, and social media sites.
+
+<img src="networkingBasics/images/textMsg.png" alt="textMsg" height="340px">
+
+Text messages may also be called instant messages, direct messages, private messages, and chat messages. Text messaging enables users to communicate or chat over the internet in real-time. Text messaging services on a computer are usually accessed through a web-based client that is integrated into a social media or information sharing site. These clients usually only connect to other users of the same site.
+
+There are also a number of standalone text message clients such as Cisco Webex Teams, Microsoft Teams, WhatsApp, Facebook Messenger, and many others. These applications are available for a wide variety of operating systems and devices. A mobile version is typically offered. In addition to text messages, these clients support the transfer of documents, video, music, and audio files.
+
+**Internet Phone Calls**
+Making telephone calls over the internet is becoming increasingly popular. An internet telephony client uses peer-to-peer technology similar to that used by instant messaging, as shown in the figure. IP telephony makes use of Voice over IP (VoIP) technology, which converts analog voice signals into digital data. The voice data is encapsulated into IP packets which carry the phone call through the network.
+
+When the IP phone software has been installed, the user selects a unique name. This is so that calls can be received from other users. Speakers and a microphone, built-in or separate, are required. A headset is frequently plugged into the computer to serve as a phone.
+
+Calls are made to other users of the same service on the internet, by selecting the username from a list. A call to a regular telephone (landline or cell phone) requires using a gateway to access the Public Switched Telephone Network (PSTN). Depending on the service, there may be charges associated with this type of call. The protocols and destination ports used by internet telephony applications can vary based on the software.
+
 **Learning outcomes**  
-TBD
+Client Server Relationship
+
+- A server is a host running software that provides information or services to other hosts on the network. A client is a host running software that accesses services provided by servers.
+  a URI is a string of characters that identifies a specific network resource. . AURI has 2 specializations: Uniform Resource Name (URN) and Uniform Resource Locator (URL). other protocols that can be used as a URL include FTP, SFTP, SSH, and others. A URL using SFTP might look like: sftp://sftp.example.com.
+
+Network Application Services
+
+- Common network applications include DNS, SSH, SMTP, POP, IMAP, DHCP, HTTP, and FTP.
+
+Domain Name System (DNS)
+
+- Resolves internet names to IP addresses. The nslookup command can be used to query DNS servers. common high-level domains include .com, .org, .net, .edu, and .gov. when the DNS server recieves a query, it checks its database for the name. If it has the name, it returns the IP address. If it does not have the name, it forwards the query to another DNS server.
+
+Web Clients and Servers
+
+- port 80. HTTP is not secure; HTTPS uses port 443 and provides encryption.
+
+FTP Clients and Servers
+
+- port 21 for control, port 20 for data. FTP provides interactive file transfer between systems.
+
+Virtual Terminals
+
+- Telnet (port 23) and SSH (port 22) provide remote access to servers and networking devices.Telnet is not secure; SSH provides encryption and stronger authentication.
+
+Email and Messaging
+
+- SMTP (port 25) is used to send email messages and attachments from clients to servers and from servers to other email servers.
+- POP (port 110) is used by email clients to retrieve email and attachments from a remote server.
+- IMAP (port 143) is used by email clients to retrieve email and attachments from a remote server, but keeps the messages in the mailboxes on the server, unless they are deleted by the user.
+
+<img src="networkingBasics/images/module16Pass.png" alt="module16Pass" height="200px">
+
+**Module 17: Network Testing Utilities**
+**Learning objectives**
+Troubleshooting Commands: network utilities.
+
+commands
+
+- ipconfig - Displays IP configuration information.
+- ping - Tests connections to other IP hosts.
+- netstat - Displays network connections.
+- tracert - Displays the route taken to the destination.
+- nslookup - Directly queries the name server for information on a destination domain.
+
+ipconfig /release and /renew
+
+- If IP addressing information is assigned dynamically, the command ipconfig /release will release the current DHCP bindings. ipconfig /renew will request fresh configuration information from the DHCP server. A host may contain faulty or outdated IP configuration information and a simple renewal of this information is all that is required to regain connectivity.
+
+- If, after releasing the IP configuration, the host is unable to obtain fresh information from the DHCP server, it could be that there is no network connectivity. Verify that the NIC has an illuminated link light, indicating that it has a physical connection to the network. If this does not solve the problem, it may be an issue with the DHCP server or network connections to the DCHP server.
+
+**Ping Command**
+Probably the most commonly used network utility is ping. Most IP enabled devices support some form of the ping command in order to test whether or not network devices are reachable through the IP network.
+
+If the IP configuration appears to be correctly configured on the local host, next, test network connectivity by using ping. The ping command can be followed by either an IP address or the name of a destination host. In the example, the user pings the default gateway at 10.10.10.1 and then pings ww​w.cisco.com.
+
+When a ping is sent to an IP address, a packet known as an echo request is sent across the network to the IP address specified. If the destination host receives the echo request, it responds with a packet known as an echo reply. If the source receives the echo reply, connectivity is verified by the reply from the specific IP address. The ping is not successful if a message such as request timed out or general failure appears.
+
+If a ping command is sent to a name, such as ww​w.cisco.com, a packet is first sent to a DNS server to resolve the name to an IP address. After the IP address is obtained, the echo request is forwarded to the IP address and the process proceeds. TROUBLESHOOTING: If a ping to the IP address succeeds, but a ping to the name does not, there is most likely a problem with DNS.
+
+**Ping Results**
+If ping commands to both the name and IP address are successful, but the user is still unable to access the application, then the problem most likely resides in the application on the destination host. For example, it may be that the requested service is not running.
+
+If neither ping is successful, then network connectivity along the path to the destination is most likely the problem. If this occurs, it is common practice to ping the default gateway. If the ping to the default gateway is successful, the problem is not local. If the ping to the default gateway fails, the problem resides on the local network.
+
+In some cases, the ping may fail but network connectivity is not the problem. A ping may fail due to the firewall on the sending or receiving device, or a router along the path that is blocking the pings.
+
+The basic ping command usually issues four echoes and waits for the replies to each one. It can, however, be modified to increase its usefulness. The options listed in the figure display additional features available.
+
+```script
+C:\> ping
+
+Usage: ping [-t] [-a] [-n count] [-l size] [-f] [-i TTL] [-v TOS]
+            [-r count] [-s count] [[-j host-list] | [-k host-list]]
+            [-w timeout] [-R] [-S srcaddr] [-c compartment] [-p]
+            [-4] [-6] target_name
+
+Options:
+    -t             Ping the specified host until stopped.
+                   To see statistics and continue - type Control-Break;
+                   To stop - type Control-C.
+    -a             Resolve addresses to hostnames.
+    -n count       Number of echo requests to send.
+    -l size        Send buffer size.
+    -f             Set Don't Fragment flag in       packet (IPv4-only).
+    -i TTL         Time To Live.
+    -v TOS         Type Of Service (IPv4-only. This setting has been deprecated
+                   and has no effect on the type of service field in the IP
+                   Header).
+    -r count       Record route for count hops (IPv4-only).
+    -s count       Timestamp for count hops (IPv4-only).
+    -j host-list   Loose source route along host-list (IPv4-only).
+    -k host-list   Strict source route along host-list (IPv4-only).
+    -w timeout     Timeout in milliseconds to wait for each reply.
+    -R             Use routing header to test reverse route also (IPv6-only).
+                   Per RFC 5095 the use of this routing header has been
+                   deprecated. Some systems may drop echo requests if
+                   deprecated. Some systems may drop echo requests if
+    -S srcaddr     Source address to use.
+    -c compartment Routing compartment identifier.
+    -p             Ping a Hyper-V Network Virtualization provider address.
+    -4             Force using IPv4.
+    -6             Force using IPv6.
+
+
+C:\>
+```
 
 ## Glossary
 
@@ -1274,7 +1414,7 @@ TBD
 - **IP** - Internet Protocol, rules governing the format of packets sent over networks.
 - **LAN** - Local Area Network, connects devices within a limited area.
 - **MAC Address** - Media Access Control Address, a unique identifier assigned to network interfaces.
-- **NAT** - Network Address Translation, translates private IP addresses to public IP addresses and vice versa.
+- **NAT** - Network Address Translation, translates private IP addresses to public IP addresses and vice versa. -**PSTN** - Public Switched Telephone Network, the traditional telephone network.
 - **TCP** - Transmission Control Protocol, provides reliable, ordered delivery of data.
 - **UDP** - User Datagram Protocol, connectionless protocol with best-effort delivery.
 - **Socket** - Combination of an IP address and port number (for example, 192.168.1.1:80).
