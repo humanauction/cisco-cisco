@@ -1404,6 +1404,8 @@ Options:
 C:\>
 ```
 
+<img src="networkingBasics/images/module17Pass.png" alt="module 17 Pass" height="240px">
+
 ## Glossary
 
 - **ARP** - Address Resolution Protocol, used to map an IP address to a MAC address on a local network.
