@@ -4,9 +4,11 @@
 
 Just somewhere to put the stuff I learn about Cisco and networking plus badges, etc., for later reference.
 
-## Packet Tracer
-
 <img src="packetTracer/images/badge-packet-tracer.png" alt="Packet Tracer Badge" height="120px">
+
+https://www.credly.com/badges/5a197ceb-7b3d-486a-9bc5-04e4d33e76fa/public_url
+
+## Packet Tracer
 
 ### 1. Intro To
 
@@ -295,42 +297,42 @@ The OSI model is a theoretical model that characterizes and standardizes communi
 **TCP/IP vs OSI**
 
 ```mermaid
-flowchart LR
-    subgraph OSI Model
-        direction TB
-        OSI7["7<br>Application"]
-        OSI6["6<br>Presentation"]
-        OSI5["5<br>Session"]
-        OSI4["4<br>Transport"]
-        OSI3["3<br>Network"]
-        OSI2["2<br>Data Link"]
-        OSI1["1<br>Physical"]
-    end
-    subgraph TCP/IP Model
-        direction TB
-        TCP4["Application"]
-        TCP3["Transport"]
-        TCP2["Internet"]
-        TCP1["Network Access"]
-    end
-    OSI7 --- TCP4
-    OSI6 --- TCP4
-    OSI5 --- TCP4
-    OSI4 --- TCP3
-    OSI3 --- TCP2
-    OSI2 --- TCP1
-    OSI1 --- TCP1
-    style OSI7 fill:#e3e3ff
-    style OSI6 fill:#e3e3ff
-    style OSI5 fill:#e3e3ff
-    style OSI4 fill:#cce5ff
-    style OSI3 fill:#d4edda
-    style OSI2 fill:#fff3cd
-    style OSI1 fill:#fff3cd
-    style TCP4 fill:#e3e3ff
-    style TCP3 fill:#cce5ff
-    style TCP2 fill:#d4edda
-    style TCP1 fill:#fff3cd
+  flowchart LR
+      subgraph OSI Model
+          direction TB
+          OSI7["7<br>Application"]
+          OSI6["6<br>Presentation"]
+          OSI5["5<br>Session"]
+          OSI4["4<br>Transport"]
+          OSI3["3<br>Network"]
+          OSI2["2<br>Data Link"]
+          OSI1["1<br>Physical"]
+      end
+      subgraph TCP/IP Model
+          direction TB
+          TCP4["Application"]
+          TCP3["Transport"]
+          TCP2["Internet"]
+          TCP1["Network Access"]
+      end
+      OSI7 --- TCP4
+      OSI6 --- TCP4
+      OSI5 --- TCP4
+      OSI4 --- TCP3
+      OSI3 --- TCP2
+      OSI2 --- TCP1
+      OSI1 --- TCP1
+      style OSI7 fill:#e3e3ff
+      style OSI6 fill:#e3e3ff
+      style OSI5 fill:#e3e3ff
+      style OSI4 fill:#cce5ff
+      style OSI3 fill:#d4edda
+      style OSI2 fill:#fff3cd
+      style OSI1 fill:#fff3cd
+      style TCP4 fill:#e3e3ff
+      style TCP3 fill:#cce5ff
+      style TCP2 fill:#d4edda
+      style TCP1 fill:#fff3cd
 ```
 
 The key similarities are in the transport and network layers:
@@ -1405,6 +1407,9 @@ C:\>
 ```
 
 <img src="networkingBasics/images/module17Pass.png" alt="module 17 Pass" height="240px">
+
+**Checkpoint 5**
+<img src="networkingBasics/images/checkpoint5Pass.png" alt="checkpoint5Pass" height="240px">
 
 ## Glossary
 
