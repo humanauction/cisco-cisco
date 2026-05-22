@@ -6,6 +6,8 @@ Just somewhere to put the stuff I learn about Cisco and networking plus badges, 
 
 <img src="packetTracer/images/badge-packet-tracer.png" alt="Packet Tracer Badge" height="120px">
 
+<img src="networkingBasics/images/networking-basics-badge.png" alt="Networking Basics Badge" height="120px">
+
 https://www.credly.com/badges/5a197ceb-7b3d-486a-9bc5-04e4d33e76fa/public_url
 
 ## Packet Tracer
@@ -1406,10 +1408,14 @@ Options:
 C:\>
 ```
 
-<img src="networkingBasics/images/module17Pass.png" alt="module 17 Pass" height="240px">
+<img src="networkingBasics/images/module17Pass.png" alt="module 17 Pass" height="180px">
 
 **Checkpoint 5**
-<img src="networkingBasics/images/checkpoint5Pass.png" alt="checkpoint5Pass" height="240px">
+<img src="networkingBasics/images/checkpoint5Pass.png" alt="checkpoint5Pass" height="195px">
+
+**Final Result**
+
+<img src="networkingBasics/images/NetworkingBasicsCert.png" alt="Networking Basics Certificate" height="280px">
 
 ## Glossary
 
