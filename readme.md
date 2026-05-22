@@ -8,8 +8,6 @@ Just somewhere to put the stuff I learn about Cisco and networking plus badges, 
 
 <img src="networkingBasics/images/networking-basics-badge.png" alt="Networking Basics Badge" height="120px">
 
-https://www.credly.com/badges/5a197ceb-7b3d-486a-9bc5-04e4d33e76fa/public_url
-
 ## Packet Tracer
 
 ### 1. Intro To
@@ -1413,7 +1411,7 @@ C:\>
 **Checkpoint 5**
 <img src="networkingBasics/images/checkpoint5Pass.png" alt="checkpoint5Pass" height="195px">
 
-**Final Result**
+## Course Completion Certificate
 
 <img src="networkingBasics/images/NetworkingBasicsCert.png" alt="Networking Basics Certificate" height="280px">
 
