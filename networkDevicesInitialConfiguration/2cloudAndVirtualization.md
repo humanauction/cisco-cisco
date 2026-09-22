@@ -105,4 +105,4 @@ Community
 
 Virtualization is the foundation of cloud computing. Without it, cloud computing, as it is most-widely implemented, would not be possible. Virtualization means creating a virtual rather than physical version of something, such as a computer. An example would be running a "Linux computer" on your Windows PC.
 
-![module2Pass](image.png)
+![module2Pass](modulePass2.png)
