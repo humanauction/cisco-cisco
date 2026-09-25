@@ -174,6 +174,7 @@ While NAT has extended the lifespan of IPv4 it was only meant as a transition me
 ## IPv6 Packets
 
 ### IPv6 Overview
+
 early 1990s: the Internet Engineering Task Force (IETF) grow concerned about the issues with IPv4 and begin to look for a replacement.
 
 now: This activity led to the development of IP version 6 (IPv6). IPv6 overcomes the limitations of IPv4 and is a powerful enhancement with features that better suit current and foreseeable network demands.
