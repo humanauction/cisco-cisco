@@ -305,3 +305,61 @@ Answer: Yes
 What happens to the first ping in a situation where the router responds to the ARP request?
 
 Answer: timeout, because the router does not have the MAC address for the destination IP address.
+
+## Lab - View ARP Traffic in Wireshark
+
+### Objectives
+
+#### Part 1: Capture and Analyze ARP Data in Wireshark
+
+- Start and stop data capture of ping traffic to remote hosts.
+
+- Locate the IPv4 and MAC address information in captured PDUs.
+
+- Analyze the content of the ARP messages exchanged between devices on the LAN.
+
+#### Part 2: View the ARP cache entries on the PC
+
+- Access the Windows Command Prompt.
+
+- Use the Windows arp command to view the local ARP table cache on the PC.
+
+### Background / Scenario
+
+Address Resolution Protocol (ARP) is used by TCP/IP to map a Layer 3 IPv4 address to a Layer 2 MAC address. When an Ethernet frame is transmitted on the network, it must have a destination MAC address. To dynamically discover the MAC address of a known destination, the source device broadcasts an ARP request on the local network. The device that is configured with the destination IPv4 address responds to the request with an ARP reply and the MAC address is recorded in the ARP cache.
+
+Every device on the LAN maintains its own ARP cache. The ARP cache is a small area in RAM that holds the ARP responses. Viewing an ARP cache on a PC displays the IPv4 address and the MAC address of each device on the LAN with which the PC has exchanged ARP messages.
+
+Wireshark is a software protocol analyzer, or "packet sniffer" application, used for network troubleshooting, analysis, software and protocol development, and education. As data streams travel back and forth over the network, the sniffer "captures" each protocol data unit (PDU) and can decode and analyze its content according to the appropriate protocol specifications.
+
+TODO: wireshark lab questions
+
+## Learning Outcomes
+
+### ARP
+
+To send a packet to another host on the same local IPv4 network, a host must know the IPv4 address and the MAC address of the destination device. Device destination IPv4 addresses are either known or resolved by device name. However, MAC addresses must be discovered. A device uses ARP to determine the destination MAC address of a local device when it knows its IPv4 address. ARP provides two basic functions: resolving IPv4 addresses to MAC addresses and maintaining a table of IPv4 to MAC address mappings.
+
+The sending device will search its ARP table for a destination IPv4 address and a corresponding MAC address.
+
+If the packet’s destination IPv4 address is on the same network as the source IPv4 address, the device will search the ARP table for the destination IPv4 address.
+
+Each entry, or row, of the ARP table binds an IPv4 address with a MAC address. We call the relationship between the two values a map. ARP messages are encapsulated directly within an Ethernet frame. There is no IPv4 header. The ARP request is encapsulated in an Ethernet frame using the following header information:
+
+Destination MAC address – This is a broadcast address FF-FF-FF-FF-FF-FF requiring all Ethernet NICs on the LAN to accept and process the ARP request.
+
+Source MAC address – This is MAC address of the sender of the ARP request.
+
+Type - ARP messages have a type field of 0x806. This informs the receiving NIC that the data portion of the frame needs to be passed to the ARP process.
+
+Because ARP requests are broadcasts, they are flooded out all ports by the switch, except the receiving port. Only the device with the target IPv4 address associated with the ARP request will respond with an ARP reply. After the ARP reply is received, the device will add the IPv4 address and the corresponding MAC address to its ARP table.
+
+When the destination IPv4 address is not on the same network as the source IPv4 address, the source device needs to send the frame to its default gateway. This is the interface of the local router. Whenever a source device has a packet with an IPv4 address on another network, it will encapsulate that packet in a frame using the destination MAC address of the router. The IPv4 address of the default gateway is stored in the IPv4 configuration of the hosts. If the destination host is not on its same network, the source checks its ARP table for an entry with the IPv4 address of the default gateway. If there is not an entry, it uses the ARP process to determine a MAC address of the default gateway.
+
+For each device, an ARP cache timer removes ARP entries that have not been used for a specified period of time. The times differ depending on the operating system of the device. Commands may be used to manually remove some or all of the entries in the ARP table.
+
+On a Cisco router, the show ip arp command is used to display the ARP table. On a Windows 10 PC, the arp –a command is used to display the ARP table.
+
+As a broadcast frame, an ARP request is received and processed by every device on the local network. If a large number of devices were to be powered up and all start accessing network services at the same time, there could be some reduction in performance for a short period of time. In some cases, the use of ARP can lead to a potential security risk.
+
+A threat actor can use ARP spoofing to perform an ARP poisoning attack. This is a technique used by a threat actor to reply to an ARP request for an IPv4 address that belongs to another device, such as the default gateway. The threat actor sends an ARP reply with its own MAC address. The receiver of the ARP reply will add the wrong MAC address to its ARP table and send these packets to the threat actor.
