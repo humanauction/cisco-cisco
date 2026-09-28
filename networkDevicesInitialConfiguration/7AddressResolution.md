@@ -363,3 +363,7 @@ On a Cisco router, the show ip arp command is used to display the ARP table. On 
 As a broadcast frame, an ARP request is received and processed by every device on the local network. If a large number of devices were to be powered up and all start accessing network services at the same time, there could be some reduction in performance for a short period of time. In some cases, the use of ARP can lead to a potential security risk.
 
 A threat actor can use ARP spoofing to perform an ARP poisoning attack. This is a technique used by a threat actor to reply to an ARP request for an IPv4 address that belongs to another device, such as the default gateway. The threat actor sends an ARP reply with its own MAC address. The receiver of the ARP reply will add the wrong MAC address to its ARP table and send these packets to the threat actor.
+
+## Module Pass
+
+![module pass](img/7ModulePass.png)
