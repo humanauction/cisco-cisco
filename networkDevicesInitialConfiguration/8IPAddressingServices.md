@@ -329,3 +329,57 @@ With home networks, the DHCP server is usually located on the local router that 
 Many networks use both DHCP and static addressing. DHCP is used for general purpose hosts, such as end user devices. Static addressing is used for network devices, such as gateway routers, switches, servers, and printers.
 
 DHCP for IPv6 (DHCPv6) provides similar services for IPv6 clients. One important difference is that DHCPv6 does not provide a default gateway address. This can only be obtained dynamically from the Router Advertisement message of the router.
+
+### DHCP Operation in a Home Router
+
+![DHCP operation in a home router](./img/dhcpHomeRouter.png)
+
+### DHCP Messages
+
+4 parts aka DORA:
+
+1. DISCOVER - client broadcasts to find available DHCP servers
+2. OFFER - server responds with an offer of an IP address and other configuration
+3. REQUEST - client requests the offered IP address from the server
+4. ACK - server acknowledges the request and finalizes the lease
+
+![DHCP messages](./img/dhcpMessages.png)
+when an IPv4, DHCP-configured device boots up or connects to the network, the client broadcasts a DHCP discover (DHCPDISCOVER) message to identify any available DHCP servers on the network. A DHCP server replies with a DHCP offer (DHCPOFFER) message, which offers a lease to the client. The offer message contains the IPv4 address and subnet mask to be assigned, the IPv4 address of the DNS server, and the IPv4 address of the default gateway. The lease offer also includes the duration of the lease.
+
+The client may receive multiple DHCPOFFER messages if there is more than one DHCP server on the local network. it has to choose between them, and sends a DHCP request (DHCPREQUEST) message to identify the explicit server and lease offer that the client is accepting. A client may also choose to request an address that it had previously been allocated by the server.
+
+Assuming that the IPv4 address requested by the client, or offered by the server, is available, the server returns a DHCP acknowledgment (DHCPACK) message that acknowledges to the client that the lease has been finalized.
+
+If the offer is no longer valid, then the selected server responds with a DHCP negative acknowledgment (DHCPNAK) message. If a DHCPNAK message is returned, then the selection process must begin again with a new DHCPDISCOVER message being transmitted. After the client has the lease, it must be renewed prior to the lease expiration through another DHCPREQUEST message.
+
+The DHCP server ensures that all IP addresses are unique (the same IP address cannot be assigned to two different network devices simultaneously). Most ISPs use DHCP to allocate addresses to their customers.
+
+DHCPv6 has a set of messages that is similar to those for DHCPv4. The DHCPv6 messages are SOLICIT, ADVERTISE, INFORMATION REQUEST, and REPLY.
+
+## Learning Outcomes
+
+### IP Addressing Services
+
+In data networks, devices are labeled with numeric IP addresses to send and receive data over networks. Domain names were created to convert the numeric address into a simple, recognizable name. The DNS protocol defines an automated service that matches resource names with the required numeric network address. The DNS protocol communications use a single format called a message. This message format is used for all types of client queries and server responses, error messages, and the transfer of resource record information between servers.
+
+The DNS server stores different types of resource records that are used to resolve names. These records contain the name, address, and type of record. DNS uses the same message format between servers, consisting of a question, answer, authority, and additional information for all types of client queries and server responses, error messages, and transfer of resource record information.
+
+DNS uses domain names to form the hierarchy. The naming structure is broken down into zones. Each DNS server maintains a specific database file and is only responsible for managing name-to-IP mappings for that small portion of the entire DNS structure. When a DNS server receives a request for a name translation that is not within its DNS zone, the DNS server forwards the request to another DNS server within the proper zone for translation. DNS is scalable because hostname resolution is spread across multiple servers.
+
+Computer operating systems have a utility called Nslookup that allows the user to manually query the name servers to resolve a given host name. This utility can also be used to troubleshoot name resolution issues and to verify the current status of the name servers. When the `nslookup` command is issued, the default DNS server configured for your host is displayed. The name of a host or domain can be entered at the nslookup prompt.
+
+On larger networks, DHCP is preferred for address assignment. Rather than use static addressing for each connection, it is more efficient to have IPv4 addresses assigned automatically using DHCP. DHCP can allocate IP addresses for a configurable period of time, called a lease period. When the lease period expires or the DHCP server gets a DHCPRELEASE message, the address is returned to the DHCP pool for reuse. Users can freely move from location to location and easily re-establish network connections through DHCP.
+
+DHCPv6 provides similar services for IPv6 clients. One important difference is that DHCPv6 does not provide a default gateway address. This can only be obtained dynamically from the Router Advertisement message of the router.
+
+When an IPv4, DHCP-configured device boots up or connects to the network, the client broadcasts a DHCPDISCOVER message to identify any available DHCP servers on the network.
+
+A DHCP server replies with a DHCPOFFER message, which offers a lease to the client. The client sends a DHCPREQUEST message that identifies the explicit server and lease offer that the client is accepting.
+
+Assuming that the IPv4 address requested by the client, or offered by the server, is still available, the server returns a DHCPACK message that acknowledges to the client that the lease has been finalized. If the offer is no longer valid, then the selected server responds with a DHCPNAK message. If a DHCPNAK message is returned, then the selection process must begin again with a new DHCPDISCOVER message being transmitted.
+
+DHCPv6 has a set of messages that is similar to those for DHCPv4. The DHCPv6 messages are SOLICIT, ADVERTISE, INFORMATION REQUEST, and REPLY.
+
+DHCP automates the assignment of IP addresses, subnet masks, gateways, and other IPv4 networking parameters. ARP automates the process for discovering the MAC address of the destination. DNS automates the process for discovering the IP address for a domain name. NAT automates the translation of private and public IP addresses.
+
+DORA - correct order of messages for DHCP operation is DHCPDISCOVER, DHCPOFFER, DHCPREQUEST, DHCPNAK
