@@ -366,4 +366,4 @@ A threat actor can use ARP spoofing to perform an ARP poisoning attack. This is 
 
 ## Module Pass
 
-![module pass](img/7ModulePass.png)
+![module pass](img/modulePass7.png)

@@ -383,3 +383,7 @@ DHCPv6 has a set of messages that is similar to those for DHCPv4. The DHCPv6 mes
 DHCP automates the assignment of IP addresses, subnet masks, gateways, and other IPv4 networking parameters. ARP automates the process for discovering the MAC address of the destination. DNS automates the process for discovering the IP address for a domain name. NAT automates the translation of private and public IP addresses.
 
 DORA - correct order of messages for DHCP operation is DHCPDISCOVER, DHCPOFFER, DHCPREQUEST, DHCPNAK
+
+## Module Pass
+
+![module pass](img/modulePass8.png)
