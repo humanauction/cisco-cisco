@@ -126,21 +126,6 @@ Real-time video and voice usually use UDP, but may also use TCP, or both UDP and
 
 Applications that stream stored audio and video use TCP. For example, if your network suddenly cannot support the bandwidth needed to watch an on-demand movie, the application pauses the playback. During the pause, you might see a “buffering...” message while TCP works to re-establish the stream. When all the segments are in order and a minimum level of bandwidth is restored, your TCP session resumes, and the movie resumes playing.
 
-### notes
-
-The transport layer is responsible for establishing a temporary communication session between the source and destination host applications.
-
-The transport layer is responsible for conversation multiplexing, segmenting data and reassembling segments, and tracking individual conversations.
-
-The TCP header consists of 10 fields in a 20-byte header.
-UDP header consists of four fields in an 8-byte header.
-
-socket pair for a host with IP address 10.1.1.10 requesting web services from a server at 10.1.1.254 would be 10.1.1.10:1099, 10.1.1.254:80.
-
-FTP, HTTP, and TFTP applications port numbers are defined in the well-known port numbers group.
-
-The netstat Windows command would display protocols in use, the local address and port numbers, the foreign address and port numbers, and the connection state.
-
 ## TCP Features
 
 To understand the differences between TCP and UDP, it is important to understand how each protocol implements specific reliability features and how each protocol tracks conversations.
@@ -378,3 +363,239 @@ Each application process running on a server is configured to use a port number.
 An individual server cannot have two services assigned to the same port number within the same transport layer services. For example, a host running a web server application and a file transfer application cannot have both configured to use the same port, such as TCP port 80.
 
 An active server application assigned to a specific port is considered open, which means that the transport layer accepts, and processes segments addressed to that port. Any incoming client request addressed to the correct socket is accepted, and the data is passed to the server application. There can be many ports open simultaneously on a server, one for each active server application.
+
+### Client Sending TCP requests to a Server
+
+Client 1 is requesting web services and Client 2 is requesting email service of the same sever.
+Server
+HTTP: Port 80
+SMTP: Port 25
+
+HTTP Request:
+Source Port: 49152
+Destination Port: 80
+SMTP Request:
+Source Port: 51152
+Destination Port: 25
+
+### Request Destination Ports
+
+Client 1 is requesting web services using well-known destination port 80 (HTTP) and Client 2 is requesting email service using well-known port 25 (SMTP).
+
+N.B. Use well known port numbers as the destination port.
+
+Server HTTP: Port 80
+SMTP: Port 25
+
+Client 1 HTTP Request:
+
+- Source Port: 49152
+- Destination Port: 80
+
+Client 2 SMTP Request:
+
+- Source Port: 51152
+- Destination Port: 25
+
+### Request Source Ports
+
+Client requests dynamically generate a source port number. In this case:
+
+- Client 1 is using source port 49152
+- Client 2 is using source port 51152.
+
+N.B. Use dynamic port numbers as the source port.
+
+#### Server
+
+HTTP: Port 80
+SMTP: Port 25
+
+Client 1
+HTTP Request:
+
+- Source Port: 49152
+- Destination Port: 80
+
+Client 2 SMTP Request:
+
+- Source Port: 51152
+- Destination Port: 25
+
+### Response Destination Ports
+
+When the server responds to the client requests, it reverses the destination and source ports of the initial request.
+
+Server response to the web request now has destination port 49152 and the email response now has destination port 51152.
+
+N.B. Server response to TCP client uses the source port from the request packet as the destination port.
+
+#### Client requests to TCP server
+
+Client 1
+HTTP Request:
+
+- Source Port: 49152
+- Destination Port: 80
+
+Client 2
+SMTP Request:
+
+- Source Port: 51152
+- Destination Port: 25
+
+HTTP response:
+
+- Source Port 80
+- Destination Port 49152
+
+SMTP Response:
+
+- Source Port 25
+- Destination Port 51152
+
+Server
+
+- HTTP: Port 80
+- SMTP: Port 25
+
+### Response Source Ports
+
+The source port in the server response is the original destination port in the initial requests.
+
+N.B. Server response to TCP client uses the destination port from the request packet as the source port.
+
+#### Client requests to TCP server
+
+Server
+
+- Client 1 HTTP: Port 80
+- Client 2 SMTP: Port 25
+
+HTTP Request:
+
+- Source Port: 49152
+- Destination Port: 80
+
+SMTP Request:
+
+- Source Port: 51152
+- Destination Port: 25
+
+HTTP response:
+
+- Source Port: 80
+- Destination Port: 49152
+
+SMTP Response:
+
+- Source Port: 25
+- Destination Port: 51152
+
+### TCP Connection Establishment
+
+In TCP connections, the host client establishes the connection with the server using the three-way handshake process.
+
+SYN -> ACK SYN -> ACK
+
+Step 1. SYN
+The initiating client requests a client-to-server communication session with the server.
+
+Step 2. ACK and SYN
+The server acknowledges the client-to-server communication session and requests a server-to-client communication session.
+
+Step 3. ACK
+The initiating client acknowledges the server-to-client communication session.
+
+![TCP Three-Way Handshake](img/tcpHandshake.png)
+
+The three-way handshake validates that the destination host is available to communicate. In this example, host A has validated that host B is available.
+
+### Session Termination
+
+To close a connection, the Finish (FIN) control flag must be set in the segment header. REMEMBER: FAFA
+
+To end each one-way TCP session, a two-way handshake, consisting of a FIN segment and an Acknowledgment (ACK) segment, is used.
+To terminate a single conversation supported by TCP, four exchanges are needed to end both sessions.
+
+N.B. Either the client or the server can initiate the termination.
+
+N.B. Any two hosts that have an open session can initiate the termination process.
+
+![alt text](img/tcpFIN.png)
+
+Step 1. FIN
+
+When the client has no more data to send in the stream, it sends a segment with the FIN flag set.
+
+Step 2. ACK
+
+The server sends an ACK to acknowledge the receipt of the FIN to terminate the session from client to server.
+
+Step 3. FIN
+
+The server sends a FIN to the client to terminate the server-to-client session.
+
+Step 4. ACK
+
+The client responds with an ACK to acknowledge the FIN from the server.
+
+the session is closed when all segments have been acknowledged.
+
+REMEMBER: FAFA
+
+### TCP Three-way Handshake Analysis
+
+Hosts maintain state, track each data segment within a session, and exchange information about what data is received using the information in the TCP header.
+
+TCP is a full-duplex protocol, where each connection represents two one-way communication sessions.
+
+To establish the connection, the hosts perform a three-way handshake. Control bits in the TCP header indicate the progress and status of the connection.
+
+#### Three-way handshake functions
+
+N.B. THREE way handshake consists of FOUR exchanges.
+
+- establishes that the destination device is present on the network.
+- verifies that the destination device has an active service and is accepting requests on the destination port number that the initiating client intends to use.
+- informs the destination device that the source client intends to establish a communication session on that port number.
+
+After the communication is completed the sessions are closed and connection terminated.
+
+N.B. The connection and session mechanisms enable TCP reliability function.
+
+#### Control Bits Field
+
+![control bits field](img/tcpControlBits.png)
+
+##### 6 control bits flags
+
+- URG - Urgent pointer field significant
+- ACK - Acknowledgment flag used in connection establishment and session termination
+- PSH - Push function
+- RST - Reset the connection when an error or timeout occurs
+- SYN - Synchronize sequence numbers used in connection establishment
+- FIN - No more data from sender and used in session termination
+
+N.B. Learn more online: PSH and URG flags.
+
+### notes
+
+The transport layer is responsible for establishing a temporary communication session between the source and destination host applications.
+
+The transport layer is responsible for conversation multiplexing, segmenting data and reassembling segments, and tracking individual conversations.
+
+The TCP header consists of 10 fields in a 20-byte header.
+UDP header consists of four fields in an 8-byte header.
+
+socket pair for a host with IP address 10.1.1.10 requesting web services from a server at 10.1.1.254 would be 10.1.1.10:1099, 10.1.1.254:80.
+
+FTP, HTTP, and TFTP applications port numbers are defined in the well-known port numbers group.
+
+The netstat Windows command would display protocols in use, the local address and port numbers, the foreign address and port numbers, and the connection state.
+
+The destination port is the well-known port for Simple Mail Transport Protocol, which is 25. This is the port that the mail server will be listening on. The source port is dynamically selected by the requesting client and can be 49152.
+
+The three-way handshake consists of a three message exchanges with the following control bit flags: SYN, SYN ACK, and ACK.
+
+There are four exchanges to end both sessions between two hosts. (1) Host A sends a FIN. (2) Host B sends an ACK. (3) Host B sends a FIN. (4) Host A sends an ACK.
