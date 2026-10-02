@@ -579,7 +579,233 @@ N.B. The connection and session mechanisms enable TCP reliability function.
 
 N.B. Learn more online: PSH and URG flags.
 
-### notes
+## Reliability and Flow Control
+
+### TCP Reliability - Guaranteed and Ordered Delivery
+
+TCP is the better protocol for some applications because (unlike UDP) it resends dropped packets and number of packets to indicate their proper order before delivery.
+
+TCP can also help maintain the flow of packets so that devices do not become overloaded.
+
+Sometimes TCP segments do not arrive at their destination. Other times segments might arrive out of order.
+
+For the original message to be understood by the recipient, all the data must be received and the data in these segments must be reassembled into the original order.
+
+Sequence numbers are assigned in the header of each packet to achieve this goal.
+
+The sequence number represents the first data byte of the TCP segment.
+
+During session setup, an initial sequence number (ISN) is set. This ISN represents the starting value of the bytes that are transmitted to the receiving application. As data is transmitted during the session, the sequence number is incremented by the number of bytes that have been transmitted. This data byte tracking enables each segment to be uniquely identified and acknowledged. Missing segments can then be identified.
+
+N.B. The ISN does not begin at one, but is effectively a random number.
+
+This is to prevent certain types of malicious attacks.
+
+Segment sequence numbers indicate how to reassemble and reorder received segments.
+
+### TCP reordering at the receiving host
+
+The receiving TCP process places the data from a segment into a receiving buffer. Segments are then placed in the proper sequence order and passed to the application layer when reassembled. Any segments that arrive with sequence numbers that are out of order are held for later processing. Then, when the segments with the missing bytes arrive, these segments are processed in order.
+
+![TCP Segments reordered at the destination](img/segmentReorder.png)
+
+### TCP Reliability - Data Loss and Retransmission
+
+No matter how well designed a network is, data loss occasionally occurs. TCP provides methods of managing these segment losses. Among these is a mechanism to retransmit segments for unacknowledged data.
+
+The sequence (SEQ) number and acknowledgement (ACK) number are used together to confirm receipt of the bytes of data contained in the transmitted segments. The SEQ number identifies the first byte of data in the segment being transmitted. TCP uses the ACK number sent back to the source to indicate the next byte that the receiver expects to receive. This is called expectational acknowledgement.
+
+Prior to later enhancements, TCP could only acknowledge the next byte expected. For example, in the figure, using segment numbers for simplicity, host A sends segments 1 through 10 to host B. If all the segments arrive except for segments 3 and 4, host B would reply with acknowledgment specifying that the next segment expected is segment 3. Host A has no idea if any other segments arrived or not. Host A would, therefore, resend segments 3 through 10. If all the resent segments arrived successfully, segments 5 through 10 would be duplicates. This can lead to delays, congestion, and inefficiencies.
+![data loss and retransmission](img/dataLoss.png)
+
+Host operating systems today typically employ an optional TCP feature called selective acknowledgment (SACK), negotiated during the three-way handshake. If both hosts support SACK, the receiver can explicitly acknowledge which segments (bytes) were received including any discontinuous segments. The sending host would therefore only need to retransmit the missing data. For example, in the next figure, again using segment numbers for simplicity, host A sends segments 1 through 10 to host B. If all the segments arrive except for segments 3 and 4, host B can acknowledge that it has received segments 1 and 2 (ACK 3), and selectively acknowledge segments 5 through 10 (SACK 5-10). Host A would only need to resend segments 3 and 4.
+![selective acknowledgment](img/dataResend.png)
+
+N.B. TCP typically sends ACKs for every OTHER packet, but other factors (e.g. network conditions, buffer sizes) may alter this behavior.
+
+TCP uses timers to know how long to wait before resending a segment.
+
+### TCP Flow Control - Window Size and Acknowledgments
+
+TCP also provides mechanisms for flow control.
+
+N.B. DEF: Flow control: the amount of data that the destination can receive and process reliably.
+
+Flow control helps maintain the reliability of TCP transmission by adjusting the rate of data flow between source and destination for a given session.
+
+TCP header includes a 16-bit field called the window size for this purpose.
+
+The window size determines the number of bytes that can be sent before expecting an acknowledgment. The acknowledgment number is the number of the next expected byte.
+
+The window size is the number of bytes that the destination device of a TCP session can accept and process at one time.
+
+e.g. PC B initial window size for the TCP session is 10,000 bytes. Starting with the first byte, byte number 1, the last byte PC A can send without receiving an acknowledgment is byte 10,000.
+
+This is known as the send window of PC A.
+
+The window size is included in every TCP segment so the destination can modify the window size at any time depending on buffer availability.
+
+![window size](img/windowSize.png)
+
+The initial window size is agreed upon when the TCP session is established during the three-way handshake. The source device must limit the number of bytes sent to the destination device based on the window size of the destination. Only after the source device receives an acknowledgment that the bytes have been received, can it continue sending more data for the session. Typically, the destination will not wait for all the bytes for its window size to be received before replying with an acknowledgment. As the bytes are received and processed, the destination will send acknowledgments to inform the source that it can continue to send additional bytes.
+
+For example, typically, PC B would not wait until all 10,000 bytes have been received before sending an acknowledgment.
+
+This means PC A can adjust its send window as it receives acknowledgments from PC B.
+
+when PC A receives an acknowledgment with the acknowledgment number 2,921, (i.e. the next expected byte). The PC A send window will increment 2,920 bytes.
+
+This changes the send window from 10,000 bytes to 12,920.
+
+PC A can now continue to send up to another 10,000 bytes to PC B as long as it does not send more than its new send window at 12,920.
+
+A destination sending acknowledgments as it processes bytes received, and the continual adjustment of the source send window, is known as sliding windows. In the previous example, the send window of PC A increments or slides over another 2,921 bytes from 10,000 to 12,920.
+
+If the availability of the destination’s buffer space decreases, it may reduce its window size to inform the source to reduce the number of bytes it should send without receiving an acknowledgment.
+
+N.B. Devices today use the SLIDING WINDOW PROTOCOL:
+
+- The receiver typically sends an acknowledgment after every two segments it receives
+- The number of segments received before being acknowledged may vary
+- sliding windows advantage - continuous segment transmission from the sender so long as the receiver acknowledges previous segments.
+
+TODO?: research sliding windows
+
+### TCP Flow Control - Maximum Segment Size (MSS)
+In the figure, the source is transmitting 1,460 bytes of data within each TCP segment. This is typically the Maximum Segment Size (MSS) that the destination device can receive. The MSS is part of the options field in the TCP header that specifies the largest amount of data, in bytes, that a device can receive in a single TCP segment. The MSS size does not include the TCP header. The MSS is typically included during the three-way handshake.
+
+![mms](img/mss.png)
+A common MSS is 1,460 bytes when using IPv4. A host determines the value of its MSS field by subtracting the IP and TCP headers from the Ethernet maximum transmission unit (MTU). On an Ethernet interface, the default MTU is 1500 bytes. Subtracting the IPv4 header of 20 bytes and the TCP header of 20 bytes, the default MSS size will be 1460 bytes
+
+![mms2](img/mss2.png)
+
+### TCP Flow Control - Congestion Avoidance
+
+network congestion results in packets being discarded by the overloaded router. packets containing TCP segments that do not reach their destination are left unacknowledged.
+
+Determining the rate at which TCP segments are sent but not acknowledged, lets the source assume the level of network congestion.
+
+![congestionControl](img/congestionControl.png)
+
+Whenever there is congestion, retransmission of lost TCP segments from the source will occur. If the retransmission is not properly controlled, the additional retransmission of the TCP segments can exhasterbate congestion. New packets with TCP segments introduced into the network and the feedback effect of retransmitted TCP segments previously lost will add to congestion.
+
+N.B. To avoid and control congestion, TCP employs several congestion handling mechanisms, timers, and algorithms.
+
+If the source determines that the TCP segments are either not being acknowledged or not acknowledged in a timely manner, then it can reduce the number of bytes it sends before receiving an acknowledgment. As illustrated in the figure, PC A senses there is congestion and therefore, reduces the number of bytes it sends before receiving an acknowledgment from PC B.
+
+Acknowledgment numbers are for the next expected byte and not for a segment. The segment numbers used are simplified for illustration purposes.
+
+Notice that it is the source that is reducing the number of unacknowledged bytes it sends and not the window size determined by the destination.
+
+TODO?: for explanations of actual congestion handling mechanisms, timers, algorithms - search the internet for TCP congestion control.
+
+## UDP communication
+
+### UDP Low Overhead versus Reliability
+
+UDP is perfect for communications that need to be fast, like VoIP. This topic explains in detail why UDP is perfect for some types of transmissions. As shown in the figure, UDP does not establish a connection. UDP provides low overhead data transport because it has a small datagram header and no network management traffic.
+
+![unreliable udp](img/udp.png)
+
+### UDP Datagram Reassembly
+
+Like segments with TCP, when UDP datagrams are sent to a destination, they often take different paths and arrive in the wrong order. UDP does not track sequence numbers the way TCP does. UDP has no way to reorder the datagrams into their transmission order, as shown in the figure.
+
+![udp datagram reassembly](img/udpDG.png)
+
+Therefore, UDP simply reassembles the data in the order that it was received and forwards it to the application. If the data sequence is important to the application, the application must identify the proper sequence and determine how the data should be processed.
+
+UDP: Connectionless and Unreliable
+
+### UDP Server Processes and Requests
+
+Like TCP-based applications, UDP-based server applications are assigned well-known or registered port numbers, as shown in the figure. When these applications or processes are running on a server, they accept the data matched with the assigned port number. When UDP receives a datagram destined for one of these ports, it forwards the application data to the appropriate application based on its port number.
+![UDP Server Listening for Requests](img/udpSR.png)
+
+### UDP Client Processes
+
+As with TCP, client-server communication is initiated by a client application that requests data from a server process. The UDP client process dynamically selects a port number from the range of port numbers and uses this as the source port for the conversation. The destination port is usually the well-known or registered port number assigned to the server process.
+
+After a client has selected the source and destination ports, the same pair of ports are used in the header of all datagrams in the transaction. For the data returning to the client from the server, the source and destination port numbers in the datagram header are reversed.
+
+1. Clients Sending UDP Requests
+   Client 1 is sending a DNS request while Client 2 is requesting RADIUS authentication services of the same server.
+   Server
+   DNS: Port 53
+   RADIUS: Port 1812
+
+Client 1 DNS Request:
+Source Port 49152
+Destination Port 53
+
+Client 2 RADIUS User Authentication Request:
+Source Port 51152
+Destination Port 1812
+
+```mermaid
+flowchart LR
+    S["Server<br/><br/>DNS Service<br/>Port 53<br/><br/>RADIUS Service<br/>Port 1812"]
+
+    C1["Client 1<br/>DNS Request<br/>Src Port: 49152<br/>Dst Port: 53"]
+    C2["Client 2<br/>RADIUS Authentication Request<br/>Src Port: 51152<br/>Dst Port: 1812"]
+
+
+
+    C1 -- "UDP DNS Query<br/>49152 → 53" --> S
+    C2 -- "UDP RADIUS Auth Request<br/>51152 → 1812" --> S
+```
+
+2. UDP Request Destination Ports
+   Client 1 is sending a DNS request using the well-known destination port 53 while Client 2 is requesting RADIUS authentication services using the registered destination port 1812.
+
+```mermaid
+sequenceDiagram
+    participant C1 as Client 1
+    participant C2 as Client 2
+    participant S as Server
+
+    Note over S: DNS Port 53<br/>RADIUS Port 1812
+
+    C1->>S: UDP DNS Request\nSrc: 49152\nDst: 53
+    C2->>S: UDP RADIUS Request\nSrc: 51152\nDst: 1812
+
+    S-->>C1: DNS Response\nSrc: 53\nDst: 49152
+    S-->>C2: RADIUS Response\nSrc: 1812\nDst: 51152
+```
+
+3. UDP Request Source Ports
+   The requests of the clients dynamically generate source port numbers. In this case, Client 1 is using source port 49152 and Client 2 is using source port 51152.
+
+4. UDP Response Destination
+   When the server responds to the client requests, it reverses the destination and source ports of the initial request. In the Server response to the DNS request is now destination port 49152 and the RADIUS authentication response is now destination port 51152.
+
+5. UDP Response Source Ports
+   The source ports in the server response are the original destination ports in the initial requests.
+
+```mermaid
+flowchart TB
+
+    C1["Client 1<br/>IP Host"]
+    C2["Client 2<br/>IP Host"]
+
+    S["Server"]
+
+    DNS["DNS Service<br/>UDP/53"]
+    RAD["RADIUS Service<br/>UDP/1812"]
+
+    S --- DNS
+    S --- RAD
+
+    C1 -->|"Request<br/>49152 → 53"| S
+    C2 -->|"Request<br/>51152 → 1812"| S
+
+    S -->|"Response<br/>53 → 49152"| C1
+    S -->|"Response<br/>1812 → 51152"| C2
+```
+
+## Transport Layer Summary
+
+### module notes
 
 The transport layer is responsible for establishing a temporary communication session between the source and destination host applications.
 
@@ -599,3 +825,6 @@ The destination port is the well-known port for Simple Mail Transport Protocol, 
 The three-way handshake consists of a three message exchanges with the following control bit flags: SYN, SYN ACK, and ACK.
 
 There are four exchanges to end both sessions between two hosts. (1) Host A sends a FIN. (2) Host B sends an ACK. (3) Host B sends a FIN. (4) Host A sends an ACK.
+
+The sequence number field is used by the destination host to reassemble segments into the original order.
+The Window Size field is used to provide flow control.
