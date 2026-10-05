@@ -803,7 +803,301 @@ flowchart TB
     S -->|"Response<br/>1812 → 51152"| C2
 ```
 
+## Packet Tracer - TCP and UDP Communications
+
+### Objectives
+
+- Part 1: Generate Network Traffic in Simulation Mode
+
+- Part 2: Examine the Functionality of the TCP and UDP Protocols
+
+### Background
+
+This simulation activity is intended to provide a foundation for understanding TCP and UDP in detail. Simulation mode provides the ability to view the state of different PDUs as they travel through the network.
+
+The steps outlined below lead through the process of requesting network services using various applications that are available on a client PC. Including functionality of TCP and UDP protocols, multiplexing, and the function of port numbers in determining which local application requested the data or is sending the data.
+
+### Q/A
+
+b. Click Capture/Forward six times and watch the PDUs from the different hosts as they travel on the network. Note that only one PDU can cross a wire in each direction at any given time.
+
+Questions:
+What is this called?
+
+Answer: conversation multiplexing
+
+A variety of PDUs appears in the event list in the Simulation Panel. What is the meaning of the different colors?
+
+Answer: colours are protocol differentiators
+
+Part 2: Examine Functionality of the TCP and UDP Protocols
+
+Step 1: Examine HTTP traffic as the clients communicate with the server.
+
+a. Click Reset Simulation.
+
+b. Filter the traffic that is currently displayed to only HTTP and TCP PDUs. To filter the traffic that is currently displayed:
+
+1.  Click Edit Filters and toggle the Show All/None button.
+
+2.  Select HTTP and TCP. Click the red “x” in the upper right-hand corner of the Edit Filters box to close it. Visible Events should now display only HTTP and TCP PDUs.
+
+c. Open the browser on HTTP Client and enter 192.168.1.254 in the URL field. Click Go to connect to the server over HTTP. Minimize the HTTP Client window.
+
+d. Click Capture/Forward until you see a PDU appear for HTTP. Note that the color of the envelope in the topology window matches the color code for the HTTP PDU in the Simulation Panel.
+
+Question:
+Why did it take so long for the HTTP PDU to appear?
+
+Answer: 1st: TCP establishes reliable connection via 3-way shake
+2nd: HTTP PDU is sent after TCP connection established
+
+e. Click the PDU envelope to show the PDU details. Click the Outbound PDU Details tab and scroll down to the second to the last section.
+
+Questions:
+What is the section labeled?
+
+Answer: TCP
+
+Are these communications considered to be reliable?
+
+Answer: yes
+
+Record the SRC PORT, DEST PORT, SEQUENCE NUM, and ACK NUM values.
+
+Answer:
+1028
+80
+1
+1
+
+f. Look at the value in the Flags field, which is located next to the Window field. The values to the right of the “b” represent the TCP flags that are set for this stage of the data conversation. Each of the six places corresponds to a flag. The presence of a “1” in any place indicates that the flag is set. More than one flag can be set at a time. The values for the flags are shown below.
+
+```Table Widget
+Flag Place | Value
+----------- -------
+6          | URG
+5          | ACK
+4          | PSH
+3          | RST
+2          | SYN
+1          | FIN
+```
+
+Question:
+Which TCP flags are set in this PDU?
+
+Answer: ACK, PSH
+
+g. Close the PDU and click Capture/Forward until a PDU with a checkmark returns to the HTTP Client.
+
+h. Click the PDU envelope and select Inbound PDU Details.
+
+Question:
+How are the port and sequence numbers different than before?
+
+Answer:
+SRC, DST are opposite.
+ACK number now === 1
+flags = SYN+ACK
+
+i. Click the HTTP PDU which HTTP Client has prepared to send to MultiServer. This is the beginning of the HTTP communication. Click this second PDU envelope and select Outbound PDU Details.
+
+Question:
+What information is now listed in the TCP section? How are the port and sequence numbers different from the previous two PDUs?
+
+Answer:
+SRC, DST reversed again
+SRC, DST seq number(s) === 1
+flags === SYN, ACK
+ACK number 103
+
+j. Reset the simulation.
+
+Step 2: Examine FTP traffic as the clients communicate with the server.
+
+a. Open the command prompt on the FTP Client desktop. Initiate an FTP connection by entering ftp 192.168.1.254.
+
+b. In the Simulation Panel, change Edit Filters to display only FTP and TCP.
+
+c. Click Capture/Forward. Click the second PDU envelope to open it.
+
+Click the Outbound PDU Details tab and scroll down to the TCP section.
+
+Question:
+Are these communications considered to be reliable?
+
+Answer: yes
+
+d. Record the SRC PORT, DEST PORT, SEQUENCE NUM, and ACK NUM values.
+
+Question:
+What is the value in the flagfield?
+
+Answer:
+1026
+21
+0
+0
+
+e. Close the PDU and click Capture/Forward until a PDU returns to the FTP Client with a checkmark.
+
+f. Click the PDU envelope and select Inbound PDU Details.
+
+Question:
+How are the port and sequence numbers different than before?
+
+Answer:
+SRC, DST reversed
+1026
+SYN+ACK
+0
+1
+
+g. Click the OutboundPDU Details tab.
+
+Question:
+How are the port and sequence numbers different from the previous results?
+
+Answer:
+ports reversed
+1026
+21
+SYN 1
+ACK 1
+
+h. Close the PDU and click Capture/Forward until a second PDU returns to the FTP Client. The PDU is a different color.
+
+i. Open the PDU and select Inbound PDU Details. Scroll down past the TCP section.
+
+Question:
+What is the message from the server?
+
+Answer: welcome
+
+j. Click Reset Simulation.
+
+Step 3: Examine DNS traffic as the clients communicate with the server.
+
+a. Repeat the steps in Part 1 to create DNS traffic.
+
+b. In the Simulation Panel, change Edit Filters to display only DNS and UDP.
+
+c. Click the PDU envelope to open it.
+
+d. Look at the OSI Model details for the outbound PDU.
+
+Question:
+What is the Layer 4 protocol?
+
+Answer: UDP
+
+Are these communications considered to be reliable?
+
+Answer: no
+
+e. Open the Outbound PDU Details tab and find the UDP section of the PDU formats. Record the SRC PORT and DEST PORT values.
+
+Question:
+Why are there no sequence and acknowledgement numbers?
+
+Answer: Because UDP is a best attempt connectionless protocol and does not require the overhead of sequence and acknowledgement numbers.
+
+f. Close the PDU and click Capture/Forward until a PDU with a check mark returns to the DNS Client.
+
+g. Click the PDU envelope and select Inbound PDU Details.
+
+Question:
+How are the port and sequence numbers different than before?
+
+Answer: ports reversed, no sequence numbers
+
+What is the last section of the PDU called? What is the IP address for the name multiserver.pt.ptu?
+
+Answer: DNS ANSWER 192.168.1.254
+
+h. Click Reset Simulation.
+
+Step 4: Examine email traffic as the clients communicate with the server.
+
+a. Repeat the steps in Part 1 to send an email to user@multiserver.pt.ptu.
+
+b. In the Simulation Panel, change Edit Filters to display only POP3, SMTP and TCP.
+
+c. Click the first PDU envelope to open it.
+
+d. Click the Outbound PDU Details tab and scroll down to the last section.
+
+Questions:
+What transport layer protocol does email traffic use?
+
+Answer: TCP
+
+Are these communications considered to be reliable?
+
+Answer: yes
+
+e. Record the SRC PORT, DEST PORT, SEQUENCE NUM, and ACK NUM values. What is the flag field value?
+
+Answer:
+1026
+26
+0
+0
+SYN
+
+f. Close the PDU and click Capture/Forward until a PDU returns to the E-Mail Client with a checkmark.
+
+g. Click the TCP PDU envelope and select Inbound PDU Details.
+
+Question:
+How are the port and sequence numbers different than before?
+
+Answer:
+ports reversed
+25
+1026
+0
+1
+SYN+ACK
+
+h. Click the OutboundPDU Details tab.
+
+Question:
+How are the port and sequence numbers different from the previous two results?
+
+Answer:
+ports reversed
+1026
+25
+0
+1
+SYN+ACK
+
+i. There is a second PDU of a different color that E-Mail Client has prepared to send to MultiServer. This is the beginning of the email communication. Click this second PDU envelope and select Outbound PDU Details.
+
+Questions:
+How are the port and sequence numbers different from the previous two PDUs?
+
+Answer:
+ports reversed
+1026
+25
+1
+1
+PSH+ACK
+
+What email protocol is associated with TCP port 25? What protocol is associated with TCP port 110?
+
+Answer:
+25 SMTP
+110 POP3
+
 ## Transport Layer Summary
+
+## Module Pass
+
+![module 9 pass](img/modulePass9.png)
 
 ### module notes
 
