@@ -667,7 +667,7 @@ flowchart TB
 **Topics**
 
 - Static and dynamic addressing
-- DHCPv4 configuration
+- DHCP IPv4 configuration
 
 **Static IPv4 Address Assignment**  
 IPv4 addresses can be assigned either statically or dynamically. With a static assignment, the network administrator manually configures:

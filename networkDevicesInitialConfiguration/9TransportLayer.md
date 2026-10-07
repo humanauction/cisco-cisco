@@ -1122,3 +1122,7 @@ There are four exchanges to end both sessions between two hosts. (1) Host A send
 
 The sequence number field is used by the destination host to reassemble segments into the original order.
 The Window Size field is used to provide flow control.
+
+## Checkpoint 3
+
+![checkpoint 3](img/checkpointPass3.png)
