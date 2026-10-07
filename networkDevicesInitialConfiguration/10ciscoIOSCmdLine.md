@@ -4,7 +4,7 @@ The Cisco IOS command line interface (CLI) is a text-based program that enables 
 
 CLI commands are used to alter the configuration of the device and to display the current status of processes on the router. For experienced users, the CLI offers many time-saving features for creating both simple and complex configurations. Almost all Cisco networking devices use a similar CLI. When the router has completed the power-up sequence and the Router> prompt appears, the CLI can be used to enter Cisco IOS commands.
 
-```bash
+```code
 Router con0 is now available
 
 
@@ -406,3 +406,202 @@ Commonly used show commands and when to use them are listed in the table.
 | show protocols | verify operational protocols |
 | show version | verify device information including memory, interfaces, licensing |
 ```
+
+```table
+Key Show Commands
+Command	Description
+show running-config	Displays the active configuration stored in the device's memory.
+show ip interface brief	Provides a summary of the interface status and IP addresses.
+show version	Displays the current IOS version and system information.
+show vlan brief	Lists VLANs, their statuses, names, and assigned ports.
+show mac address-table	Shows the MAC addresses learned on the switch and their associated ports.
+show ip route	Displays the routing table for the device.
+show interfaces	Provides detailed information about all interfaces.
+show cdp neighbors	Lists directly connected Cisco devices using CDP.
+show processes cpu	Displays CPU utilization by processes.
+show flash	Shows information about the Flash memory.
+Additional Useful Commands
+show startup-config: Displays the saved configuration that will be loaded on startup.
+show port-security: Displays the port security configuration for all interfaces.
+show interface trunk: Checks trunking status and native VLAN information.
+show ip protocols: Displays routing protocol information and network details.
+```
+
+## Packet Tracer - Use Cisco IOS Show Commands
+
+### Objectives
+
+= Use Cisco IOS show commands
+
+### Background / Scenario
+
+The Cisco IOS show commands are used extensively when working with Cisco equipment. In this activity, you will use the show commands on a router located at an ISP.
+
+#### Instructions
+
+Part 1: Connect to the ISP Cisco 4321 router.
+
+In this part, you will use the terminal emulation software on ISP PC to connect to the Cisco 4321 router.
+
+a. Click ISP PC.
+
+b. Click Desktop tab. Select Terminal. Review the terminal configuration and click OK to continue.
+
+c. The ISPRouter > prompt indicates that you are in user EXEC mode. Press Enter if the prompt did not display.
+
+Part 2: Explore the show commands.
+
+Use the information displayed by these show commands to answer the following questions.
+
+Step 1: Explore show commands in User EXEC mode.
+
+### Questions and Answers
+
+a. Type show ? at the prompt.
+
+Question:
+List a few more show commands that are available in the user EXEC mode.
+
+Answer:
+show startup-config: Displays the saved configuration that will be loaded on startup.
+show port-security: Displays the port security configuration for all interfaces.
+show interface trunk: Checks trunking status and native VLAN information.
+show ip protocols: Displays routing protocol information and network details.
+
+b. Enter show arp at the prompt.
+
+Question:
+Record the MAC address and the IP address listed.
+
+Answer: 0001.96CD.2501: 209.165.201.1
+
+c. Enter show flash at the prompt.
+
+Question:
+Record the IOS image listed:
+
+Answer: isr4300-universalk9.03.16.05.S.155-3.S5-ext.SPA.bin
+
+d. Enter show ip route at the prompt.
+
+Question:
+How many routes are listed in the table?
+
+Answer: 2
+
+e. Enter show interfaces at the prompt.
+
+Question:
+Which interface is up and running?
+
+Click to see a couple of examples.
+
+Interface Status Protocol
+GigabitEthernet 0/0/0
+Up
+Answer: Up
+
+GigabitEthernet 0/0/1
+Answer:
+Admin down
+Down
+Serial0/1/0
+Answer:
+down
+Answer:
+down
+Serial0/1/1
+Down
+Answer:
+down
+
+f. Enter show ip interface at the prompt.
+
+Question:
+According to the show ip interface output, which interface is connected?
+
+Answer: GigabitEthernet0/0/0
+
+g. Enter show version at the prompt.
+
+Question:
+What technology package is enabled currently on the router?
+
+Answer:
+securityk9
+ipbask9
+
+h. Enter show protocols at the prompt.
+
+Question:
+Which protocols are enabled currently on the router?
+
+Answer: Internet Protocol. Line protocol is up for GigabitEthernet0/0/0.
+
+i. Enter show running-config at the prompt.
+
+Question:
+What is the output? invalid input detected at '^' marker
+
+Answer:
+
+Step 2: Explore the show commands in privileged EXEC mode.
+
+a. Enter enable at the prompt to enter the privileged EXEC mode.
+
+Question:
+List some additional show commands in this mode.
+
+Answer: show aaa, show access-list, show file
+
+b. Enter show running-config at the prompt.
+
+Question:
+What is the output?
+
+Answer: current configs and settings
+
+## Learning Outcomes
+
+### Navigate IOS
+
+The Cisco IOS CLI is a text-based program that enables entering and executing Cisco IOS commands to configure, monitor, and maintain Cisco devices. The Cisco CLI can be used with either in-band or out-of-band management tasks.
+
+CLI commands are used to alter the configuration of the device and to display the current status of processes on the router. When the router has completed the power-up sequence and the Router> prompt appears, the CLI can be used to enter Cisco IOS commands.
+
+As a security feature, the Cisco IOS software separates management access into the following two command modes:
+
+- User EXEC Mode - This mode is useful for basic operations. It allows a limited number of basic monitoring commands but does not allow the execution of any commands that might change the configuration of the device. The user EXEC mode is identified by the CLI prompt that ends with the > symbol.
+
+- Privileged EXEC Mode - To execute configuration commands, a network administrator must access privileged EXEC mode. The privileged EXEC mode can be identified by the prompt ending with the # symbol. Higher configuration modes, like global configuration mode, can only be reached from privileged EXEC mode. Global configuration mode is identified by the CLI prompt that ends with (config)#.
+
+The commands used to navigate between the different IOS command modes are:
+
+```table
+| Command | Function |
+|---------|----------|
+| enable | Enter privileged EXEC mode |
+| disable | Exit privileged EXEC mode |
+| configure terminal | Enter global configuration mode |
+| exit | Exit the current configuration mode |
+| end | Exit the current configuration mode and return to privileged EXEC mode |
+| Ctrl+Z | Exit the current configuration mode and return to privileged EXEC mode |
+| line console 0 | Enter console line configuration mode |
+| line vty 0 15 | Enter virtual terminal line configuration mode |
+| interface vlan 1 | Enter VLAN interface configuration mode |
+```
+
+### Command Structure
+
+Each IOS command has a specific format, or syntax, and can only be executed in the appropriate mode. The general syntax for a command is the command followed by any appropriate keywords and arguments. The keyword is a specific parameter defined in the operating system. The argument is not predefined; it is a value or variable defined by the user.
+
+- The syntax provides the pattern, or format, that must be used when entering a command.`Boldface` text indicates commands and keywords that are entered as shown.
+- Italic text indicates an argument for which the user provides the value.
+
+- [x] square brackets indicate an optional element (keyword or argument).
+
+- {x} braces indicate a required element (keyword or argument).
+
+## Module Pass
+
+![module 10 pass](img/modulePass10.png)
