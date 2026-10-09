@@ -846,3 +846,272 @@ S1(config)# ip ssh version 2
 S1(config)# exit
 S1#
 ```
+
+### Syntax test
+
+- Set the domain name to cisco.com and generate the 1024 bit rsa key.
+
+```code
+S1(config)#ip domain-name cisco.com
+S1(config)#crypto key generate rsa
+The name for the keys will be: S1.cisco.com
+Choose the size of the key modulus in the range of 360 to 4096 for your General Purpose Keys. Choosing a key modulus greater than 512 may take a few minutes.
+How many bits in the modulus [512]:1024
+% Generating 1024 bit RSA keys, keys will be non-exportable...
+[OK] (elapsed time was 4 seconds)
+S1(config)#
+*Mar 1 02:20:18.529: %SSH-5-ENABLED: SSH 1.99 has been enabled
+```
+
+- Create a local user admin with the password ccna.
+
+- Set all vty lines to use ssh and local login for remote connections.
+
+- Exit out to global configuration mode.
+
+```code
+S1(config)#username admin secret ccna
+S1(config)#line vty 0 15
+S1(config-line)#transport input ssh
+S1(config-line)#login local
+S1(config-line)#exit
+S1(config)#
+%SYS-5-CONFIG_I: Configured from console by console
+```
+
+- Configure S1 to use SSH 2.0.
+
+```code
+S1(config)#ip ssh version 2
+S1(config)#
+```
+
+SSH on all VTY lines configured successfully.
+
+### Verify SSH
+
+On a PC, an SSH client such as PuTTY, is used to connect to an SSH server. For the examples, the following have been configured:
+
+- SSH enabled on switch S1
+- Interface VLAN 99 (SVI) with IPv4 address 172.17.99.11 on switch S1
+- PC1 with IPv4 address 172.17.99.21
+
+In the figure, the technician is initiating an SSH connection to the SVI VLAN IPv4 address of S1.
+
+![The terminal software PuTTY is shown](img/PuTTY.png)
+
+The figure shows the PuTTY Configuration window. The Host Name (or IP address) box has the IPv4 address 172.17.99.11 and the Port box has 22. The connection type has five options: Raw, Telnet, Rlogin, SSH, and Serial, SSH is selected.
+
+After clicking Open in PuTTY, the user is prompted for `username admin` and `password ccna`. if successful, the user is connected via SSH to the CLI on the Catalyst 2960 switch.
+
+- `show ip ssh` display SSH version, config data for the device configured as an SSH server. e.g. SSH v2 enabled.
+- `show ssh` check SSH connections to the device.
+
+```code
+Login as: admin
+Using keyboard-interactive authentication.
+Password: <ccna>
+
+S1> enable
+Password: <class>
+S1# show ip ssh
+SSH Enabled - version 2.0
+Authentication timeout: 90 secs; Authentication retries: 2
+Minimum expected Diffie Hellman key size : 1024 bits
+IOS Keys in SECSH format(ssh-rsa, base64 encoded):
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCdLksVz2QlREsoZt2f2scJHbW3aMDM8 /8jg/srGFNL
+i+f+qJWwxt26BWmy694+6ZIQ/j7wUfIVNlQhI8GUOVIuKNqVMOMtLg8Ud4qAiLbGJfAaP3fyrKmViPpO
+eOZof6tnKgKKvJz18Mz22XAf2u/7Jq2JnEFXycGMO88OUJQL3Q==
+
+S1# show ssh
+Connection Version Mode Encryption  Hmac        State        Username
+0           2.0     IN   aes256-cbc  hmac-sha1 Session started admin
+0           2.0     OUT  aes256-cbc  hmac-sha1 Session started admin
+%No SSHv1 server connections running.
+S1#
+```
+
+### lab 3: Packet Tracer - Configure SSH
+
+Addressing Table
+Table Widget
+
+#### Objectives
+
+- Part 1: Secure Passwords
+
+- Part 2: Encrypt Communications
+
+- Part 3: Verify SSH Implementation
+
+#### Scenario
+
+SSH should replace Telnet for management connections. Telnet uses insecure plain text communications. SSH provides security for remote connections by providing strong encryption of all transmitted data between devices. In this activity, you will secure a remote switch with password encryption and SSH.
+
+#### Instruction section
+
+- Part 1: Secure Passwords
+
+a. Using the command prompt on PC1, Telnet to S1. The user EXEC and privileged EXEC password is cisco.
+
+```code
+PC> telnet 10.10.10.2
+Trying 10.10.10.2 ...Open
+User Access Verification
+Password:
+S1> en
+Password:
+S1#
+```
+
+b. Save the current configuration so that any mistakes you might make can be reversed by toggling the power for S1.
+
+```code
+S1# copy running-config startup-config
+Destination filename [startup-config]?
+Building configuration...
+[OK]
+```
+
+c. Show the current configuration and note that the passwords are in plain text.
+
+d. In the global configuration mode, enter the command that encrypts plain text passwords:
+
+```code
+S1(config)# service password-encryption
+```
+
+e. Verify that the passwords are encrypted.
+
+#### Part 2: Encrypt Communications
+
+##### Step 1: Set the IP domain name and generate secure keys
+
+It is generally not safe to use Telnet, because data is transferred in plain text. `ALWAYS use SSH whenever it is available.`
+
+a. Configure the domain name to be netacad.pka.
+
+```code
+S1(config)# ip domain-name netacad.pka
+```
+
+b. Secure keys are needed to encrypt the data. Generate the RSA keys using a 1024 key length.
+
+```code
+S1(config)# crypto key generate rsa
+
+The name for the keys will be: S1.netacad.pka
+Choose the size of the key modulus in the range of 360 to 2048 for your
+General Purpose Keys. Choosing a key modulus greater than 512 may take a few minutes.
+How many bits in the modulus [512]: 1024
+% Generating 1024 bit RSA keys, keys will be non-exportable...[OK]
+```
+
+##### Step 2: Create an SSH user and reconfigure the VTY lines for SSH-only access
+
+a. Create an administrator user with cisco as the secret password.
+
+```code
+S1(config)# username administrator secret cisco
+```
+
+b. Configure the VTY lines to check the local username database for login credentials and to only allow SSH for remote access. Remove the existing vty line password.
+
+```code
+S1(config)# line vty 0 15
+S1(config-line)# login local
+S1(config-line)# transport input ssh
+S1(config-line)# no password cisco
+```
+
+##### Part 3: Verify SSH Implementation
+
+- a. Exit the Telnet session and attempt to log back in using Telnet. The attempt should fail.
+
+- b. Attempt to log in using SSH. Type ssh and press Enter without any parameters to reveal the command usage instructions. Hint: The -l option is the letter “L”, not the number 1.
+
+- c. Upon successful login, enter privileged EXEC mode and save the configuration. If you were unable to successfully access S1, toggle the power and begin again at Part 1.
+
+### Default Gateway on a Host
+
+If your local network has only one router, it will be the gateway router and all hosts and switches on your network must be configured with this information. If your local network has multiple routers, you must select one of them to be the default gateway router. This topic explains how to configure the default gateway on hosts and switches.
+
+For an end device to communicate over the network, it must be configured with the correct IP address information, including the default gateway address. The default gateway is only used when the host wants to send a packet to a device on another network. The default gateway address is generally the router interface address attached to the local network of the host. The IP address of the host device and the router interface address must be in the same network.
+
+For example, assume an IPv4 network topology consisting of a router interconnecting two separate LANs. G0/0/0 is connected to network 192.168.10.0, while G0/0/1 is connected to network 192.168.11.0. Each host device is configured with the appropriate default gateway address.
+
+In this example, if PC1 sends a packet to PC2, then the default gateway is not used. Instead, PC1 addresses the packet with the IPv4 address of PC2 and forwards the packet directly to PC2 through the switch.
+
+![default gateway example](img/defaultGW.png)
+
+If PC1 sent a packet to PC3, PC1 would address the packet with the IPv4 address of PC3, but would forward the packet to its default gateway, which is the G0/0/0 interface of R1. The router accepts the packet and accesses its routing table to determine that G0/0/1 is the appropriate exit interface based on the destination address. R1 then forwards the packet out of the appropriate interface to reach PC3.
+
+![default gateway example continued](img/defaultGW2.png)
+
+The same process (not shown in topology) would occur on an IPv6 network. Devices would use the IPv6 address of the local router as their default gateway.
+
+### Default Gateway on a Switch
+
+A switch that interconnects client computers is typically a Layer 2 device. As such, a Layer 2 switch does not require an IP address to function properly. However, an IP configuration can be configured on a switch to give an administrator remote access to the switch.
+
+To connect to and manage a switch over a local IP network, it must have a switch virtual interface (SVI) configured. The SVI is configured with an IPv4 address and subnet mask on the local LAN. The switch must also have a default gateway address configured to remotely manage the switch from another network.
+
+The default gateway address is typically configured on all devices that will communicate beyond their local network.
+
+To configure an IPv4 default gateway on a switch, use the `ip default-gateway ip-address` global configuration command. The ip-address that is configured is the IPv4 address of the local router interface connected to the switch.
+
+![admin remote connection](img/remoteCon.png)
+
+In this example, the administrator host would use its default gateway to send the packet to the G0/0/1 interface of R1. R1 would forward the packet to S1 out of its G0/0/0 interface. Because the packet source IPv4 address came from another network, S1 would require a default gateway to forward the packet to the G0/0/0 interface of R1. Therefore, S1 must be configured with a default gateway to be able to reply and establish an SSH connection with the administrative host.
+
+N.B. Packets originating from host computers connected to the switch must already have the default gateway address configured on their host computer operating systems.
+
+N.B. A workgroup switch can also be configured with an IPv6 address on an SVI, BUT the `switch does not require the IPv6 address of the default gateway to be configured manually`.
+
+The switch will automatically receive its default gateway from the ICMPv6 Router Advertisement message from the router.
+
+### Syntax Checker - Configure the Default Gateway
+
+Enter global configuration mode.
+
+```code
+S1#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+```
+
+Configure 192.168.10.1 as the default gateway for S1.
+
+```code
+S1(config)#ip default-gateway 192.168.10.1
+S1(config)#
+```
+
+You have successfully set the default gateway on switch S1.
+
+### Packet Tracer Tutored Activity - Build a Switch and Router Network
+
+ToDo(s):
+
+- connect the devices
+- configure the PCs
+- configure the router
+- configure the switch
+- verify end-to-end connectivity
+
+### Packet Tracer - Troubleshoot Default Gateway Issues
+
+ToDo(s):
+
+- Verify Network Documentation and Isolate Problems
+- Implement, Verify, and Document Solutions
+
+```table
+| test      | works | issues          | solution         | fix |
+| --------- | ----- | --------------- | -------------    | --- |
+| PC1 > PC2 | no    | PC1 IP address  | PC1 IP config    | yes |
+| PC1 > PC3 | yes   |                 |                  | no  |
+| PC1 > PC4 | no    | PC4 ip address  | default Gateway  |     |
+| PC1 > S1  |   |                 |               |  |
+| PC1 > S2  |   |                 |               |  |
+| R1 g0/1  | no   | connection down   | config interface |  |
+```
