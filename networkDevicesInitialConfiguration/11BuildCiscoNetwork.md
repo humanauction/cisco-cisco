@@ -1110,8 +1110,39 @@ ToDo(s):
 | --------- | ----- | --------------- | -------------    | --- |
 | PC1 > PC2 | no    | PC1 IP address  | PC1 IP config    | yes |
 | PC1 > PC3 | yes   |                 |                  | no  |
-| PC1 > PC4 | no    | PC4 ip address  | default Gateway  |     |
-| PC1 > S1  |   |                 |               |  |
-| PC1 > S2  |   |                 |               |  |
-| R1 g0/1  | no   | connection down   | config interface |  |
+| PC1 > PC4 | no    | PC4 ip address  | default Gateway  | yes |
+| S1 VLAN   |  no   | ip missing      | default gw       | yes |
+| S2        | no    | connection down | default gw       | yes |
 ```
+
+```table
+Device | I/O	  | IP Address	  | Subnet Mask	  | Default Gateway
+| ---- | ------ | ------------- | ------------- | ------------- |
+R1	   | G0/0	  | 192.168.10.1	| 255.255.255.0	| N/A
+R1	   | G0/1	  | 192.168.11.1	| 255.255.255.0	| N/A
+S1	   | VLAN1	| 192.168.10.2	| 255.255.255.0	| 192.168.10.1
+S2	   | VLAN1	| 192.168.11.2	| 255.255.255.0	| 192.168.11.1
+PC1	   | NIC	  | 192.168.10.10	| 255.255.255.0	| 192.168.10.1
+PC2	   | NIC	  | 192.168.10.11	| 255.255.255.0	| 192.168.10.1
+PC3	   | NIC	  | 192.168.11.10	| 255.255.255.0	| 192.168.11.1
+PC4	   | NIC	  | 192.168.11.11	| 255.255.255.0	| 192.168.11.1
+```
+
+![troubleshooting lab pass](img/troubleshootDefaultGatewayIssues.png)
+
+## Learning Outcomes
+
+### Basic Switch Configuration
+
+To access the switch remotely, configure an IP address and a subnet mask on the SVI. Use `interface vlan 1`
+global configuration command. Assign an IPv4 address using the
+ip address ip-address subnet-mask interface configuration command.
+enable the virtual interface using `no shutdown` interface configuration command. After the switch is configured with these commands, the switch has all the IPv4 elements ready for communication over the network.
+
+### Initial Router Settings
+
+### Secure Devices
+
+### Enable SSH
+
+### Default Gateway Configuration
