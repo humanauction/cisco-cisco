@@ -1141,8 +1141,44 @@ enable the virtual interface using `no shutdown` interface configuration command
 
 ### Initial Router Settings
 
+- Step 1: configure device name
+- Step 2: secure privileged EXEC mode
+- Step 3: secure user EXEC mode
+- Step 4: secure remote Telnet / SSH access
+- Step 5: secure all passwords in the config file
+- Step 6: provide legal notification
+- Step 7: save the configuration
+
+All router access should be secured. Privileged EXEC mode provides the user with complete access to the device and its configuration, so you must secure it. It is very important to use a strong password when securing privileged EXEC mode because this mode allows access to the configuration of the device. The legal notification warns users that the device should only be accessed by permitted users. The router configuration would be lost if the router lost power. For this reason, it is important to save the configuration when changes are implemented.
+
 ### Secure Devices
+
+To protect network devices, it is important to use strong passwords. A strong password combines alphanumeric characters, and if allowed, includes symbols and a space. Another method to create a strong password is to use the space bar and create a phrase made of many words, called a passphrase. A passphrase is often easier to remember than a strong password. It is also longer and harder to guess.
+
+Setting a password for console connection access is done in global configuration mode. This prevents unauthorized users from accessing user mode from the console port. When the device is connected to the network, it can be accessed over the network connection using SSH or Telnet. SSH is the preferred method because it is more secure. When the device is accessed through the network, it is considered a vty connection. The password must be assigned to the vty port. Five is the most common number of vty lines configured on a router. These lines are numbered 0 to 4 by default, though additional lines can be configured. A password needs to be set for all available vty lines. The same password can be set for all connections.
+
+To verify passwords are set correctly, use the command `show running-config`. These passwords are stored in the running-configuration in plaintext. It is possible to set encryption on all passwords stored within the router so that they are not easily read by unauthorized individuals. The global configuration command ensures that all passwords are encrypted. command. These passwords are stored in the running-configuration in plaintext.
+
+the global config command `service password-encryption` ensures that all passwords are encrypted.
 
 ### Enable SSH
 
+- step 1: verify SSH support `show ip ssh`
+- step 2: configure the IP domain name `ip domain-name domain-name`
+- step 3: generate RSA key pairs `crypto key generate rsa`
+- step 4: configure user authentication `username username secret password`
+- step 5: configure the vty lines `transport input ssh` and `login local`
+- step 6: enable SSH version 2 `ip ssh version 2`
+- step 7: verify SSH configuration `show ip ssh`
+
+To display the version and configuration data for SSH on the device that you configured as an SSH server, use the show ip ssh command. In the example, SSH version 2 is enabled. To check the SSH connections to the device, use the show ssh command.
+
 ### Default Gateway Configuration
+
+If your local network has only one router, it will be the gateway router and all hosts and switches on your network must be configured with this information. If your local network has multiple routers, you must select one of them to be the default gateway router.
+The default gateway is only used when the host wants to send a packet to a device on another network. The default gateway address is generally the router interface address attached to the local network of the host. The IP address of the host device
+and the router interface address must be in the same network.
+To connect to and manage a switch over a local IP network, it must have an SVI configured. The SVI is configured with an IPv4 address and subnet mask on the local LAN. The switch must also have a default gateway address configured to
+remotely manage the switch from another network.
+To configure an IPv4 default gateway on a switch, use `ip default-gateway ip-address` global configuration command. The ip-address that is configured is the IPv4 address of the local router interface connected to the switch.
+The `ip address` configured is the IPv4 address of the local router interface connected to the switch.
