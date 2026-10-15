@@ -172,7 +172,7 @@ Note: Many network administrators limit or prohibit the entry of ICMP messages i
 
 Ping is used to test connectivity between two hosts but does not provide information about the details of devices between the hosts. Traceroute (tracert) is a utility that generates a list of hops that were successfully reached along the path. This list can provide important verification and troubleshooting information. If the data reaches the destination, then the trace lists the interface of every router in the path between the hosts. If the data fails at some hop along the way, the address of the last router that responded to the trace can provide an indication of where the problem or security restrictions are found.
 
-- Round Trip Time (RTT)
+#### Round Trip Time (RTT)
 
 Using traceroute provides round-trip time for each hop along the path and indicates if a hop fails to respond. The round-trip time is the time a packet takes to reach the remote host and for the response from the host to return. An asterisk (\*) is used to indicate a lost or unreplied packet.
 
@@ -180,7 +180,32 @@ This information can be used to locate a problematic router in the path or may i
 
 `If the display shows high response times or data losses from a particular hop, this is an indication that the resources of the router or its connections may be stressed`.
 
-- IPv4 TTL and IPv6 Hop Limit
+#### IPv4 TTL and IPv6 Hop Limit
+
+REMEMBER, TTL === 1, hits a router gets sent back, TTL 1++ TTL 2, hits next router, gets sent back, TTL 2++, TTL 3, hits next router, gets sent back, TTL 3++, etc...
+
+basically:
+
+```py
+ttl = 1
+
+while True:
+    print(f"Sending TTL packet={ttl}")
+
+    # Packet travels through routers, get returned,
+    router_hop = ttl
+
+    print(
+        f"Router {router_hop}"
+        f"returned ICMP Time Exceeded"
+    )
+
+    ttl += 1 # repeats for all router hops until destination is reached, keeps adding 1.
+
+    if router_hop == destination_hop:
+        print("Destination reached!")
+        break
+```
 
 `Traceroute makes use of` a function of the `TTL field in IPv4` and the `Hop Limit field in IPv6 in` the `Layer 3 headers`, `along with` the ICMP `Time Exceeded message`.
 
@@ -196,3 +221,54 @@ After the final destination is reached, the host responds with either an ICMP Po
 
 - Test and Restore IPv4 Connectivity
 - Test and Restore IPv6 Connectivity
+
+### Questions, Answers
+
+![lab worksheet PH](networkDevicesInitialConfiguration/Verify IPv4 and IPv6 Addressing.pdf)
+
+### Lab 2: Use Ping and Traceroute to Test Network Connectivity
+
+![lab worksheet PH](networkDevicesInitialConfiguration/UsePingTracerouteTestNetworkConnectivity.pdf)
+
+## Unit Summary
+
+### ICMP Messages
+
+An ICMP Echo Message can be used to test the reachability of a host on an IP network. The local host sends an ICMP Echo Request to a host. If the host is available, the destination host responds with an Echo Reply.
+
+An ICMPv4 Time Exceeded message is used by a router to indicate that a packet cannot be forwarded because the TTL field of the packet was decremented to 0. If a router receives a packet and decrements the TTL field in the IPv4 packet to zero, it discards the packet and sends a Time Exceeded message to the source host.
+
+ICMPv6 also sends a Time Exceeded message if the router cannot forward an IPv6 packet because the packet has expired. The informational and error messages found in ICMPv6 are very similar to the control and error messages implemented by ICMPv4. However, ICMPv6 includes four new protocols as part of the ND or NDP. REMEMBER: Royal Academy ReSponds? No Sir not applicable (RARS NSNA)
+
+- RA - Router Advertisement
+- RS - Router Solicitation
+- NS - Neighbor Solicitation
+- NA - Neighbor Advertisement
+
+### Ping and Traceroute Testing
+
+To test connectivity to another host on a network, an echo request is sent to the host address using the `ping` command.
+
+If the host at the specified address receives the echo request, it responds with an echo reply. As each echo reply is received, ping provides feedback on the time between when the request was sent and when the reply was received. This can be a measure of network performance. Ping has a timeout value for the reply. If a reply is not received within the timeout, ping provides a message indicating that a response was not received.
+
+#### Types of tests performed with ping
+
+##### Local Loopback
+
+Ping can be used to test the internal configuration of IPv4 or IPv6 on the local host. To perform this test, ping the local loopback address.
+
+##### Default Gateway
+
+Generally done by `pinging the IP address of the default gateway of the host`. A successful ping to the default gateway indicates that the host and the router interface serving as the default gateway are both operational on the local network.
+
+##### Remote Host
+
+Successful ping across the internetwork confirms communication on the local network, the operation of the router serving as the default gateway, and the operation of all other routers that might be in the path between the local network and the network of the remote host.
+
+##### tracert (traceroute)
+
+tracert is a utility that generates a list of hops that were successfully reached along the path. This list can provide important verification and troubleshooting information. If the data reaches the destination, then the trace lists the interface of every router in the path between the hosts. If the data fails at some hop along the way, the address of the last router that responded to the trace can provide an indication of where the problem or security restrictions are found.
+
+The round-trip time is the time a packet takes to reach the remote host and for the response from the host to return. An `asterisk (*) is used to indicate a lost or unreplied packet`.
+
+Traceroute makes use of a function of the TTL field in IPv4 and the Hop Limit field in IPv6 in the Layer 3 headers, along with the ICMP Time Exceeded message.
