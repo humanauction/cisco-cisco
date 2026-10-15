@@ -1182,3 +1182,7 @@ To connect to and manage a switch over a local IP network, it must have an SVI c
 remotely manage the switch from another network.
 To configure an IPv4 default gateway on a switch, use `ip default-gateway ip-address` global configuration command. The ip-address that is configured is the IPv4 address of the local router interface connected to the switch.
 The `ip address` configured is the IPv4 address of the local router interface connected to the switch.
+
+## Module 11 Pass
+
+![module 11 pass](img/modulePass11.png)
