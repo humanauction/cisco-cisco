@@ -229,6 +229,7 @@ After the final destination is reached, the host responds with either an ICMP Po
 ### Lab 2: Use Ping and Traceroute to Test Network Connectivity
 
 ![lab worksheet PH](networkDevicesInitialConfiguration/UsePingTracerouteTestNetworkConnectivity.pdf)
+![lab pass](img/ICMPTestCorrectNetConn.png)
 
 ## Unit Summary
 
