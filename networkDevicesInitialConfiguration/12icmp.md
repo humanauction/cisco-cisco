@@ -273,3 +273,7 @@ tracert is a utility that generates a list of hops that were successfully reache
 The round-trip time is the time a packet takes to reach the remote host and for the response from the host to return. An `asterisk (*) is used to indicate a lost or unreplied packet`.
 
 Traceroute makes use of a function of the TTL field in IPv4 and the Hop Limit field in IPv6 in the Layer 3 headers, along with the ICMP Time Exceeded message.
+
+## Module Pass
+
+![module 12 pass](img/modulePass12.png)
