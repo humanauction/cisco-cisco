@@ -252,7 +252,10 @@ Answer: turn on privileged commands
 
 b. Type en and press the Tab key.
 
+```code
 S1> en<Tab>
+```
+
 Question:
 What displays after pressing the Tab key?
 
