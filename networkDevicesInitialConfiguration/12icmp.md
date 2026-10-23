@@ -48,7 +48,7 @@ When a host or gateway receives a packet that it cannot deliver, it can use an I
 - 2 - Protocol unreachable
 - 3 - Port unreachable
 
-#### Example Destination Unreachable codes for ICMPv6:
+#### Example Destination Unreachable codes for ICMPv6
 
 - 0 - No route to destination
 - 1 - Communication with the destination administratively prohibited (e.g. firewall)

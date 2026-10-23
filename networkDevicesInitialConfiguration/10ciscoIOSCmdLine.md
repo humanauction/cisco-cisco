@@ -167,7 +167,7 @@ Objectives
 - Part 2: Explore EXEC Modes
 - Part 3: Set the Clock
 
-### Background / Scenario
+### Background / Scenario
 
 - practice skills necessary for navigating the Cisco IOS, such as different user access modes, various configuration modes, and common commands used on a regular basis.
 - practice accessing the context-sensitive Help by configuring the clock command.
@@ -264,7 +264,7 @@ Answer: enable
 This is called command completion (or tab completion). When part of a command is typed, the Tab key can be used to complete the partial command. If the characters typed are enough to make the command unique, as in the case of the enable command, the remaining portion of the command is displayed.
 
 Question:
-What would happen if you typed te<Tab> at the prompt?
+What would happen if you typed `te<Tab>` at the prompt?
 
 Answer: more than one command that begins with the letters ‘te’ because ‘te’ does not provide enough characters to make the command unique. The characters will continue to display,
 
@@ -287,7 +287,7 @@ Answer: 5
 
 Step 2: Enter Global Configuration mode
 
-a. When in privileged EXEC mode, one of the commands starting with the letter ‘C’ is configure. Type either the full command or enough of the command to make it unique. Press the <Tab> key to issue the command and press ENTER.
+a. When in privileged EXEC mode, one of the commands starting with the letter ‘C’ is configure. Type either the full command or enough of the command to make it unique. Press the `<Tab>` key to issue the command and press ENTER.
 
 S1# configure
 Question:
@@ -320,7 +320,10 @@ Answer: time since device start in UTC date: Mon Mar 1 1993
 
 b. Use the context-sensitive help and the clock command to set the time on the switch to the current time. Enter the command clock and press ENTER.
 
+```code
 S1# clock<ENTER>
+```
+
 Question
 What information is displayed?
 
@@ -366,25 +369,37 @@ a. The IOS provides various outputs for incorrect or incomplete commands. Contin
 
 b. Issue the following commands and record the messages:
 
+```code
 S1# cl<enter>
+```
+
 Questions:
 What information was returned?
 
 Answer: ambiguous command
 
+```code
 S1# clock
+```
+
 Question:
 What information was returned?
 
 Answer: incomplete command
 
+```code
 S1# clock set 25:00:00
+```
+
 Question:
 What information was returned?
 
 Answer: invalid input bc 25 hours
 
+```code
 S1# clock set 15:00:00 32
+```
+
 Question:
 What information was returned?
 
@@ -399,35 +414,38 @@ The status of nearly every process or function of the router can be displayed us
 Commonly used show commands and when to use them are listed in the table.
 
 ```table
-| Show Command | When to Use |
-|--------------|-------------|
-| show running-config | Displays the current configuration file in RAM. |
-| show interfaces | Displays the status and configuration of all interfaces on the device. |
-| show ip interface | verify layer 3 configuration and status of interfaces. |
-| show arp | verify list of known hosts on local Ethernet LAN. |
-| show ip route | verify layer 3 routing table and routing protocols. |
-| show protocols | verify operational protocols |
-| show version | verify device information including memory, interfaces, licensing |
+| Show Command        | Use Case                                                       |
+|-------------------- | -------------------------------------------------------------- |
+| show running-config | Displays the current configuration file in RAM.                |
+| show interfaces     | Display status, configuration of all interfaces on the device. |
+| show ip interface   | verify layer 3 configuration and status of interfaces.         |
+| show arp            | verify list of known hosts on local Ethernet LAN.              |
+| show ip route       | verify layer 3 routing table and routing protocols.            |
+| show protocols      | verify operational protocols                                   |
+| show version        | verify device information inc. memory, interfaces, licensing   |
 ```
 
 ```table
-Key Show Commands
-Command	Description
-show running-config	Displays the active configuration stored in the device's memory.
-show ip interface brief	Provides a summary of the interface status and IP addresses.
-show version	Displays the current IOS version and system information.
-show vlan brief	Lists VLANs, their statuses, names, and assigned ports.
-show mac address-table	Shows the MAC addresses learned on the switch and their associated ports.
-show ip route	Displays the routing table for the device.
-show interfaces	Provides detailed information about all interfaces.
-show cdp neighbors	Lists directly connected Cisco devices using CDP.
-show processes cpu	Displays CPU utilization by processes.
-show flash	Shows information about the Flash memory.
+| Command                 | Description                                                  |
+|------------------------ | ------------------------------------------------------------ |
+| show running-config     | Display active configuration stored in the device's memory.  |
+| show ip interface brief | Provides a summary of the interface status and IP addresses. |
+| show version            | Displays the current IOS version and system information.     |
+| show vlan brief         | Lists VLANs, their statuses, names, and assigned ports.      |
+| show mac address-table  | Show MAC addresses, associated ports learned on the switch.  |
+| show ip route           | Displays the routing table for the device.                   |
+| show interfaces         | Provides detailed information about all interfaces.          |
+| show cdp neighbors      | Lists directly connected Cisco devices using CDP.            |
+| show processes cpu      | Displays CPU utilization by processes.                       |
+| show flash              | Shows information about the Flash memory.                    |
+
 Additional Useful Commands
-show startup-config: Displays the saved configuration that will be loaded on startup.
-show port-security: Displays the port security configuration for all interfaces.
-show interface trunk: Checks trunking status and native VLAN information.
-show ip protocols: Displays routing protocol information and network details.
+| Command                 | Description                                                  |
+|------------------------ | ------------------------------------------------------------ |
+| show startup-config     | Display saved configuration that will be loaded on startup.  |
+| show port-security      | Displays the port security configuration for all interfaces. |
+| show interface trunk    | Checks trunking status and native VLAN information.          |
+| show ip protocols       | Displays routing protocol information and network details.   |
 ```
 
 ## Packet Tracer - Use Cisco IOS Show Commands
@@ -436,11 +454,11 @@ show ip protocols: Displays routing protocol information and network details.
 
 = Use Cisco IOS show commands
 
-### Background / Scenario
+### Scenario / Background
 
 The Cisco IOS show commands are used extensively when working with Cisco equipment. In this activity, you will use the show commands on a router located at an ISP.
 
-#### Instructions
+#### Lab Instructions
 
 Part 1: Connect to the ISP Cisco 4321 router.
 
