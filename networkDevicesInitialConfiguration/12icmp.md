@@ -116,7 +116,13 @@ Note: DAD is not required, but RFC 4861 recommends that DAD is performed on unic
 
 #### NA Message
 
-Address resolution is used when a device on the LAN knows the IPv6 unicast address of a destination but does not know its Ethernet MAC address. `To determine the MAC address for the destination, the device will send an NS message to the solicited node address`. The `message will include the known (targeted) IPv6` address. The `device that has the targeted IPv6 address will respond` with an `NA message` containing its `Ethernet MAC address`.
+Address resolution is used when a device on the LAN knows the IPv6 unicast address of a destination but does not know its Ethernet MAC address.
+
+`To determine the MAC address for the destination, the device will send an NS message to the solicited node address`.
+
+The `message will include the known (targeted) IPv6` address.
+
+The `device that has the targeted IPv6 address will respond with` an `NA message` `containing` its `Ethernet MAC address`.
 ![NA message](img/naMess.png)
 In the figure, R1 sends a NS message to 2001:db8:acad:1::10 asking for its MAC address.
 
