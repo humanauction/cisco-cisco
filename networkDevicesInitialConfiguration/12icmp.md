@@ -283,3 +283,7 @@ Traceroute makes use of a function of the TTL field in IPv4 and the Hop Limit fi
 ## Module Pass
 
 ![module 12 pass](img/modulePass12.png)
+
+## Checkpoint 4 Pass
+
+![checkpoint 4 pass](img/4CheckpointPass.png)
