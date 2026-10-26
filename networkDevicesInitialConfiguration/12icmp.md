@@ -280,10 +280,14 @@ The round-trip time is the time a packet takes to reach the remote host and for 
 
 Traceroute makes use of a function of the TTL field in IPv4 and the Hop Limit field in IPv6 in the Layer 3 headers, along with the ICMP Time Exceeded message.
 
-## Module Pass
+## Module 12 Pass
 
 ![module 12 pass](img/modulePass12.png)
 
-## Checkpoint 4 Pass
+## Checkpoint 4
 
 ![checkpoint 4 pass](img/4CheckpointPass.png)
+
+## Final Exam
+
+![final exam Pass](img/finalExam.png)
