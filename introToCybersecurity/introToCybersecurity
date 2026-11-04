@@ -221,7 +221,7 @@ For example, a cyber attack could shut down the power grid of a major city. if t
 
 ### Analysis of a Cyber Attack
 
-### Types of Malware
+#### Types of Malware
 
 Cybercriminals use many different types of malicious software, or malware, to carry out their activities. Malware is any code that can be used to steal data, bypass access controls, or cause harm to or compromise a system.
 
@@ -239,7 +239,7 @@ Cybercriminals use many different types of malicious software, or malware, to ca
 | Trojan     | carries out malicious operations by masking its true intent. It might appear legitimate but is, in fact, very dangerous. Trojans exploit your user privileges and are most often found in image files, audio files or games. Trojans do not self-replicate but act as a decoy to sneak malicious software past users. |
 ```
 
-### Malware Symptoms
+#### Malware Symptoms
 
 e.g.s
 
@@ -253,3 +253,130 @@ e.g.s
 - programs opening and closing automatically or reconfiguring themselves
 - network connection problems, such as slow Internet speeds or frequent disconnections
 - unexpected changes to your computer’s security settings
+
+#### Social Engineering
+
+Social engineering is the manipulation of people into performing actions or divulging confidential information. includes:
+
+#### Pretexting
+
+When an attacker calls an individual and lies to them in an attempt to gain access to privileged data. e.g. pretending to need a person’s personal or financial data in order to confirm their identity.
+
+#### Tailgating
+
+When an attacker seeks entry to a restricted area that requires authentication. The attacker may ask an authorized person to hold the door open for them, or they may simply follow an authorized person into the area without their knowledge. Tailgating is often used to gain access to secure buildings or rooms.
+
+#### Quid-Pro-Quo
+
+When an attacker requests personal information from a person in exchange for something, like a free gift.
+
+#### Denial-of-Service
+
+Denial-of-Service (DoS) attacks are a type of network attack that is relatively simple to carry out, even by an unskilled attacker. A DoS attack results in some sort of interruption of network service to users, devices or applications.
+
+- `overwhelming traffic quantity` is when the attacker floods the target with requests for information or services. The target is unable to respond to all of the requests, and as a result, legitimate users are unable to access the information or services they need.
+- `Malicious Packet Formatting` is when the attacker sends malformed packets to the target. The target is unable to process the packets, and as a result, legitimate users are unable to access the information or services they need.
+
+#### Distributed DoS
+
+A Distributed DoS (DDoS) attack is similar to a DoS attack but originates from multiple, coordinated sources. For example:
+
+An attacker builds a network (botnet) of infected hosts called zombies, which are controlled by handler systems.
+The zombie computers will constantly scan and infect more hosts, creating more and more zombies.
+When ready, the hacker will instruct the handler systems to make the botnet of zombies carry out a DDoS attack.
+
+#### Botnet
+
+A bot computer is typically infected by visiting an unsafe website or opening an infected email attachment or infected media file. A botnet is a group of bots, connected through the Internet, that can be controlled by a malicious individual or group. It can have tens of thousands, or even hundreds of thousands, of bots that are typically controlled through a command and control server.
+
+These bots can be activated to distribute malware, launch DDoS attacks, distribute spam email, or execute brute-force password attacks. Cybercriminals will often rent out botnets to third parties for nefarious purposes.
+
+Many organizations. like Cisco, force network activities through botnet traffic filters to identify any botnet locations.
+
+#### On-Path Attacks
+
+On-path attackers intercept or modify communications between two devices, such as a web browser and a web server, either to collect information from or to impersonate one of the devices.
+
+This type of attack is also referred to as a man-in-the-middle or man-in-the-mobile attack.
+
+- `MitM attack`: is when an attacker intercepts communications between two devices, such as a web browser and a web server, either to collect information from or to impersonate one of the devices.
+
+- `MitMO` or `Man in the MObile attack`: is when an attacker intercepts communications between two mobile devices, such as a smartphone and a web server, either to collect information from or to impersonate one of the devices.
+
+#### SEO Poisoning
+
+SEO Poisoning is a technique used by cybercriminals to manipulate search engine results to direct users to malicious websites. This is typically done by creating fake content or using other methods to rank higher in search results, thereby increasing the likelihood that users will visit the malicious site.
+
+#### Password Attacks
+
+- `Password Spraying`: is when an attacker attempts to gain access to a large number of accounts by trying a list of commonly used passwords. This type of attack is often automated and can be very effective if users have weak or easily guessable passwords.
+- `Dictionary Attack`: is when an attacker uses a precompiled list of words, phrases, or common passwords to attempt to gain access to an account. This type of attack is often automated and can be very effective if users have weak or easily guessable passwords.
+- `Brute Force Attack`: is when an attacker attempts to gain access to an account by trying every possible combination of characters until the correct password is found. This type of attack can be very time-consuming and resource-intensive, but it can be effective if users have weak or easily guessable passwords.
+- `Rainbow Table Attack`: is when an attacker uses a precomputed table of hash values to attempt to reverse-engineer a password. This type of attack can be very effective if users have weak or easily guessable passwords, and if the password hashes are not salted.
+- `Traffic Interception`: is when an attacker intercepts network traffic to capture sensitive information, such as passwords or session tokens. This type of attack can be very effective if users are not using secure communication protocols, such as HTTPS. Plain text or unencrypted passwords can be easily read by other humans and machines by intercepting communications.
+
+If you store a password in clear, readable text, anyone who has access to your account or device, whether authorized or unauthorized, can read it.
+
+#### Advanced Persistent Threats
+
+Attackers also achieve infiltration through `advanced persistent threats (APTs)` — a multi-phase, long term, stealthy and advanced operation against a specific target. For these reasons, an individual attacker often lacks the skill set, resources or persistence to perform APTs.
+
+Due to the complexity and the skill level required to carry out such an attack, an APT is usually well-funded and typically targets organizations or nations for business or political reasons.
+
+Its main purpose is to deploy customized malware on one or more of the target’s systems and remain there undetected.
+
+### Hardware Vulnerabilities
+
+Hardware vulnerabilities are most often the result of hardware design flaws. For example, the type of memory called RAM basically consists of lots of capacitors (a component which can hold an electrical charge) installed very close to one another. However, it was soon discovered that, due to their close proximity, changes applied to one of these capacitors could influence neighbor capacitors. Based on this design flaw, an exploit called Rowhammer was created. By repeatedly accessing (hammering) a row of memory, the Rowhammer exploit triggers electrical interferences that eventually corrupt the data stored inside the RAM.
+Cartoon ghost holding a branch under a dripping yellow shield icon
+Meltdown and Spectre
+Google security researchers discovered Meltdown and Spectre, two hardware vulnerabilities that affect almost all central processing units (CPUs) released since 1995 within desktops, laptops, servers, smartphones, smart devices and cloud services.
+
+Attackers exploiting these vulnerabilities can read all memory from a given system (Meltdown), as well as data handled by other applications (Spectre). The Meltdown and Spectre vulnerability exploitations are referred to as side-channel attacks (information is gained from the implementation of a computer system). They have the ability to compromise large amounts of memory data because the attacks can be run multiple times on a system with very little possibility of a crash or other error.
+Hardware vulnerabilities are specific to device models and are not generally exploited through random compromising attempts. While hardware exploits are more common in highly targeted attacks, traditional malware protection and good physical security are sufficient protection for the everyday user.
+
+### Software Vulnerabilities
+
+#### SYNful Knock vs Cisco 2015
+
+SYNful Knock is a type of persistent malware that allows an attacker to gain control of an affected device and compromise its integrity with a modified Cisco IOS software image. It was described by Mandiant as having different modules enabled via the HTTP protocol and triggered by crafted TCP packets sent to the device.
+To avoid this alwyas verify integrity of the downloaded IOS image and limit physical device access to authorized personnel only.
+
+#### Categorizing Software Vulnerabilities
+
+- `Buffer Overflow`: Buffers are memory areas allocated to an application. A vulnerability occurs when data is written beyond the limits of a buffer. By changing data beyond the boundaries of a buffer, the application can access memory allocated to other processes. This can lead to a system crash,data compromise or provide escalation of privileges.
+- `Non-validated Input`: Programs often require data input, incoming data could have malicious content designed to force the program to behave in an unintended way. e.g. a program that receives an image for processing. A malicious user could craft an image file with invalid image dimensions. The maliciously crafted dimensions could force the program to allocate buffers of incorrect and unexpected sizes.
+- `Race Conditions`: a situation where the output of an event depends on ordered or timed outputs. A race condition becomes a source of vulnerability when the required ordered or timed events do not occur in the correct order or at the proper time - out of time out of mind.
+- `Weak Security Practices`: Systems and sensitive data can be protected through techniques such as authentication, authorization and encryption. Developers should stick to using security techniques and libraries that have already been created, tested and verified and should not attempt to create their own security algorithms. These will only likely introduce new vulnerabilities.
+- `Access Control problems`: the process of controlling who does what and ranges from managing physical access to equipment to dictating who has access to a resource, such as a file, and what they can do with it, such as read or change the file. Many security vulnerabilities are created by the improper use of access controls.
+
+Nearly all access controls and security practices can be overcome if an attacker has physical access to target equipment. For example, no matter the permission settings on a file, a hacker can bypass the operating system and read the data directly off the disk. Therefore, to protect the machine and the data it contains, physical access must be restricted, and encryption techniques must be used to protect data from being stolen or corrupted.
+
+#### Software Updates
+
+The goal of software updates is to stay current and avoid exploitation of vulnerabilities. Microsoft, Apple and other operating system producers release patches and updates almost every day and applications such as web browsers, mobile apps and web servers are often updated by the companies or organizations responsible for them.
+
+Despite the fact that organizations put a lot of effort into finding and patching software vulnerabilities, new vulnerabilities are discovered regularly. That’s why some organizations use third party security researchers who specialize in finding vulnerabilities in software, or actually invest in their own penetration testing teams dedicated to search, find and patch software vulnerabilities before they can get exploited.
+e.g. `Google’s Project Zero` - a permanent team dedicated to finding software vulnerabilities formed after discovery of a number of vulnerabilities in various software used by end users.
+
+### The Cybersecurity Landscape
+
+#### Cryptocurrency
+
+digital money that can be used to buy goods and services, using strong encryption techniques to secure online transactions. Banks, governments and even companies like Microsoft and AT&T are adopting cryptocurrency as a transaction method.
+
+1. Cryptocurrency owners keep their money in encrypted, virtual ‘wallets.’ When a transaction takes place between the owners of two digital wallets, the details are recorded in a decentralized, electronic ledger or blockchain system. This means it is carried out with a degree of anonymity and is self-managed, with no interference from third parties such as central banks or government entities.
+
+2. Approximately every ten minutes, special computers collect data about the latest cryptocurrency transactions, turning them into mathematical puzzles to maintain confidentiality. These transactions are then verified through a technical and highly complex process known as 'mining.' This step typically involves an army of 'miners' working on high-end PCs to solve mathematical puzzles and authenticate transactions.
+
+3. Once verified, the ledger is updated and electronically copied and disseminated worldwide to anyone belonging to the blockchain network, effectively completing a transaction.
+
+#### Cryptojacking
+
+emerging threat that hides on a user’s computer, mobile phone, tablet, laptop or server, using that machine’s resources to mine cryptocurrencies without the user's consent or knowledge.
+
+### Module 2 Test
+
+![module 2 pass](img/2ModulePass.png)
+
+## Module 3: Protecting Data and Privacy
