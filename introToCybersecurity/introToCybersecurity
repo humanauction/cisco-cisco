@@ -380,3 +380,27 @@ emerging threat that hides on a user’s computer, mobile phone, tablet, laptop 
 ![module 2 pass](img/2ModulePass.png)
 
 ## Module 3: Protecting Data and Privacy
+
+You’ve just been issued with a new laptop at @Apollo and are getting ready to set it up. What steps would you take to secure it before use?
+
+- physical lock
+- software update
+- security patches
+- antivirus
+- biometric login
+- screen guard
+- MFA authentication
+- encryption at all levels
+- VPN
+
+'officially' according to cisco answers to make your device safe and secure:
+
+- turn the firewall on: use at least one type of firewall (either a software firewall or a hardware firewall on a router) to protect devices from unauthorized access. The firewall should be turned on and constantly updated to prevent hackers from accessing personal or organization data.
+
+- install antivirus and antispyware: Malicious software, e.g. viruses and spyware, are designed to gain unauthorized access to computers and data. Once installed, viruses can destroy data and slow down computers. They can even take over the computer and broadcast spam emails from user accounts. Spyware can monitor online activities, collect personal information or produce unwanted pop-up ads on web browsers. To prevent this, only download software from trusted websites. always use antivirus software to provide another layer of protection and is designed to scan computers and incoming email for viruses and delete them. Keeping software up to date will help protect against new malicious software.
+
+- manage your operating system and browser: Hackers try to take advantage of vulnerabilities that may exist in operating systems (e.g. Microsoft Windows, macOS) or web browser (Google Chrome, Apple Safari). set the security settings on computers and browsers to medium level or higher. regularly update computer operating systems, including web browser(s), and download and install the latest software patches and security updates from vendors.
+
+- set up password protection: All computing devices, including PCs, laptops, tablets and smartphones, should be password protected to prevent unauthorized access. Any stored information, especially sensitive or confidential data, should be encrypted. Only store necessary information on your mobile device, in case it is stolen or lost.
+
+if any one device is compromised, criminals may be able to access all data through cloud storage service providers, e.g. iCloud, Google Drive.
