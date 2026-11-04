@@ -1,0 +1,255 @@
+# Introduction To Cybersecurity
+
+## Module 1: World of Cybersecurity
+
+Personal data is any information that can be used to identify you, and it can exist both offline and online.
+
+### User (aka Your) Data
+
+Personal data describes any information about you, including your name, social security number, driver license number, date and place of birth, your mother’s maiden name, and even pictures or messages that you exchange with family and friends.
+
+Cybercriminals can use this sensitive information to identify and impersonate you, infringing on your privacy and potentially causing serious damage to your reputation.
+
+- medical records
+  Every time you visit the doctor, personal information regarding your physical and mental health and wellbeing is added to your electronic health records (EHRs). Since the majority of these records are saved online, you need to be aware of the medical information that you share.
+
+And these records go beyond the bounds of the doctor’s office. For example, many fitness trackers collect large amounts of clinical data such as your heart rate, blood pressure and blood sugar levels, which is transferred, stored and displayed via the cloud. Therefore, you should consider this data to be part of your medical records.
+
+- Education records
+  Educational records contain information about your academic qualifications and achievements. However, these records may also include your contact information, attendance records, disciplinary reports, health and immunization records as well as any special education records including individualized education programs (IEPs).
+
+- Employment and financial records
+  Employment data can be valuable to hackers if they can gather information on your past employment, or even your current performance reviews.
+
+Your financial records may include information about your income and expenditure. Your tax records may include paychecks, credit card statements, your credit rating and your bank account details. All of this data, if not safeguarded properly, can compromise your privacy and enable cybercriminals to use your information for their own gain.
+
+### Smart Devices
+
+Computing devices have to access your personal data. Unless you have chosen to receive paper statements, you probably access digital copies of bank account statements via your bank’s website. And when paying a bill, it’s highly likely funds were transferred via a mobile banking app.
+
+Besides allowing access to information, computing devices can now also generate information about you.
+
+Wearable technologies (e.g. smartwatches, activity trackers) collect data for clinical research, patient health monitoring, and fitness and wellbeing tracking. As the global fitness tracker market grows, so also does the risk to personal data.
+
+information available online is free. But is privacy the price we pay for this digital convenience?
+
+For example, social media companies generate the majority of their income by selling targeted advertising based on customer data that has been mined using algorithms or formulas.
+
+### Identity Theft
+
+- medical theft
+  Medical identity theft occurs when someone uses your personal information to obtain medical services or goods. This can include using your health insurance information to receive medical care, prescription drugs, or surgery.
+
+- banking and credit card theft
+  Banking and credit card identity theft occurs when someone uses your personal information to access your bank account or credit card. This can include using your account number, PIN, or other personal information to make unauthorized transactions.
+
+### Who Else Wants Data?
+
+- ISPs: Internet Service Providers (ISPs) can track your online activity and collect data about your browsing habits, which they will sell to third parties in most countries.
+
+- Advertisers: Advertisers use cookies and other tracking technologies to collect data about your online behavior, which they use to target you with personalized ads.
+
+- Search engines: Search engines collect data about your search queries and browsing history, which they use to improve their services and target you with ads.
+
+- Social Media Platforms: Social media platforms collect data about your online activity, including the content you post, the people you interact with, and the ads you click on. They use this data to target you with personalized ads and to improve their services. inc: gender, geolocation, religious beliefs, political affiliations.
+
+- Websites: Websites collect data about your online activity, including the pages you visit, the links you click on, and the ads you view. They use this data to improve their services and target you with personalized ads.
+
+## Orginizational Data
+
+### Types of Organizational Data
+
+#### 1.2.1.1 Traditional Data
+
+Traditional data is typically generated and maintained by all organizations, big and small. It includes the following:
+
+- Transactional data such as details relating to buying and selling, production activities and basic organizational operations such as any information used to make employment decisions.
+- Intellectual property such as patents, trademarks and new product plans, which allows an organization to gain economic advantage over its competitors. This information is often considered a trade secret and losing it could prove disastrous for the future of a company.
+- Financial data such as income statements, balance sheets and cash flow statements, which provide insight into the health of a company.
+
+#### 1.2.1.2 Internet of Things (IoT) and Big Data
+
+IoT is a large network of physical objects, e.g. sensors, software and other equipment connected to the Internet. They can collect and share data. As storage options are expanding through the cloud and virtualization, the emergence of IoT has led to exponential data growth and called 'Big Data.'
+
+### The Cube
+
+The McCumber Cube is a model framework created by John McCumber in 1991 to help organizations establish and evaluate information security initiatives by considering all of the related factors that impact them. This security model has three dimensions:
+
+- The foundational principles for protecting information systems.
+- The protection of information in each of its possible states.
+- The security measures used to protect data.
+
+#### CIA Triad
+
+`Confidentiality` is a set of rules that prevents sensitive information from being disclosed to unauthorized people, resources and processes. Methods to ensure confidentiality include data encryption, identity proofing and two factor authentication.
+
+`Integrity` ensures that system information or processes are protected from intentional or accidental modification. One way to ensure integrity is to use a hash function or checksum.
+
+`Availability` means that authorized users are able to access systems and data when and where needed and those that do not meet established conditions, are not. This can be achieved by maintaining equipment, performing hardware repairs, keeping operating systems and software up to date, and creating backups.
+
+#### PST Triad
+
+`Processing` refers to data that is being used to perform an operation such as updating a database record (data in process).
+
+`Storage` refers to data stored in memory or on a permanent storage device such as a hard drive, solid-state drive or USB drive (data at rest).
+
+`Transmission` refers to data traveling between information systems (data in transit).
+
+#### ATP Triad
+
+`Awareness`, `training` and `education` are the measures put in place by an organization to ensure that users are knowledgeable about potential security threats and the actions they can take to protect information systems.
+
+`Technology` refers to the software- and hardware-based solutions designed to protect information systems such as firewalls, which continuously monitor your network in search of possible malicious incidents.
+
+`Policy` and `procedure` refers to the administrative controls that provide a foundation for how an organization implements information assurance, such as incident response plans and best practice guidelines.
+
+### data breaches
+
+#### Case: Razer
+
+In August 2020, elite gaming brand Razer experienced a data breach which exposed the personal information of approximately 100,000 customers.
+
+A security consultant discovered that a cloud cluster (group of linked servers providing data storage, databases, networking, and software through the Internet), was misconfigured and exposed a segment of Razer’s infrastructure to the public Internet, resulting in a data leak.
+
+It took Razer more than three weeks to secure the cloud instance from public access, during which cybercriminals had access to customer information that could have been used in social engineering and fraud attacks.
+
+Organizations need to take a proactive approach to cloud security to ensure that sensitive data is secured.
+
+#### Case: Persirai Botnet
+
+In 2017, a botnet called Persirai was discovered. A botnet is a network of infected devices that are controlled by a cybercriminal. The Persirai botnet infected more than 120,000 IP cameras and other Internet of Things (IoT) devices across 1000 different models. The botnet was used to launch distributed denial-of-service (DDoS) attacks, which can overwhelm a website or online service with traffic, making it unavailable to users.
+
+more IoT devices are being used in homes and businesses, and many of these devices have weak security controls. This makes them vulnerable to being infected by malware and used in botnets.
+
+#### Case: Equifax
+
+September 2017, Equifax, one of the largest credit reporting agencies in the United States, announced a data breach that exposed the personal information of approximately 147 million people. The breach was caused by a vulnerability in a web application framework that Equifax failed to patch. The exposed data included names, Social Security numbers, birth dates, addresses, and in some cases, driver’s license numbers. The breach also exposed credit card numbers for approximately 209,000 people and dispute documents with personal identifying information for approximately 182,000 people.
+
+In response to this breach, Equifax established a dedicated website that allowed Equifax customers to determine if their information was compromised. However, instead of using a subdomain of equifax.com, the company set up a new domain name, which allowed cybercriminals to create unauthorized websites with similar names. These websites were used to try and trick customers into providing personal information.
+
+### Consequences of a Security Breach
+
+#### Reputational Damage
+
+A security breach can have a negative long-term impact on an organization’s reputation that has taken years to build. Customers, particularly those who have been adversely affected by the breach, will need to be notified and may seek compensation and/or turn to a reliable and secure competitor. Employees may also choose to leave in light of a scandal.
+
+Depending on the severity of a breach, it can take a long time to repair an organization’s reputation
+
+#### Vandalism
+
+A hacker or hacking group may vandalize an organization’s website by posting untrue information. They might even just make a few minor edits to an organization’s phone number or address, which can be trickier to detect.
+
+In either case, online vandalism can portray unprofessionalism and have a negative impact on an organization’s reputation and credibility.
+
+#### Theft
+
+A data breach often involves an incident where sensitive personal data has been stolen. Cybercriminals can make this information public or exploit it to steal an individual’s money and/or identity.
+
+#### Loss of Revenue
+
+hackers can take down an organization’s website, preventing it from doing business online. A loss of customer information may impede company growth and expansion. It may demand further investment in an organization’s security infrastructure. organizations may face large fines or penalties if they do not protect online data.
+
+#### Damage to Intelectual Property
+
+impact on the competitiveness of an organization, particularly if hackers are able to get their hands on confidential documents, trade secrets and intellectual property.
+
+### Scenario Evaluation
+
+Hotel and elearning Platform breaches.
+quick:
+Both cases need improved security practices.
+
+hotel: staff training, hardware access hardening, password hashing, encryption, staff login tracking, accountability, access segmentation, failover + failsafe. VPN for internal systems, identity management, audit, track, report protocol.
+school: needs db and case hardening, input/regex check, security login check to stop doxxing/sql injection from the browser, VPN.
+
+Longer:
+
+- investing in cybersecurity training for all staff so that they are aware of and able to spot a cyber attack
+- enforcing two factor authentication for employees accessing files and applications that contain sensitive data
+- maintaining log files and ongoing monitoring to identify anomalous behavior that might indicate a data breach
+- storing the passwords of customers using a combination of salting and robust hashing algorithms
+- separating cloud-based resources from the public Internet into an isolated private network segment
+- granting employee access to personal data and internal systems only via a secure VPN connection.
+
+## Cyber Attackers
+
+### Hackers
+
+This group of attackers break into computer systems or networks to gain access. Depending on the intent of their break in, they can be classified as white, gray or black hat hackers.
+
+- White hat attackers break into networks or computer systems to identify any weaknesses so that the security of a system or network can be improved. These break-ins are done with prior permission and any results are reported back to the owner.
+- Gray hat attackers may set out to find vulnerabilities in a system but they will only report their findings to the owners of a system if doing so coincides with their agenda. Or they might even publish details about the vulnerability on the internet so that other attackers can exploit it.
+- Black hat attackers take advantage of any vulnerability for illegal personal, financial or political gain.
+
+### Amateurs
+
+'script kiddies' emerged in the 1990s and refers to amateur or inexperienced hackers who use existing tools or instructions found on the Internet to launch attacks. Some script kiddies are just curious, others are trying to demonstrate their skills and cause harm.
+
+### Organized Hacks
+
+Includes organizations of cyber criminals, hacktivists, terrorists and state-sponsored hackers. Usually highly sophisticated and organized, and may provide cybercrime as a service to other criminals.
+
+Hacktivists make political statements to create awareness about issues that are important to them.
+
+State-sponsored attackers gather intelligence or commit sabotage on behalf of their government. Also highly trained and well-funded, their attacks focus on specific goals beneficial to their government-sponsor.
+
+### Internal and External Threats
+
+Internal threats are posed by individuals who have authorized access to an organization’s systems and data. These individuals may be employees, contractors, or business partners who misuse their access to steal sensitive information or cause damage to the organization.
+
+External threats are posed by individuals or groups who do not have authorized access to an organization’s systems and data. These individuals may be hackers, cybercriminals, or other malicious actors who attempt to gain unauthorized access to steal sensitive information or cause damage to the organization.
+
+### Purpose of Cyberwarfare
+
+The main reason for resorting to cyberwarfare is to gain advantage over adversaries, whether they are nations or competitors.
+
+- To gather compromised information and/or defense secrets
+  A nation or international organization can engage in cyberwarfare in order to steal defense secrets and gather information about technology that will help narrow the gaps in its industries and military capabilities.
+
+Furthermore, compromised sensitive data can give attackers leverage to blackmail personnel within a foreign government.
+
+- To impact another nation’s infrastructure
+  Besides industrial and military espionage, a nation can continuously invade another nation’s infrastructure in order to cause disruption and chaos.
+
+For example, a cyber attack could shut down the power grid of a major city. if this were to happen roads would be congested, exchange of goods and services would be halted, patients would not be able to get the care they would need if an emergency occurred, access to the internet would be interrupted. By shutting down a power grid, a cyber attack could have a huge impact on the everyday life of ordinary citizens.
+
+## Module 1 Test
+
+![module 1 pass](img/1ModulePass.png)
+
+## Module 2: Attacks, concepts, Techniques
+
+### Analysis of a Cyber Attack
+
+### Types of Malware
+
+Cybercriminals use many different types of malicious software, or malware, to carry out their activities. Malware is any code that can be used to steal data, bypass access controls, or cause harm to or compromise a system.
+
+```table
+| Type       | Description                                                        |
+| -------    | ------------------------------------------------------------------ |
+| Spyware    | Designed to track and spy on you, spyware monitors your online activity and can log every key you press on your keyboard, as well as capture almost any of your data, including sensitive personal information such as your online banking details. Spyware does this by modifying the security settings on your devices. Often bundles itself with legitimate software or Trojan horses.|
+| Adware      | often installed with some versions of software and is designed to automatically deliver advertisements to a user, most often on a web browser. You know it when you see it! It’s hard to ignore when you’re faced with constant pop-up ads on your screen. Common for adware to come with spyware.|
+| Backdoor   | used to gain unauthorized access by bypassing the normal authentication procedures to access a system. As a result, hackers can gain remote access to resources within an application and issue remote system commands. Works in the background, difficult to detect. |
+| Ransomware | This malware is designed to hold a computer system or the data it contains captive until a payment is made. Ransomware usually works by encrypting your data so that you can’t access it. Some versions can take advantage of specific system vulnerabilities to lock it down. often spread through phishing emails that encourage you to download a malicious attachment or through a software vulnerability. |
+| Scareware  | uses 'scare’ tactics to trick you into taking a specific action. Scareware mainly consists of operating system style windows that pop up to warn you that your system is at risk and needs to run a specific program for it to return to normal operation. If you agree to execute the specific program, your system will become infected with malware. |
+| Rootkit    | designed to modify the operating system to create a backdoor, which attackers can then use to access your computer remotely. Most rootkits take advantage of software vulnerabilities to gain access to resources that normally shouldn’t be accessible (privilege escalation) and modify system files. Rootkits can also modify system forensics and monitoring tools, making them very hard to detect. In most cases, a computer infected by a rootkit has to be wiped and any required software reinstalled. |
+| Virus      | type of computer program that, when executed, replicates and attaches itself to other executable files, such as a document, by inserting its own code. Most viruses require end-user interaction to initiate activation and can be written to act on a specific date or time. Viruses can be relatively harmless, such as those that display a funny image. Or they can be destructive, such as those that modify or delete data. Viruses can also be programmed to mutate in order to avoid detection. Most viruses are spread by USB drives, optical disks, network shares or email. |
+| Worm       | replicates itself in order to spread from one computer to another. Unlike a virus, which requires a host program to run, worms can run by themselves. Other than the initial infection of the host, they do not require user participation and can spread very quickly over the network. Worms share similar patterns: They exploit system vulnerabilities, they have a way to propagate themselves, and they all contain malicious code (payload) to cause damage to computer systems or networks. Worms are responsible for some of the most devastating attacks on the Internet. In 2001, the Code Red worm had infected over 300,000 servers in just 19 hours. |
+| Trojan     | carries out malicious operations by masking its true intent. It might appear legitimate but is, in fact, very dangerous. Trojans exploit your user privileges and are most often found in image files, audio files or games. Trojans do not self-replicate but act as a decoy to sneak malicious software past users. |
+```
+
+### Malware Symptoms
+
+e.g.s
+
+- decrease in web browser speed
+- increase in pop-up ads
+- computer crashes or freezes
+- unexpected computer shutdowns
+- unexpected changes to your desktop or browser homepage
+- unexpected changes to your computer’s security settings
+- email or social media accounts sending messages you didn’t write
+- programs opening and closing automatically or reconfiguring themselves
+- network connection problems, such as slow Internet speeds or frequent disconnections
+- unexpected changes to your computer’s security settings
