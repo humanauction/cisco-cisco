@@ -867,9 +867,11 @@ There are a range of tools used to detect and prevent security incidents.
 - **DLP**: system is designed to stop sensitive data from being stolen from or escaping a network.
 - **SIEM**: system collects and analyzes security alerts, logs and other real-time and historical data from security devices on the network.
 
-## Module 4 Test
+## Module 4 Test
 
-## Module 5:
+![module 4 pass](img/4ModulePass.png)
+
+## Module 5
 
 ### Legal and Ethical Issues
 
@@ -903,3 +905,7 @@ The global society is still debating how best to deal with cyberspace. Country p
 Many professional IT organizations such as the Information Systems Security Association (ISSA) have published Codes of Ethics to help guide employee actions and behaviors.
 
 Cisco also has a team devoted exclusively to ethical business conduct and a Code of Business Conduct to help employees make business decisions and resolve any issues they may encounter.
+
+## Module 5 Test
+
+![Module 5 Pass](img/5ModulePass.png)
