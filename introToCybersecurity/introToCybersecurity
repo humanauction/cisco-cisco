@@ -381,6 +381,8 @@ emerging threat that hides on a user’s computer, mobile phone, tablet, laptop 
 
 ## Module 3: Protecting Data and Privacy
 
+### Device and Network Protection
+
 You’ve just been issued with a new laptop at @Apollo and are getting ready to set it up. What steps would you take to secure it before use?
 
 - physical lock
@@ -403,4 +405,147 @@ You’ve just been issued with a new laptop at @Apollo and are getting ready to 
 
 - set up password protection: All computing devices, including PCs, laptops, tablets and smartphones, should be password protected to prevent unauthorized access. Any stored information, especially sensitive or confidential data, should be encrypted. Only store necessary information on your mobile device, in case it is stolen or lost.
 
-if any one device is compromised, criminals may be able to access all data through cloud storage service providers, e.g. iCloud, Google Drive.
+N.B. if any one device is compromised, criminals may be able to access all data through cloud storage service providers, e.g. iCloud, Google Drive.
+
+#### Wireless Network Security at Home
+
+Wireless networks allow Wi-Fi enabled devices, such as laptops and tablets, to connect to the network by way of a preset network identifier, known as the service set identifier (SSID). Although a wireless router can be configured so that it doesn’t broadcast the SSID, this should not be considered adequate security for a wireless network.
+
+Hackers will be aware of the preset SSID and default password. Therefore, these details should be changed to prevent intruders from entering your home wireless network. Furthermore, you should encrypt wireless communication by enabling wireless security and the WPA2 encryption feature on your wireless router. But be aware, even with WPA2 encryption enabled, a wireless network can still be vulnerable.
+
+#### KRACK (Key Reinstallation Attack)
+
+A type of attack that targets the WPA2 protocol, which is used to secure Wi-Fi networks. It allows an attacker to intercept and manipulate the communication between a device and a Wi-Fi access point, potentially allowing them to steal sensitive information such as passwords and credit card numbers. The flaw affects all modern,protected WiFi systems. To mitigate the risk of KRACK attacks:
+
+- keep devices and software up to date with the latest security patches and updates.
+- use a virtual private network (VPN) to help protect data when using public Wi-Fi networks.
+- use wired connections for any wired (NIC) interface as they are generally more secure than wireless connections.
+
+#### Public Wi-Fi Risks
+
+accessing online services via public wireless networks or Wi-Fi hotspots comes with risks. These risks mean that it is best not to access or send any personal information when using public Wi-Fi.
+
+Always verify that devices aren’t configured with file and media sharing and require user authentication with encryption.
+
+Use an encrypted VPN service to prevent others from intercepting information (known as ‘eavesdropping’) over a public wireless network. This service provides secure Internet access by encrypting the connection between device and VPN server. Even if hackers intercept a data transmission in an encrypted VPN tunnel, they will not be able to decipher it.
+
+#### Using a Passphrase
+
+To prevent unauthorized device access, use passphrases instead of passwords. A passphrase generally takes the form of a sentence (‘Acat th@tlov3sd0gs.’) and it’s longer than a typical password - so less vulnerable to dictionary or brute-force attacks.
+
+#### Password Guidelines
+
+The United States National Institute of Standards and Technology (NIST) has published improved password requirements. NIST standards are intended for government applications but can serve as a standard for other sectors. The NIST password guidelines recommend the following:
+
+- Use a minimum of 8 characters and a maximum of 64 characters.
+- Use a combination of upper and lower case letters, numbers, and special characters.
+- Avoid using common words, phrases, or easily guessable information (e.g., birthdays, names, or simple patterns).
+- Do not reuse passwords across different accounts or services.
+- Consider using a password manager to generate and store complex passwords securely.
+- Change passwords regularly, especially if there is any suspicion that an account may have been compromised.
+- Enable multi-factor authentication (MFA) whenever possible to add an extra layer of security.
+- Be cautious when using public Wi-Fi and avoid accessing sensitive information when connected to these networks.
+
+### Data Maintenance
+
+#### What Is Encryption?
+
+Encryption is the process of converting information into a form in which unauthorized parties cannot read it. Only a trusted, authorized person with the secret key or password can decrypt the data and access it in its original form.
+
+N.B. encryption itself does not prevent someone from intercepting the data. It can only prevent an unauthorized person from viewing or accessing the content. Some criminals may decide to simply encrypt your data and make it unusable until you pay a ransom.
+
+#### How To Encrypt Data?
+
+Software programs are used to encrypt files, folders and even entire drives.
+
+Encrypting File System (EFS) is a Windows feature that can encrypt data. It is directly linked to a specific user account and only the user that encrypts the data will be able to access it after it has been encrypted using EFS.
+
+#### Data Back Up
+
+Having a backup may prevent the loss of irreplaceable data. To back up data properly, you will need an additional storage location for the data and you must copy the data to that location regularly.
+
+##### Home Network
+
+- local data storage.
+
+##### Secondary Location
+
+- data storage on a network attached storage device (NAS), a simple external hard drive. Or files, folders on thumb drives, CDs, DVDs, tapes.
+
+##### The Cloud
+
+- subscription to cloud storage services, e.g. Amazon Web Services (AWS). The cost of this service will depend on the amount of storage space needed. Access to backup data is available as long as you have access to your account. One benefit of using cloud storage is that data remains safe in the event of storage device failure or extreme situations e.g. fire, theft.
+
+### Who Owns User Data?
+
+#### Terms of Service
+
+Terms of Service will include a number of sections, from user rights and responsibilities to disclaimers and account modification terms.
+
+- The `data use` policy outlines how the service provider will collect, use and share your data.
+- The `privacy settings` allow you to control who sees information about you and who can access your profile or account data.
+- The `security policy` outlines what the company is doing to secure the data it obtains from you.
+
+#### Before Sign Up
+
+Factors to consider before signing up to online services?
+
+- Have you read the Terms of Service?
+- What are your rights regarding your data?
+- Can you request a copy of your data?
+- What can the provider do with the data you upload?
+- What happens to your data when you close your account?
+
+#### Protecting Data
+
+To protect data and safeguard accounts:
+
+- always read the Terms of Service when registering for a new service and decide whether the service is worth waiving your rights to your data for
+- select your privacy settings rather than accepting the default
+- limit the group of people you share content with
+- review the service provider’s security policy to understand what they are doing to protect your data
+- change your passwords periodically, use a complex password and two factor authentication to secure your account.
+
+### Safeguarding Online Privacy
+
+#### Two Factor Authentication
+
+Popular online services, such as Google, Facebook, Twitter, LinkedIn, Apple and Microsoft, use two factor authentication to add an extra layer of security for account logins.
+
+Besides username and password or personal identification number (PIN), two factor authentication requires a second token to verify identity. Includes:
+
+- physical object e.g. credit card, mobile, fob
+- biometric scan e.g. fingerprint or facial and voice recognition
+- verification code sent via SMS or email.
+
+#### Open Authorization
+
+Open authorization (OAuth) is an open standard protocol that allows user credentials to access third-party applications without exposing the password.
+example:
+a user needs to log into an eLearning portal and can’t remember their login details. The portal gives the option of logging in using credentials from their approved links e.g. github, google or social media e.g. Facebook
+
+#### Spoofing
+
+Spoofing is a technique used by cybercriminals to impersonate a trusted source in order to gain access to sensitive information or systems. This can be done through various methods, such as email spoofing, IP spoofing, or website spoofing. The goal of spoofing is to trick the victim into believing they are interacting with a legitimate entity, leading them to disclose personal information, click on malicious links, or download harmful software.
+
+simple forged or spoofed emails have led to massive data breachs and can cause irreversible reputational damage.
+
+#### Email and Web Browser Privacy
+
+Problems can be minimized by enabling the in-private browsing mode. Common private browser modes:
+
+- Microsoft Internet Explorer: InPrivate
+
+- Google Chrome: Incognito
+
+- Mozilla Firefox: Private tab or private window
+
+- Safari: Private browsing
+
+#### Private Mode
+
+Private mode works by preventing the browser from storing information about the user’s browsing session. This includes cookies, temporary internet files, and browsing history. However, it does not make the user completely anonymous online, as internet service providers (ISPs), employers, and websites can still track user activity. additionally routers and other network devices can still log user activity, and gather information about the user’s browsing habits. Private mode is useful for preventing other users of the same device from seeing your browsing history, but it does not provide complete privacy or security online.
+
+### Password Managment
+
+A password manager is a software application that helps users securely store and manage their passwords for various online accounts. It works by encrypting the stored passwords and requiring a master password to access them. Users can generate strong, unique passwords for each account, which the password manager will remember and autofill when needed.
