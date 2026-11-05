@@ -579,8 +579,327 @@ Security appliances can be standalone devices like a router or software tools th
 
 In computer networking, a firewall is designed to control or filter which communications are allowed in and which are allowed out of a device or network. A firewall can be installed on a single computer with the purpose of protecting that one computer (host-based firewall) or it can be a standalone network device that protects an entire network of computers and all of the host devices on that network (network-based firewall).
 
-As computer and network attacks have become more sophisticated, new types of firewalls have been developed, which serve different purposes.
+As computer and network attacks have become more sophisticated, new types of firewalls have been developed, which serve different purposes. common types:
 
-####
+Network layer firewall - filters communications based on source and destination IP addresses.
+Transport layer firewall - filters communications based on source and destination port numbers.
+Application layer firewall - filters communications based on the application or service being used.
+Context Aware layer firewall - filters communications based on the context of the communication, such as the user or the time of day.
+Network Address Translation (NAT) firewall - filters communications based on the translation of IP addresses.
+Host-based firewall - filters communications based on the host or device that is sending or receiving the communication.
+Proxy Server - acts on behalf of another server, typically for the purpose of routing requests or providing additional functionality. Filters web content requests like URLs, domain names and media types.
+Reverse Proxy Server - Placed in front of web servers, reverse proxy servers protect, hide, offload and distribute access to web servers.
 
-####
+Remember:
+
+- NAT firewall filters communications based on source and destination IP addresses.
+- proxy server filters web content requests like URLs, domain names and media types.
+- host-based firewall filters ports and system service calls on a single computer operating system.
+
+#### Port Scanning
+
+`Port Scanning`: process of probing a computer, server or other network host for open ports.
+
+In networking, each application running on a device is assigned an identifier called a port number. This port number is used on both ends of the transmission so that the right data is passed to the correct application.
+
+Port scanning can be used maliciously as a reconnaissance tool to identify the operating system and services running on a computer or host, or it can be used harmlessly by a network administrator to verify network security policies on the network.
+
+1. Download and launch a port scanning tool like Zenmap.
+
+- Enter the IP address of your computer, choose a default scanning profile and press ‘scan.’
+
+- The scan will report any services that are running, such as web or email services, and their port numbers.
+
+2. The scan will also report one of the following responses:
+
+- `Open`or `Accepted`: port or service running on the computer can be accessed by other network devices.
+- `Closed`, `Denied` or `Not Listening`: port or service is not running on the computer and therefore cannot be exploited.
+- `Filtered`, `Dropped` or `Blocked`: access to port or service is blocked by a firewall and therefore it cannot be exploited.
+
+3. To execute a port scan from outside of your network, you will need to run it against your firewall or router’s public IP address.
+
+- Enter the query ‘what is my IP address?’ into a search engine such as Google to find out this information.
+- Go to the Nmap Online Port Scanner, enter your public IP address in the input box and press ‘Quick Nmap Scan.’
+
+- If the response is open for ports 21, 22, 25, 80, 443 or 3389 then most likely, port forwarding has been enabled on your router or firewall and you are running servers on your private network.
+
+An ‘open’ state response means that the service running on the network can be accessed by other networks and if the service does contain a vulnerability, it could be exploited by an attacker who could potentially gain access to computers on the network.
+
+It’s important to note that port scanning should be seen as a precursor to a network attack and therefore should never be carried out on public servers on the internet or on an organization's network without permission.
+
+#### Intrusion Detection and Prevention Systems
+
+Intrusion detection systems (IDSs) and intrusion prevention systems (IPSs) are security measures deployed on a network to detect and prevent malicious activities.
+
+##### IDS
+
+The job of the IDS is to detect, log and report.
+
+An IDS can either be a dedicated network device or one of several tools in a server, firewall or host computer operating system (e.g. Windows or Linux) that scans data against a database of rules or attack signatures, looking for malicious traffic.
+
+If a match is detected, the IDS will log the detection and create an alert for a network administrator. It will not take action and therefore it will not prevent attacks from happening.
+
+The scanning performed by the IDS slows down the network (known as latency). To prevent network delay, an IDS is usually placed offline, separate from regular network traffic. Data is copied or mirrored by a switch and then forwarded to the IDS for offline detection.
+
+##### IPS
+
+An IPS can block or deny traffic based on a positive rule or signature match. One of the most `well-known IPS/IDS systems` is `Snort`. The commercial version of Snort is Cisco’s Sourcefire. Sourcefire can perform real-time traffic and port analysis, logging, content searching and matching, as well as detect probes, attacks and execute port scans. It also integrates with other third-party tools for reporting, performance and log analysis.
+
+#### Real-Time Detection
+
+Many organizations today are unable to detect attacks until days or even months after they occur.
+
+Detecting attacks in real time requires actively scanning for attacks using firewall and IDS/IPS network devices. Next generation client and server malware detection with connections to online global threat centers must also be used. Today, active scanning devices and software must detect network anomalies using context-based analysis and behavior detection.
+
+DDoS is one of the biggest attack threats requiring real-time detection and response. For many organizations, regularly occurring DDoS attacks cripple Internet servers and network availability. These attacks are extremely difficult to defend against because the attacks originate from hundreds, even thousands, of zombie hosts, and the attacks appear as legitimate traffic.
+
+#### Protecting Against Malware
+
+One way of defending against zero-day attacks and advanced persistent threats (APTs) is to use an enterprise-level advanced malware detection solution, like Cisco’s `Advanced Malware Protection (AMP) Threat Grid`.
+
+This is client/server software that can be deployed on host endpoints, as a standalone server or on other network security devices. It analyzes millions of files and correlates them against hundreds of millions of other analyzed malware artifacts for behaviors that reveal an APT. This approach provides a global view of malware attacks, campaigns and their distribution.
+
+##### Cisco waterfall
+
+`Security Operations team`: Threat Grid allows the Cisco Secure Operations Center team to gather more accurate, actionable data.
+
+`Incident Response team`: has access to forensically sound information from which it can more quickly analyze and understand suspicious behaviors.
+
+`Threat Intelligence team`: can proactively improve the organization’s security infrastructure.
+
+`Security Infrastructure Engineering team`: consume and act on threat information faster, often in an automated way.
+
+#### Security Best Practices
+
+Many national and professional organizations have published lists of security best practices. Some helpful guidelines are found in organizational repositories including National Institute of Standards and Technology (NIST) Computer Security Resource Center.
+
+Perform a risk assessment
+Knowing and understanding the value of what you are protecting will help to justify security expenditures.
+
+Create a security policy
+Create a policy that clearly outlines the organization’s rules, job roles, and responsibilities and expectations for employees.
+
+Physical security measures
+Restrict access to networking closets and server locations, as well as fire suppression.
+
+Human resources security measures
+
+- Background checks should be completed for all employees.
+
+Perform and test backups
+
+- Back up information regularly and test data recovery from backups
+
+Maintain security patches and updates
+
+- Regularly update server, client and network device operating systems and programs.
+
+Employ access controls
+
+- Configure user roles and privilege levels as well as strong user authentication.
+
+Regularly test incident response
+
+- Employ an incident response team and test emergency response scenarios.
+
+Implement a network monitoring, analytics and management tool
+
+- Choose a security monitoring solution that integrates with other technologies.
+
+Implement network security devices
+
+- Use next generation routers, firewalls and other security appliances.
+
+Implement a comprehensive endpoint security solution
+
+- Use enterprise level antimalware and antivirus software
+
+Educate users
+
+- Provide training to employees in security procedures.
+
+- One of the most widely known and respected organizations for cybersecurity training is the SANS Institute.
+
+Encrypt data
+
+- Encrypt all sensitive organizational data, including email.
+
+### Behavior Approach to Cybersecurity
+
+#### Behavior-Based Security
+
+Behavior-based security is a form of threat detection that involves capturing and analyzing the flow of communication between a user on the local network and a local or remote destination. Any changes in normal patterns of behavior are regarded as anomalies, and may indicate an attack.
+
+Honeypot: common tool used in behavior-based security. A honeypot is a decoy system or network that is designed to attract attackers and gather information about their tactics, techniques, and procedures (TTPs). By monitoring the activity on the honeypot, security teams can gain insights into the methods used by attackers and develop strategies to defend against them.
+
+Cisco Cyber Threat Detection and Situational Awareness: CCTDSA is a security architecture that uses behavior-based detection and indicators to provide greater visibility, context and control. The aim is to know who is carrying out the attack, what type of attack they are performing and where, when and how the attack is taking place. This security architecture uses many security technologies to achieve this goal.
+
+#### NetFlow
+
+NetFlow technology is used to gather information about data flowing through a network, including who and what devices are in the network, and when and how users and devices access the network.
+
+NetFlow is an important component in behavior-based detection and analysis. Switches, routers and firewalls equipped with NetFlow can report information about data entering, leaving and traveling through the network.
+
+This information is sent to NetFlow collectors that collect, store and analyze NetFlow data, which can be used to establish baseline behaviors on more than 90 attributes, such as source and destination IP address.
+
+#### Penetration Testing
+
+Penetration testing, commonly known as pen testing, is the act of assessing a computer system, network or organization for security vulnerabilities. A pen test seeks to breach systems, people, processes and code to uncover vulnerabilities which could be exploited. This information is then used to improve the system’s defenses to ensure that it is better able to withstand cyber attacks in the future. 5 steps in a penetration test:
+
+1. Planning, Reconnaissance: Define the scope and goals of a test, including the systems to be addressed and the testing methods to be used. Gather intelligence (e.g., network and domain names, mail server) to better understand how a target works and its potential vulnerabilities. Conducting passive or active reconnaissance (footprinting) and vulnerability research.
+2. Scanning: Understand how the target application will respond to various intrusion attempts. This is typically done using static analysis (inspecting an application’s code to estimate the way it behaves while running) and dynamic analysis (inspecting an application’s code in a running state). These tools can be used to identify potential entry points and vulnerabilities in the system. The pen tester carries out active reconnaissance to probe a target system or network and identify potential weaknesses which, if exploited, could give an attacker access. Active reconnaissance may include:
+
+- port scanning to identify potential access points into a target system
+- vulnerability scanning to identify potential exploitable vulnerabilities of a particular target
+- establishing an active connection to a target (enumeration) to identify the user account, system account and admin account.
+
+3. Gaining Access: This stage uses web application attacks, such as cross-site scripting, SQL injection and backdoors, to uncover a target’s vulnerabilities. Testers then try and exploit these vulnerabilities, typically by escalating privileges, stealing data, intercepting traffic, etc., to understand the damage they can cause. The pen tester will attempt to gain access to a target system and sniff network traffic, using various methods to exploit the system including:
+
+- launching an exploit with a payload onto the system
+- breaching physical barriers to assets
+- social engineering
+- exploiting website vulnerabilities
+- exploiting software and hardware vulnerabilities or misconfigurations
+- breaching access controls security
+- cracking weak encrypted Wi-Fi.
+
+4. Maintaining Access: The goal of this stage is to see if the vulnerability can be used to achieve a persistent presence in the exploited system—long enough for a malicious actor to gain in-depth access. The idea is to mimic advanced persistent threats, which often remain in a system for months in order to steal an organization’s most sensitive data. The pen tester will maintain access to the target to find out what data and systems are vulnerable to exploitation. It is important that they remain undetected, typically using backdoors, Trojan horses, rootkits and other covert channels to hide their presence.
+
+When this infrastructure is in place, the pen tester will then proceed to gather the data that they consider valuable. 5. Analysis, Reporting: The results of the penetration test are then compiled into a report detailing: specific vulnerabilities that were exploited, sensitive data that was accessed, and the amount of time the pen tester was able to remain in the system undetected. This information is analyzed by security personnel to help configure an enterprise’s WAF settings and other application security solutions to patch vulnerabilities and protect against future attacks. The pen tester will provide feedback via a report that recommends updates to products, policies and training to improve an organization’s security.
+
+##### how to carry out a pen test
+
+1. Footprinting through the network to find ways to intrude gives you a chance to gather the information you need to plan a simulated attack.
+2. Scanning a target allows you to identify potential exploitable weaknesses.
+3. You will need to gain access to a network to exploit any vulnerabilities and simulate an attack.
+4. Maintaining access, without being detected, means that you can gather further information on a target’s vulnerabilities.
+5. Analysis and reporting of the findings will help the organization improve its security posture.
+   Your findings will be reported to the organization so that security improvements can be made.
+
+#### Impact Reduction
+
+While most organizations today are aware of common security threats and put considerable effort into preventing them, no set of security practices is foolproof. Therefore, organizations must be prepared to contain the damage if a security breach occurs.
+
+Communicate the issue
+
+- Communication creates transparency, which is critical in this type of situation.
+
+- Internally, all employees should be informed and a clear call to action communicated.
+
+- Externally, all clients should be informed through direct communication and official announcements.
+
+Be sincere and accountable
+
+- Respond to the breach in an honest and genuine way, taking responsibility where the organization is at fault.
+
+Provide the details
+
+- Be open and explain why the breach took place and what information was compromised. Organizations are generally expected to take care of any client costs associated with identity theft services required as a result of a security breach.
+
+Find the cause
+
+- Take steps to understand what caused and facilitated the breach. This may involve hiring forensics experts to research and find out the details.
+
+Apply lessons learned
+
+- Make sure that any lessons learned from forensic investigations are applied to prevent similar breaches from happening in the future.
+
+Check, check then check again
+
+- Attackers will often attempt to leave a backdoor to facilitate future breaches. To prevent this from happening, make sure that all systems are clean, no backdoors are installed and nothing else has been compromised.
+
+Education
+
+- Raise awareness, train and educate employees, partners and clients on how to prevent future breaches.
+
+#### Risk Management
+
+`Risk management` - formal process of `continuously identifying and assessing risk in an effort to reduce the impact of threats and vulnerabilities`. You cannot eliminate risk completely but you can determine acceptable levels by weighing up the impact of a threat with the cost of implementing controls to mitigate it. The cost of a control should never be more than the value of the asset you are protecting.
+
+Stages of Risk Management aka FARM
+
+- `Frame` risk - Identify threats that increase the risk to your organization and determine the impact of those threats on your organization’s assets. Identify the vulnerabilities that could be exploited by those threats and determine the likelihood of those vulnerabilities being exploited. Determine the level of risk to your organization and decide what level of risk is acceptable.
+- `Assess` risk - determine the level of risk to your organization and decide what level of risk is acceptable. Identify the threats that increase the risk to your organization and determine the impact of those threats on your organization’s assets. Identify the vulnerabilities that could be exploited by those threats and determine the likelihood of those vulnerabilities being exploited.
+- `Respond` risk - develop an action plan to mitigate the risk. This may involve implementing security controls, such as firewalls, intrusion detection systems, and access controls, to reduce the likelihood of a threat being exploited. It may also involve developing contingency plans to minimize the impact of a threat if it does occur.
+- `Monitor` risk - continuous monitoring and review of the risk management process to ensure that it remains effective and relevant. This may involve regular risk assessments, audits, and reviews of security controls to identify new threats and vulnerabilities. It may also involve updating contingency plans and response procedures to reflect changes in the organization’s assets, operations, or threat landscape.
+
+### Cisco Approach to Cybersecurity
+
+#### Cisco's CSIRT
+
+Many large organizations have a Computer Security Incident Response Team (CSIRT) to receive, review and respond to computer security incident reports. Cisco CSIRT goes a step further and provides proactive threat assessment, mitigation planning, incident trend analysis and security architecture review in an effort to prevent security incidents from happening.
+
+Cisco’s CSIRT takes a proactive approach, collaborating with the Forum of Incident Response and Security Teams (FIRST), the National Safety Information Exchange (NSIE), the Defense Security Information Exchange (DSIE) and the DNS Operations Analysis and Research Center (DNS-OARC) to ensure we stay up-to-date with new developments.
+
+There are several national and public CSIRT organizations, like the CERT Division of the Software Engineering Institute at Carnegie Mellon University, that are available to help organizations and national CSIRTs to develop, operate and improve their incident management capabilities.
+
+#### Security Playbook
+
+One of the best ways to prepare for a security breach is to prevent it. Organizations should provide guidance on:
+
+- how to identify the cybersecurity risk to systems, assets, data and capabilities
+- implementation of safeguards and personnel training
+- flexible response plan that minimizes the impact and damage in the event of a security breach
+- security measures and processes that need to be put in place in the aftermath of a security breach.
+
+All this information should be compiled into a security playbook.
+
+`security playbook`: a `collection of repeatable queries or reports that outline a standardized process for incident detection and response`. A security playbook should:
+
+- highlight how to identify and automate the response to common threats such as the detection of malware-infected machines, suspicious network activity or irregular authentication attempts.
+- describe and clearly define inbound and outbound traffic.
+- provide summary information including trends, statistics and counts.
+- provide usable and quick access to key statistics and metrics.
+- correlate events across all relevant data sources.
+
+#### Tools for Incident Detection and Prevention
+
+There are a range of tools used to detect and prevent security incidents.
+
+`Security Information and Event Management (SIEM) system`: collects and analyzes security alerts, logs and other real-time and historical data from security devices on the network to facilitate early detection of cyber attacks.
+
+`Data Loss Prevention (DLP) system`: designed to stop sensitive data from being stolen from or escaping a network. It monitors and protects data in three different states: data in use (data being accessed by a user), data in motion (data traveling through the network) and data at rest (data stored in a computer network or device).
+
+##### Terminology
+
+- **IPS**: can block or deny traffic based on a positive rule or signature match.
+- **IDS**: scans data against a database of rules or attack signatures, looking for malicious traffic.
+- **DLP**: system is designed to stop sensitive data from being stolen from or escaping a network.
+- **SIEM**: system collects and analyzes security alerts, logs and other real-time and historical data from security devices on the network.
+
+## Module 4 Test
+
+## Module 5:
+
+### Legal and Ethical Issues
+
+Legal Issues in Cybersecurity
+In order to protect against attacks, cybersecurity professionals must have the same skills as the attackers. However, cybersecurity professionals use their skills within the bounds of the law.
+
+![Ethical Dilemma Tree](img/module5EthicalDilemmaTree.png)
+
+### Personal legal issues
+
+At work or home, you may have the opportunity and skills to hack another person’s computer or network. But there is an old saying, 'Just because you can does not mean you should.' Most hacks leave tracks, which can be traced back to you.
+
+Cybersecurity professionals develop many skills, which can be used positively or illegally. There is always a huge demand for those who choose to put their cyber skills to good use within legal bounds.
+
+### Corporate legal issues
+
+Most countries have cybersecurity laws in place, which businesses and organizations must abide by.
+
+In some cases, if you break cybersecurity laws while doing your job, the organization may be punished and you could lose your job. In other cases, you could be prosecuted, fined and possibly sentenced.
+
+In general, if you are unsure whether an action or behavior might be illegal, assume that it is illegal and do not do it. Always check with the legal or HR department in the organization.
+
+### International law and cybersecurity
+
+International cybersecurity law is a constantly evolving field. Cyber attacks take place in cyberspace, an electronic space created, maintained and owned by both the public and private entities. There are no traditional geographic boundaries in cyberspace. To further complicate issues, it is much easier to mask the source of a attack in cyberwarfare than in conventional warfare.
+
+The global society is still debating how best to deal with cyberspace. Country practice, opinio juris (a sense on behalf of a country that it is bound to the law in question) and any treaties drafted will shape international cybersecurity law.
+
+### Corporate Ethical Issues
+
+Many professional IT organizations such as the Information Systems Security Association (ISSA) have published Codes of Ethics to help guide employee actions and behaviors.
+
+Cisco also has a team devoted exclusively to ethical business conduct and a Code of Business Conduct to help employees make business decisions and resolve any issues they may encounter.
