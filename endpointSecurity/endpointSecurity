@@ -1,0 +1,207 @@
+# Endpoint Security
+
+## Module 1: Cybersecurity Threats, Vulnerabilities and Attacks
+
+### 1.1 Common Threats
+
+#### Threat Domains
+
+organizations face ever-growing cyber threats, it is critical to have robust security solutions in place. But to protect themselves, organizations first need to know what vulnerabilities exist within their `threat domains`.
+
+`‘threat domain’ - considered to be an area of control, authority or protection that attackers can exploit to gain access to a system.`
+
+There are many ways that attackers can uncover vulnerabilities and exploit systems within a domain:
+
+direct physical access to a system, such as an attacker walking into a building and plugging a device into a network port
+Exposed services and outdated software: Systems reachable from the network may be missing security updates or have unnecessary services enabled.
+Weak identity controls: Reused or guessable passwords, excessive account privileges, poorly protected service accounts, and weak multifactor-authentication coverage can make accounts easier to compromise.
+Misconfigurations: Overly broad permissions, insecure file shares, weak policies, and trust relationships can give users or systems more access than intended.
+Phishing and stolen credentials: Deceptive messages or compromised devices can expose credentials that are then misused to access internal resources.
+Lateral movement: After gaining an initial foothold, an attacker may try to use existing permissions or misconfigured systems to reach more sensitive accounts and servers.
+Poor monitoring: Gaps in logging and alerting can let suspicious sign-ins, privilege changes, or unusual access go unnoticed.
+For defense, maintain an accurate asset inventory, patch promptly, enforce MFA and unique credentials, use least privilege, review domain and share permissions, segment sensitive systems, and monitor authentication and administrative activity. Test these controls only through an authorized security assessment, with a defined scope and approval.
+
+#### Types of Cyber Threats
+
+Cyber threats can be classified into different categories. This allows organizations to assess the likelihood of a threat occurring and understand the monetary impact of a threat so that they can prioritize their security efforts.
+
+Software Attacks: These attacks exploit vulnerabilities in software applications, operating systems, or firmware. Examples include viruses, worms, ransomware, and spyware.
+Software Errors: These are unintentional flaws or bugs in software that can be exploited by attackers. Examples include buffer overflows, input validation errors, and race conditions.
+Sabotage: This involves deliberate actions taken to disrupt or damage systems, networks, or data. Examples include insider threats, physical sabotage, and denial-of-service attacks.
+Human Errors: These are mistakes made by individuals that can lead to security vulnerabilities. Examples include misconfigurations, weak passwords, and accidental data exposure.
+Theft: This refers to the unauthorized taking of physical or digital assets. Examples include stealing laptops, mobile devices, or sensitive data.
+Hardware Failures: These are malfunctions or breakdowns of physical components that can lead to security vulnerabilities. Examples include hard drive failures, power outages, and network equipment failures.
+Utility interruptions: These are disruptions in essential services that can impact the availability and security of systems. Examples include power outages, internet service disruptions.
+Natural disasters: These are events caused by natural phenomena that can impact the security and availability of systems. Examples include earthquakes, floods, hurricanes, and wildfires.
+
+#### 1.1.4 Internal vs External Threats
+
+Threats can originate from both within and outside of an organization, with attackers seeking access to valuable sensitive information such as personnel records, intellectual property, and financial data.
+
+Internal threats are usually carried out by current or former employees and other contract partners who accidentally or intentionally mishandle confidential data or threaten the operations of servers or network infrastructure devices by connecting infected media or by accessing malicious emails or websites.
+
+The source of an external threat typically stems from amateur or skilled attackers who can exploit vulnerabilities in networked devices or can use social engineering techniques, such as trickery, to gain access to an organization’s internal resources.
+
+#### User Threats and Vulnerabilities
+
+A user domain includes anyone with access to an organization’s information system, including employees, customers and contract partners. Users are often considered to be the weakest link in information security systems, posing a significant threat to the confidentiality, integrity and availability of an organization’s data.
+
+No Security Awareness: Users who are unaware of security best practices may inadvertently expose sensitive information or fall victim to phishing attacks.
+Poor Security Policy Enforcement: If an organization does not enforce security policies, users may engage in risky behaviors that compromise security.
+Data theft: Users may intentionally or unintentionally steal sensitive data, either for personal gain or to harm the organization.
+Unauthorised Downloads, Media: Users may download unauthorized software or media that can introduce malware or other security risks to the organization’s systems.
+Unauthorised VPN Access: Users may attempt to access the organization’s network through unauthorized VPN connections, bypassing security controls.
+Destruction of systems, applications or data: The accidental or deliberate destruction or sabotage of systems, applications and data poses a serious risk to all organizations. Activists, disgruntled employees or industry competitors attempt to delete data and destroy or misconfigure devices, to make organizational data and information systems unavailable.
+
+N.B. There are `no technical solutions, controls or countermeasures` that will `make information systems any more secure than the behaviors` and processes `of the people` who use these systems.
+
+#### Threats to Devices
+
+Any devices left powered on and unattended pose the risk of someone gaining unauthorized access to network resources.
+Downloading files, photos, music or videos from unreliable sources could lead to the execution of malicious code on devices.
+Cybercriminals often exploit security vulnerabilities within software installed on an organization’s devices to launch an attack.
+An organization’s information security teams must try to keep up to date with the daily discovery of new viruses, worms and other malware that pose a threat to their devices.
+Users who insert unauthorized USB drives, CDs or DVDs run the risk of introducing malware, or compromising data stored on their device.
+Policies are in place to protect an organization’s IT infrastructure. A user can face serious consequences for purposefully violating such policies.
+Using outdated hardware or software makes an organization’s systems and data more vulnerable to attack.
+
+A user domain includes anyone with access to an organization’s information system — all employees, customers and contract partners.
+A device domain refers to any computers and other devices connected to a computer network.
+The physical facilities domain includes all the premises used by an organization, as well as the physical security measures employed to safeguard an organization’s premises.
+A LAN domain is a collection of devices connected locally by cables or airwaves.
+A private cloud domain includes any private servers, resources and IT infrastructure available only to members of a single organization via the Internet, whereas the public cloud domain includes all computing services hosted by a cloud, service or Internet provider that are available to the public and shared across organizations. There are three different cloud service models:
+SaaS provides organizations with software that is centrally hosted and accessed by users via the Internet.
+PaaS provides a platform that allows an organization to develop, run and manage its application on the service’s hardware, using tools that the service provides, all accessible via the Internet.
+IaaS provides virtual computing resources such as hardware, software, servers, storage and other infrastructure components accessible over the Internet.
+
+#### Threats to the Local Area Network
+
+The local area network (LAN) is a collection of devices, typically in the same geographic area, connected by cables (wired) or airwaves (wireless).
+
+Because users can access an organization’s systems, applications and data from the LAN domain, it is critical that it has strong security and stringent access controls.
+
+Examples of threats to the LAN include:
+
+- Unauthorized access to wiring closets, data centers and computer rooms.
+- Unauthorized access to systems, applications and data.
+- Network operating system or software vulnerabilities and updates.
+- Rogue users gaining unauthorized access to wireless networks.
+- Exploits of data in transit.
+- Having LAN servers with different hardware or operating systems makes managing and troubleshooting them more difficult.
+- Unauthorized network probing and port scanning.
+- Misconfigured firewalls.
+
+#### Threats to the Private Cloud
+
+A cloud in the centre of four icons: a desktop, a router with a wireless signal, a server and a laptop
+The private cloud domain includes any private servers, resources and IT infrastructure available to members of a single organization via the Internet. While many organizations feel that their data is safer in a private cloud, this domain still poses significant security threats, including:
+
+Unauthorized network probing and port scanning.
+Unauthorized access to resources.
+Router, firewall or network device operating system or software vulnerabilities.
+Router, firewall or network device configuration errors.
+Remote users accessing an organization’s infrastructure and downloading sensitive data.
+
+#### Threats to the Public Cloud
+
+Where a private cloud domain hosts computing resources for a single organization, the public cloud domain is the entirety of computing services hosted by a cloud, service or Internet provider that are available to the public and shared across organizations.
+
+There are three models of public cloud services that organizations may choose to use.
+
+1. Software as a Service (SaaS) - This is a subscription-based model that provides organizations with software that is centrally hosted and accessed by users via a web browser, app or other software. In other words, this is software not stored locally but in the cloud.
+2. Platform as a Service (PaaS) - subscription-based model provides a platform that allows an organization to develop, run and manage its applications on the service’s hardware, using tools that the service provides. This platform is accessed via the public cloud.
+3. Infrastructure as a Service (IaaS) - subscription-based model provides virtual computing resources such as hardware, software, servers, storage and other infrastructure components accessible over the Internet. An organization will buy access to them and use them via the public cloud.
+
+Examples of threats to an organization’s physical facilities domain include:
+
+- Natural threats such as extreme weather and geological hazards.
+- Someone gaining unauthorized access to the premises.
+- Power interruptions or outages.
+- Social engineering attacks that attempt to find out about an organization’s security policies and procedures.
+- Breaches of electronic perimeter defenses.
+- Theft.
+- An unlocked data center.
+- A lack of surveillance on the premises.
+
+#### Threats to Applications
+
+The application domain includes all of the critical systems, applications and data used by an organization to support operations. Increasingly, organizations are moving applications such as email, security monitoring and database management to the public cloud.
+
+Common threats to applications include:
+
+- Someone gaining unauthorized access to data centers, computer rooms, wiring closets or systems.
+- Server downtime during maintenance periods.
+- Network operating system software vulnerabilities.
+- Data loss.
+- Client-server or web application development vulnerabilities.
+
+#### Domain Checker
+
+```test
+That’s right!
+
+You have correctly identified the range of domains in play at @Apollo.
+
+@Apollo employees have access to the organization’s information system and form part of the user domain.
+They can enter any of the @Apollo offices using electronic staff ID cards. These are used to safeguard the organization’s premises and therefore fall into the physical facilities domain.
+Any desktop computer, laptop, tablet or smartphone used to access @Apollo’s network is part of the device domain.
+@Apollo’s internal network, which is made up of a collection of these and other devices, forms the LAN domain.
+@Apollo happens to be a SaaS provider, offering customers access to a suite of centrally hosted eLearning modules for a subscription fee.
+So, @Apollo operates on the public cloud domain.
+```
+
+#### Threat Complexity
+
+Software vulnerabilities occur as a result of programming mistakes, protocol vulnerabilities or system misconfigurations. Cybercriminals seek to take advantage of such vulnerabilities and are becoming increasingly sophisticated in their attack methods.
+
+An advanced persistent threat (APT) is a continuous attack that uses elaborate espionage tactics involving multiple actors and/or sophisticated malware to gain access to and analyze a target’s network.
+
+Attackers operate under the radar and remain undetected for a long period of time, with potentially devastating consequences. APTs typically target governments and high-level organizations and are usually well-orchestrated and well-funded.
+
+As the name suggests, algorithm attacks take advantage of algorithms in a piece of legitimate software to generate unintended behaviors. For example, algorithms used to track and report how much energy a computer consumes can be used to select targets or trigger false alerts. They can also disable a computer by forcing it to use up all its RAM or by overworking its central processing unit (CPU).
+
+Many organizations rely on threat intelligence data to help them understand their overall risk, so that they can formulate and put in place effective preventative and response measures.
+
+Some of this data is closed source and requires a paid subscription for access. Other data is considered open source intelligence (OSINT) and can be accessed from publicly available information sources. In fact, sharing threat intelligence data is becoming more popular, with governments, universities, healthcare sector organizations and private businesses working together to improve everyone’s security.
+
+#### Backdoors and Rootkits
+
+Cybercriminals also use many different types of malicious software (known as malware) to carry out their attacks.
+
+Backdoor: Backdoor programs, such as Netbus and Back Orifice, are used by cybercriminals to gain unauthorized access to a system by bypassing the normal authentication procedures.
+
+Cybercriminals typically have authorized users unknowingly run a remote administrative tool program (RAT) on their machine to install a backdoor that gives the criminal administrative control over a target computer. Backdoors grant cybercriminals continued access to a system, even if the organization has fixed the original vulnerability used to attack the system.
+
+RootKit: Malware designed to modify the operating system to create a backdoor. attackers can then use it to access the computer remotely. Most rootkits take advantage of software vulnerabilities to gain access to resources that normally shouldn’t be accessible (`privilege escalation`) and modify system files.
+Can also modify system forensics and monitoring tools, making them very hard to detect. In most cases, a computer infected by a rootkit has to be wiped and any required software reinstalled.
+
+#### Threat Intelligence and Research Sources
+
+The United States Computer Emergency Readiness Team (US-CERT) and the U.S. Department of Homeland Security sponsor a dictionary of common vulnerabilities and exposures (CVE).
+
+Each CVE entry contains a standard identifier number, a brief description of the security vulnerability and any important references to related vulnerability reports. The CVE list is maintained by a not-for-profit, the MITRE Corporation, on its public website.
+
+Dark Web: dark web
+This refers to encrypted web content that is not indexed by conventional search engines and requires specific software, authorization or configurations to access. Expert researchers monitor the dark web for new threat intelligence.
+
+Indicator of compromise (IOC): IOCs such as malware signatures or domain names provide evidence of security breaches and details about them.
+
+Automated Indicator Sharing (AIS): Cybersecurity and Infrastructure Security Agency (CISA) capability, enables the real-time exchange of cybersecurity threat indicators using a standardized and structured language called Structured Threat Information Expression (STIX) and Trusted Automated Exchange of Intelligence Information (TAXII).
+
+## Module 2
+
+## Module 3
+
+## Module 4
+
+## Module 5
+
+## Module 6
+
+## Module 7
+
+## Module 8
+
+## Module 9
+
+## Module 10
