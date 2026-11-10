@@ -158,7 +158,7 @@ An advanced persistent threat (APT) is a continuous attack that uses elaborate e
 
 Attackers operate under the radar and remain undetected for a long period of time, with potentially devastating consequences. APTs typically target governments and high-level organizations and are usually well-orchestrated and well-funded.
 
-As the name suggests, algorithm attacks take advantage of algorithms in a piece of legitimate software to generate unintended behaviors. For example, algorithms used to track and report how much energy a computer consumes can be used to select targets or trigger false alerts. They can also disable a computer by forcing it to use up all its RAM or by overworking its central processing unit (CPU).
+As the name suggests, algorithm attacks take advantage of algorithms in a piece of legitimate software to generate unintended behaviors. e.g. algorithms used to track and report how much energy a computer consumes can be used to select targets or trigger false alerts. They can also disable a computer by forcing it to use up all its RAM or by overworking its central processing unit (CPU).
 
 Many organizations rely on threat intelligence data to help them understand their overall risk, so that they can formulate and put in place effective preventative and response measures.
 
@@ -187,6 +187,104 @@ This refers to encrypted web content that is not indexed by conventional search 
 Indicator of compromise (IOC): IOCs such as malware signatures or domain names provide evidence of security breaches and details about them.
 
 Automated Indicator Sharing (AIS): Cybersecurity and Infrastructure Security Agency (CISA) capability, enables the real-time exchange of cybersecurity threat indicators using a standardized and structured language called Structured Threat Information Expression (STIX) and Trusted Automated Exchange of Intelligence Information (TAXII).
+
+### Deception
+
+#### Social Engineering
+
+Social engineering is a non-technical strategy that attempts to manipulate individuals into performing certain actions or divulging confidential information.
+
+Rather than software or hardware vulnerabilities, social engineering exploits human nature, taking advantage of people’s willingness to help or preying on their weaknesses, such as greed or vanity.
+
+Pretexting
+This type of attack occurs when an individual lies to gain access to privileged data. e.g. an attacker pretends to need personal or financial data in order to confirm a person’s identity.
+
+Something for something (quid pro quo)
+Quid pro quo attacks involve a request for personal information in exchange for something, like a gift. e.g. a malicious email could ask you to give your sensitive personal details in exchange for a free vacation.
+
+Identity fraud
+This is the use of a person’s stolen identity to obtain goods or services by deception. e.g. someone has acquired your data and is attempting to issue a credit card in your name.
+
+#### Social Engineering Tactics
+
+Cybercriminals rely on several social engineering tactics to gain access to sensitive information.
+
+- Authority: Attackers prey on the fact that people are more likely to comply when instructed by someone they perceive as an authority figure. e.g. an executive opens what looks like an official subpoena attachment but is actually an infected PDF.
+
+- Intimidation: Cybercriminals will often bully a victim into taking an action that compromises security. e.g. a secretary receives a call that their boss is about to give an important presentation but the files are corrupt. The criminal on the phone claims it’s the secretary’s fault and pressures the secretary to send across the files immediately or risk dismissal.
+
+- Consensus / Social Proof: consensus attacks work because people tend to act in the same way as other people around them, thinking that something must be right if others are doing it. e.g. cybercriminals may publish a social media post about a ‘business opportunity’ and get dozens of legitimate or illegitimate accounts to comment on its validity underneath, which encourages unsuspecting victims to make a purchase.
+
+- Scarcity: A well known marketing tactic, scarcity attacks work because attackers know that people tend to act when they think there is a limited quantity of something available. e.g. someone receives an email about a luxury item being sold for very little money, but it states that there are only a handful available at this price, in an effort to spur the unsuspecting victim into taking action.
+
+- Urgency: Similarly, people also tend to act when they think there is a limited time to do so. e.g. cybercriminals promote a fake time-limited shipping offer to try and prompt victims to take action quickly.
+
+- Familiarity: People are more likely to do what another person asks if they like this person. Therefore, attackers will often try to build a rapport with their victim in order to establish a relationship. In other cases, they may clone the social media profile of a friend of yours, in order to get you to think you are speaking to them.
+
+- Trust: Building trust in a relationship with a victim may require more time to establish. e.g. a cybercriminal disguised as a security expert calls the unsuspecting victim to offer advice. When helping the victim, the ‘security expert’ discovers a ‘serious error’ that needs immediate attention. The solution provides the cybercriminal with the opportunity to violate the victim’s security.
+
+#### Shoulder Surfing and Dumpster Diving
+
+Shoulder surfing is a simple attack that involves observing or literally looking over a target’s shoulder to gain valuable information such as PINs, access codes or credit card details. Criminals do not always have to be near their victim to shoulder surf — they can use binoculars or security cameras to obtain this information.
+
+This is one reason why an ATM screen can only be viewed at certain angles. These types of safeguards make shoulder surfing much more difficult.
+`dumpster diving — the process of going through a target's trash to see what information has been thrown out.`
+
+This is why documents containing sensitive information should be shredded or stored in burn bags until they are destroyed by fire after a certain period of time.
+
+#### Impersonation and Hoaxes
+
+Cybercriminals have many other deception techniques to help them succeed.
+
+`Impersonation: the act of tricking someone into doing something they would not ordinarily do by pretending to be someone else.` e.g. a cybercriminal posing as an IRS employee recently targeted taxpayers, telling the victims that they owed money that had to be paid immediately via wire transfer — or risk arrest.
+
+Criminals can also use impersonation to attack others. e.g. they can pose as their victim online and post on websites or social media pages to undermine the victim’s credibility.
+
+`Hoax: an act intended to deceive or trick someone, and can cause just as much disruption as an actual security breach.` e.g. a message that warns of a (non-existent) virus threat on a device and asks the recipient to share this information with everyone they know. This hoax elicits a user reaction, creating unnecessary fear and irrational behavior that is perpetuated through email and social media.
+
+#### Piggybacking and Tailgating
+
+Piggybacking or tailgating occurs when a criminal follows an authorized person to gain physical entry into a secure location or a restricted area by:
+
+- Giving the appearance of being escorted into the facility by an authorized person.
+- Joining and pretending to be part of a large crowd that enters the facility.
+- Targeting an authorized person who is careless about the rules of the facility.
+
+e.g. prevention: use two sets of doors. Sometimes referred to as a mantrap, means individuals enter through an outer door which must close before they can gain access through an inner door.
+
+#### Other Methods of Deception
+
+Be aware that attackers have many more tricks up their sleeve to deceive their victims.
+
+- Invoice Scam: Fake invoices are sent with the goal of receiving money from a victim by prompting them to put their credentials into a fake login screen. The fake invoice may also include urgent or threatening language.
+- Watering Hole Attack: an exploit in which an attacker observes or guesses what websites an organization uses most often, and infects one or more of them with malware.
+
+- Typosquatting: relies on common mistakes such as typos made by individuals when inputting a website address into their browser. The incorrect URL will bring the individuals to a legitimate-looking website owned by the attacker, whose goal is to gather their personal or financial information.
+
+- Prepending: Attackers can remove the ‘external’ email tag used by organizations to warn the recipient that an email has originated from an external source. This tricks individuals into believing that a malicious email was sent from inside their organization.
+
+- Influence campaigns: usually very well coordinated and blend various methods such as fake news, disinformation campaigns and social media posts.
+
+#### Spot the Attack
+
+That’s right!
+
+Cybercriminals often impersonate other people and post on their social media pages to gain access to the personal information of said people or others, or undermine their credibility.
+
+Cybercriminals can tailgate into an organization by targeting an authorized person who is careless about the rules of entry.
+
+Cybercriminals can also target individuals who incorrectly enter a website address into their browser. This typosquatting attack aims to make people think they are visiting a legitimate website, though it is in fact malicious, tricking them into giving away personal or financial information.
+
+#### Defending Against Deception
+
+Organizations need to promote awareness of social engineering tactics and properly educate employees on prevention measures. Include the following in your security awareness training:
+
+- Never disclose confidential information or credentials via email, chat, text messages, in person or over the phone to unknown parties.
+- Resist the urge to click on enticing emails and web links.
+- Be wary of uninitiated or automatic downloads.
+- Establish and educate employees on key security policies.
+- Encourage employees to take ownership of security issues.
+- Do not give in to pressure by unknown individuals.
 
 ## Module 2
 
