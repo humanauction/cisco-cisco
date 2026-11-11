@@ -845,10 +845,53 @@ The advantage is that the cloud provider will maintain the equipment but this al
 
 ### Cybersecurity Threats, Vulnerabilities and Attacks
 
-## Module 1 Quiz
+#### Threat domains
+
+A threat domain is an area of control, authority, or protection that attackers can exploit to gain access to a system. Cyber threat categories include software attacks and errors, sabotage, human error, theft, hardware failures, utility interruption, and natural disasters. Internal threats are usually carried out by current or former employees and other contract partners. The source of an external threat typically stems from amateur or skilled attackers who can exploit vulnerabilities in networked devices, or use social engineering techniques. A user domain includes anyone with access to an organization’s information system. Common user threats include poorly enforced security policies, data theft, unauthorized downloads and media, unauthorized VPNs and websites, and destruction of systems, applications, or data. Individual devices, LANs and private and public clouds are also vulnerable to attack. There are complex threats such as an APT and an algorithm attack. Cybercriminals use backdoor programs to gain unauthorized access to a system by bypassing the normal authentication procedures. Backdoors grant cybercriminals continued access to a system, even if the organization has fixed the original vulnerability used to attack the system. Most rootkits exploit software vulnerabilities to gain access to resources and modify system files. Rootkits can also modify system forensics and monitoring tools, making them very hard to detect.
+
+The dark web is encrypted web content that is not indexed by conventional search engines and requires specific software, authorization, or configurations to access. IOCs such as malware signatures or domain names provide evidence of security breaches. AIS enables the real-time exchange of cybersecurity threat indicators using standardized and structured languages called STIX and TAXII.
+
+#### Deception
+
+Social engineering is a non-technical strategy that attempts to manipulate individuals into performing certain actions or divulging confidential information. Pretexting is when an individual lies to gain access to privileged data. Quid pro quo attacks are a request for personal information in exchange for something. Identity fraud is using a person’s stolen identity to obtain goods or services by deception.
+
+Social engineering tactics include impersonating an authority figure, intimidation, consensus (“everyone is doing it”), pretending something is scarce or that a situation is urgent, building familiarity and trust with an employee to eventually leverage that into access. Shoulder surfing is looking over a target’s shoulder to gain valuable information such as PINs, access codes or credit card details. Criminals do not always have to be near their victim to shoulder surf, they can use binoculars or security cameras to obtain this information. Dumpster diving is going through a target's trash to see what information has been thrown out. Piggybacking or tailgating is when a criminal follows an authorized person to gain physical entry into a secure location or a restricted area. Other methods of deception include invoice scams, watering hole attacks, typosquatting, prepending, and influence campaigns.
+
+Organizations need to promote awareness of social engineering tactics and properly educate employees on prevention measures.
+
+#### Cyber attacks
+
+Malware is any code that can be used to steal data, bypass access controls, cause harm to or compromise a system. A virus is a type of computer program that, when executed, replicates, and attaches itself to other files by inserting its own code into it. A worm is a malicious software program that replicates by independently exploiting vulnerabilities in networks. A Trojan horse is malware that carries out malicious operations by masking its true intent. A logic bomb is a malicious program that waits for a trigger to set off the malicious code. Ransomware is designed to hold a computer system or the data it contains captive until a payment is made. DoS attacks work by creating an overwhelming quantity of traffic or by sending maliciously formatted packets that cannot be identified by an application, causing the receiving device to run slowly or crash. DDoS attacks are similar but originate from multiple coordinated sources. DNS attacks include spoofing and hijacking.
+
+Layer 2 attacks include MAC address, ARP and IP spoofing, MAC flooding, man-in-the-middle, and man-in-the-mobile. Zero-Day attacks exploit software vulnerabilities before they become known. Keyboard logging (keylogging) logs keystrokes and configures the keylogger software to send the log file to the criminal. This log file can reveal usernames, passwords, websites visited, etc.
+
+To defend against these attacks use firewalls, stay current on upgrades and patches, distribute the workload across server systems, and block external ICMP packets with firewalls.
+
+#### Wireless, Mobile Device attacks
+
+Grayware is an unwanted application that behaves in an annoying or undesirable manner. SMiShing is fake text messages which prompt you to visit a malicious website or call a fraudulent phone number, which may result in malware being downloaded onto your device. A rogue access point is a wireless access point installed on a secure network without authorization. An evil twin attack is where the attacker’s access point is set up to look like a better connection option. Radio frequency jamming is deliberately jamming the transmission of a radio or satellite station to prevent a wireless signal from reaching the receiving station.
+
+Bluejacking sends unauthorized messages or shocking images to another Bluetooth device. Bluesnarfing is when an attacker copies information from a target’s device using Bluetooth. WEP and WPA are security protocols that were designed to secure wireless networks. WPA2 is an improved security protocol. Unlike WEP, an attacker cannot recover WPA2’s encryption key by observing network traffic.
+
+To defend against wireless and mobile device attacks: change default configurations. Restrict access point placement by placing these devices outside the firewall or in a DMZ. Use WLAN tools to detect rogue access points or unauthorized workstations. Have a policy for guest access to a Wi-Fi network. Employees should use a remote access VPN for WLAN access.
+
+#### Applications and Other attacks
+
+XSS is a vulnerability found in many web applications. Types of Code Injection attacks include XML, SQL, DLL, and LDAP. A buffer overflow occurs when data is written beyond the limits of a buffer. Remote code execution is exploiting application vulnerabilities to execute any command with the privileges of the authorized user. Other application attacks include CSRF, race condition, improper input handling, error handling, API, replay, directory traversal, and resource exhaustion.
+
+Write solid code to defend against an application attack. Treat and validate all input from outside of a function as if it is hostile. Keep all software up to date. Spam is unsolicited email that is usually a method of advertising. Some spam is sent in bulk by computers infected with viruses or worms. Phishing is when a user is contacted using email or instant message by a threat actor masquerading as a legitimate person. Spear phishing sends customized emails to a specific person based on information the attacker knows about them. Other common scams include vishing, pharming, and whaling. Other types of attacks include physical attacks to equipment, adversarial AI attacks, supply chain attacks and cloud-based attacks.
+
+Use antivirus software to defend against email and browser attacks. Never assume that email attachments are safe. Always scan attachments before opening them. Become a member of the Anti-Phishing Working Group (APWG). All software should be kept up-to-date.
+
+## Module 1 Quiz
+
 ![module 1 pass](img/1ModulePass.png)
 
-## Module 2
+## Module 2 Securing Networks
+
+Module Title: Securing Networks
+
+Module Objective: Explain network security principles.
 
 ## Module 3
 
