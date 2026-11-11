@@ -286,6 +286,250 @@ Organizations need to promote awareness of social engineering tactics and proper
 - Encourage employees to take ownership of security issues.
 - Do not give in to pressure by unknown individuals.
 
+### Social Engineering Interactive Exercise
+
+People by their nature, want to trust and that makes them vulnerable to social engineering. Attackers use this knowledge to exploit people through social engineering. Therefore, social engineering is extremely effective as a means to gain access to sensitive information and systems. In fact, in penetration tests social engineering tactics are usually sited as the most vulnerable point of an organization and their systems.
+
+#### Baiting
+
+Baiting is a social engineering attack that uses false promises to entice victims into a trap that steals their personal information or inflicts their systems with malware. Baiting attacks are often spread through physical media, such as a flash drive, which is left in a place it is sure to be found.
+
+#### Pretexting
+
+Pretexting is a social engineering attack that relies on a fabricated scenario to engage a targeted victim in a manner that increases the likelihood the victim will divulge information or perform actions that would be unlikely in ordinary circumstances. e.g. pretend to call from the victim’s bank, claiming that the victim’s account has been compromised and that they need to verify their identity by providing their account number and password.
+#### Shoulder Surfing
+Shoulder surfing is a simple attack that involves observing or literally looking over a target’s shoulder to gain valuable information such as PINs, access codes or credit card details. Criminals do not always have to be near their victim to shoulder surf — they can use binoculars or security cameras to obtain this information. This is why an ATM screen can only be viewed at certain angles. These types of safeguards make shoulder surfing much more difficult.
+
+#### Spear Phishing/Whaling
+
+Spear phishing is more targeted version of the phishing, in which an attacker chooses specific individuals or enterprises and then customizes their phishing attack to their victims to make it less conspicuous. Whaling is when the specific target is a high profile employee such as a CEO or CFO.
+
+#### Scareware and ransomware
+
+Scareware is when victims are deceived to think their system is infected with malware and receive false alarms prompting them to install software that is not needed or is itself malware. Ransomware is when victims are prevented from accessing their system or personal files until they make a ransom payment in order to regain access.
+
+#### Mitigation
+
+There are several ways you can decrease your chance of being exploited by a social engineer:
+
+- Think before you act - Never share personal information over the phone, email, or on unsecure websites. Do not click on links, download files, or open email attachments from unknown senders.
+- Stay aware of your surroundings – Be skeptical of links to web forms that request personal information, even if the email appears to come from a legitimate source. Never click on or enter sensitive information into a pop-up.
+- Keep your accounts and devices safe - Use anti-virus software, and spam filters, and update and patch your devices regularly.
+
+- All the physical barriers, correctly configured network hardware, access controls, and patched software in the world cannot prevent social engineering. Awareness and training of individuals and employees about social engineering and the various techniques used by attackers are the best defenses to combat social engineering.
+
+### Lab - Explore Social Engineering Techniques
+
+Objectives
+
+Part 1: Explore Social Engineering Techniques
+
+Part 2: Create a Cybersecurity Awareness Poster
+
+Introduction
+
+Cybersecurity is critical because it involves protecting unauthorized access to sensitive data, personally identifiable information (PII), protected health information (PHI), personal information, intellectual property (IP), and sensitive systems. Social engineering is a broad range of malicious activities accomplished by psychologically manipulating people into performing actions or divulging confidential information. In this lab, you will explore social engineering techniques, sometimes called human hacking, which is a broad category for different types of attacks.
+
+Required Resources
+
+PC or mobile device with internet access
+
+Background / Scenario
+
+Recent research reveals that the most common types of cyberattacks are becoming more sophisticated, and the attack targets are growing. The purpose of an attack is to steal information, disable systems or critical services, disrupt systems, activities, and operations. Some attacks are designed to destroy information or information systems, maliciously control a computing environment or its infrastructure, or destroy the integrity of data and/or information systems. One of the most effective ways an attacker can gain access to an organization’s network is through simple deception. In the cybersecurity world this is call social engineering.
+
+Social Engineering Attacks
+
+Social engineering attacks are very effective because people want to trust other people and social engineering attacks are not the kind of attack that the average user guards against; users are concerned with botnets, identity theft or ransomware. These are big external threats, so they do not think to question what seems to be a legitimate-looking message.
+
+Baiting
+
+Baiting relies on the curiosity or greed of the victim. What distinguishes baiting from other types of social engineering is the promise of an item or good that hackers use to entice victims. Baiters may offer users free music or movie downloads if the users surrender their login credentials to a certain site. Baiting attacks are not restricted to online schemes. Attackers can exploit human curiosity with physical media like USB drives.
+
+Shoulder Surfing
+
+Shoulder surfing is literally looking over someone's shoulder to get information. Shoulder surfing is an effective way to get information in crowded places because it is relatively easy to stand next to someone and watch as they fill out a form or enter a PIN number at an ATM machine. Shoulder surfing can also be done long distance with the aid of modern cell phones, binoculars, or other vision-enhancing devices. To prevent shoulder surfing, experts recommend that you shield paperwork or your keypad from view by using your body or cupping your hand. There are even screen shields that make shoulder surfing much more difficult.
+
+Pretexting
+
+Pretexting is using deception to create a scenario to convince victims to divulge information they should not divulge. Pretexting is often used against organizations that retain client data, such as financial data, credit card numbers, utilities account numbers, and other sensitive information. Pretexters often request information from individuals in an organization by impersonating a supervisor, helpdesk clerk, or client, usually by phone, email, or text.
+
+Phishing, spear phishing, and whaling attacks
+
+In phishing attacks, the attackers try to obtain personal information or data, like username, password, and credit card details, by disguising themselves as trustworthy entities. Phishing is mainly conducted through emails and phone calls. Spear phishing is more targeted version of the phishing in which an attacker chooses specific individuals or enterprises and then customizes their phishing attack to their victims to make it less conspicuous. Whaling is when the specific target is a high-profile employee such as a CEO or CFO.
+
+Scareware and ransomware
+
+Ransomware attacks involve injecting malware that encrypts a victim’s critical data. The cyber criminals request a ransom to be paid to decrypt the data. However, even if a ransom is paid, there is no guarantee the cyber criminals will decrypt the information. Ransomware is one of the fastest growing types of cyberattack and has affected thousands of financial organizations, government agencies, healthcare facilities, even schools and our education systems.
+
+Scareware takes advantage of a user’s fear by coaxing them into installing fake antivirus software.
+
+Tailgating
+
+Tailgating tricks the victim into helping the attacker gain unauthorized access into the organization’s physical facilities. The attacker seeks entry into a restricted area where access is controlled by software-based electronic devices or human guards. Tailgating can also involve the attacker following an employee closely to pass through a locked door before the door locks behind the employee.
+
+Dumpster diving
+
+In the world of social engineering, dumpster diving is a technique used to retrieve discarded information thrown in the trash to carry out an attack on a person or organization. Dumpster diving is not limited to searching through the trash for obvious treasures like access codes or passwords written down on sticky notes, it can also involve electronic information left on desktops, or stored on USB drives.
+
+Part 1. Explore Social Engineering Techniques
+
+Step 1: Explore Baiting, Shoulder Surfing, and Pretexting.
+
+The National Support Center for Systems Security and Information Assurance (CSSIA) hosts a Social Engineering Interactive activity. The current link to the site is https://www.caeepnc.org/social_engineering/. However, if the link changes, try searching for #CSSIA Social Engineering Interactive#.
+
+Click Next in the interactive activity, and then use the content to answer the following questions.
+
+What is baiting? Did you click on the USB drive? What happened to the victim’s system?
+
+social engineering attack that uses false promises to entice victims into a trap that steals their personal information or inflicts their systems with malware. The flash drive contains malware that will automatically install on the computer once the drive is inserted.
+
+Baiting is using a false promise to gain a victim’s interest to lure them into a trap that steals their personal information or infects their systems with malware. Yes – the system is compromised by malware.
+
+What is Shoulder Surfing? What device was used to perform the shoulder surfing? What information was gained?
+
+looking over a target’s shoulder to gain valuable information. PINs, access codes or credit card details. phone, login, password
+
+Shoulder surfing is looking over someone’s shoulder while they are using a computer and visually capturing logins or passwords or other sensitive information. A Cell Phone. Login and Password information.
+
+What is Pretexting? What type of information did the cybercriminal request? Would you fall victim?
+
+relies on a fabricated scenario to engage a targeted victim in a manner that increases the likelihood the victim will divulge information or perform actions that would be unlikely in ordinary circumstances. requested info: verify their identity by name, title, office, badge number
+
+Pretexting is when an attacker establishes trust with their victim by impersonating persons who have right-to-know authority and asking questions that appear to be required to confirm the victim’s identity, but through which they gather important personal data. Information requested name, work role, etc.
+
+Step 2: Explore Phishing, Spear Phishing, and Whaling
+
+Phishing is designed to get victims to click on links to malicious websites, open attachments that contain malware, or reveal sensitive information. Use the interactive activity to explore different phishing techniques.
+In this phishing example, what is the ploy the attacker uses to trick the victim to visit the trap website? What is the trap website used for?
+
+click link. reason: login details
+
+The phishing scheme sends a fake notice that the victim has recently attempted to withdraw funds from their account while in another country: $174.99. The scheme is designed to steal the victim credentials including username and password.
+
+What is the difference between phishing and spear phishing or whaling?
+
+spear phishing and whaling are increasingly targeted versions of phishing
+
+Step 3: Explore Scareware and Ransomware
+
+Scareware is when victims are deceived into thinking that their system is infected with malware and receive false alarms prompting them to install software that is not needed or is itself malware. Ransomware is a type of malware that threatens to publish the victim's data or encrypts the victim’s data preventing access or the ability to use the data.
+
+Victims are prevented from accessing their system or personal files until they make a ransom payment to regain access.
+What data does the attacker claim to have in this example? Would you fall for this deception?
+
+information being stolen:
+
+> Facebook Login
+> Credit Card Details
+> Email Account Login
+
+no
+
+What is the attacker requesting the victim do to get the data back?
+
+call the attacker within the next 5 minutes to prevent your computer from being disabled.
+
+Call: 44-8000-903-274
+
+What is tailgating?
+
+physical attack, e.g. following employee through fob check.
+
+Give three ways to prevent social engineering attacks?
+
+employee education
+MFA
+digital policy and enforcement
+network segmentation
+implement web filtering
+PAM
+updates, patches
+
+Part 2. Create a Cybersecurity Awareness Poster
+
+![scarewarePoster](img/scarewarePoster.png)
+
+### Cyber Attacks
+
+#### Types
+
+- Viruses: Type of computer program that, when executed, replicates and attaches itself to other files, such as a legitimate program, by inserting its own code into it. Some viruses are harmless yet others can be destructive, such as those that modify or delete data. Most viruses require end-user interaction to initiate activation, and can be written to act on a specific date or time.
+
+Viruses can be spread through removable media such as USB flash drives, Internet downloads and email attachments. The simple act of opening a file or executing a specific program can trigger a virus. Once a virus is active, it will usually infect other programs on the computer or other computers on the network. Viruses mutate to avoid detection.
+
+For example, the Melissa virus was released in 1999 and spread via email, affecting tens of thousands of users and causing an estimated $1.2 billion in damage.
+
+- Worms: malicious software program that replicates by independently exploiting vulnerabilities in networks. Unlike a virus, which requires a host program to run, worms can run by themselves. Other than the initial infection of the host, they do not require user participation and can spread very quickly over the network, usually slowing it down.
+
+Worms share similar patterns: they exploit system vulnerabilities, they have a way to propagate themselves and they all contain malicious code (payload) to cause damage to computer systems or networks.
+
+Worms are responsible for some of the most devastating attacks on the Internet. In 2001, the Code Red worm had infected over 300,000 servers in just 19 hours.
+
+- Trojan horse: malware that carries out malicious operations by masking its true intent. It might appear legitimate but is, in fact, very dangerous. Trojans exploit the privileges of the user who runs them.
+
+Unlike viruses, Trojans do not self-replicate but often bind themselves to non-executable files, such as image, audio or video files, acting as a decoy to harm the systems of unsuspecting users.
+
+#### Logic Bombs
+A logic bomb is a malicious program that waits for a trigger, such as a specified date or database entry, to set off the malicious code. Until this trigger event happens, the logic bomb will remain inactive.
+
+Once activated, a logic bomb implements a malicious code that causes harm to a computer in various ways. It can sabotage database records, erase files and attack operating systems or applications.
+
+Cybersecurity specialists have recently discovered logic bombs that attack and destroy the hardware components in a device or server, including the cooling fans, central processing unit (CPU), memory, hard drives and power supplies. The logic bomb overdrives these components until they overheat or fail.
+
+#### Ransomware
+
+Malware designed to hold a computer system or the data it contains captive until a payment is made.
+
+Ransomware usually works by encrypting your data so that you cannot access it. According to ransomware claims, once the ransom is paid via an untraceable payment system, the cybercriminal will supply a program that decrypts the files or send an unlock code — but in reality, many victims do not gain access to their data even after they have paid.
+
+Some versions of ransomware can take advantage of specific system vulnerabilities to lock it down. Ransomware is often spread through phishing emails that encourage you to download a malicious attachment, or through a software vulnerability.
+
+#### DoS/ DDoS Attacks
+
+Denial of service (DoS) attacks are a type of network attack that is relatively simple to conduct, even for an unskilled attacker. They are a major risk as they usually result in some sort of interruption to network services, causing a significant loss of time and money. Even operational technologies, hardware or software that controls physical devices or processes in buildings, factories or utility providers, are vulnerable to DoS attacks, which can cause a shutdown, in extreme circumstances.
+
+- Overwhelming quantity of traffic: This is when a network, host or application is sent an enormous amount of data at a rate which it cannot handle. This causes a slowdown in transmission or response, or the device or service to crash.
+- Maliciously formatted packets:A packet is a collection of data that flows between a source and a receiver computer or application over a network, such as the internet. When a maliciously formatted packet is sent, the receiver will be unable to handle it. `e.g.` if an attacker forwards packets containing errors or improperly formatted packets that cannot be identified by an application, this will cause the receiving device to run very slowly or crash.
+
+Distributed denial of service (DDoS) attacks are similar but originate from multiple coordinated sources. Here is how this happens:
+
+1. An attacker builds a network (botnet) of infected hosts called zombies, which are controlled by handler systems.
+2. The zombie computers constantly scan and infect more hosts, creating more and more zombies.
+3. When ready, the hacker will instruct the handler systems to make the botnet of zombies carry out a DDoS attack.
+
+### Domain Name System
+
+There are many essential technical services needed for a network to operate — such as routing, addressing and domain naming. These are prime targets for attack.
+
+- **Domain Reputation**: The Domain Name System (DNS) is used by DNS servers to translate a domain name, such as www.cisco.com, into a numerical IP address so that computers can understand it. If a DNS server does not know an IP address, it will ask another DNS server. An organization needs to monitor its domain reputation, including its IP address, to help protect against malicious external domains.
+- **DNS Spoofing**: DNS spoofing or DNS cache poisoning is an attack in which false data is introduced into a DNS resolver cache — the temporary database on a computer’s operating system that records recent visits to websites and other Internet domains. These poison attacks exploit a weakness in the DNS software that causes the DNS servers to redirect traffic for a specific domain to the attacker’s computer.
+
+- **Domain Hijacking**: When an `attacker wrongfully gains control of a target’s DNS information`, they can make unauthorized changes to it `aka domain hijacking`. The most common way of hijacking a domain name is to change the administrator’s contact email address through social engineering or by hacking into the administrator's email account. The administrator’s email address can be easily found via the WHOIS record for the domain, which is of public record.
+- **Uniform Resource Locator (URL)**: A uniform resource locator (URL) is a unique identifier for finding a specific resource on the Internet. Redirecting a URL commonly happens for legitimate purposes. e.g. you have logged into an eLearning portal to begin this Cybersecurity Essentials course. If you log out of the portal and return to it another time, the portal will redirect you back to the login page. It is this type of functionality that attackers can exploit. Instead of taking you to the eLearning login page, they can redirect you to a malicious site.
+
+### Layer 2 Attacks
+
+Layer 2 refers to the data link layer in the Open Systems Interconnection (OSI) data communication model.
+
+This layer is used to move data across a linked physical network. IP addresses are mapped to each physical device address (also known as media access control (MAC) address) on the network, using a procedure called address resolution protocol (ARP).
+
+In its simplest terms, the MAC address identifies the intended receiver of an IP address sent over the network, and ARP resolves IP addresses to MAC addresses for transmitting data.
+
+Attackers often take advantage of vulnerabilities in this layer 2 security.
+
+#### Spoofing
+
+Spoofing, or poisoning, is a type of impersonation attack that takes advantage of a trusted relationship between two systems.
+
+MAC address spoofing occurs when an attacker disguises their device as a valid one on the network and can therefore bypass the authentication process.
+ARP spoofing sends spoofed ARP messages across a LAN. This links an attacker’s MAC address to the IP address of an authorized device on the network.
+IP spoofing sends IP packets from a spoofed source address in order to disguise it.
+
+#### MAC Flooding
+
+Devices on a network are connected via a network switch by using packet switching to receive and forward data to the destination device. MAC flooding compromises the data transmitted to a device. An attacker floods the network with fake MAC addresses, compromising the security of the network switch.
+
 ## Module 2
 
 ## Module 3
