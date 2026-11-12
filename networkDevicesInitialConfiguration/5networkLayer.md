@@ -136,12 +136,12 @@ The binary values of each field identify various settings of the IP packet. Prot
 
 #### Fields in the IPv4 Packet Header
 
-![alt text](ipv4PackHead.png)
+![alt text](img/ipv4PackHead.png)
 
 #### Significant fields in the IPv4 header
 
 - Version - Contains a 4-bit binary value set to 0100 that identifies this as an IPv4 packet.
-- Differentiated Services or DiffServ (DS) - , the DS field is an 8-bit field used to determine the priority of each packet. The six most significant bits of the DiffServ field are the differentiated services code point (DSCP) bits and the last two bits are the explicit congestion notification (ECN) bits. Formerly type of service (ToS) field.
+- Differentiated Services or DiffServ (DS) - the DS field is an 8-bit field used to determine the priority of each packet. The six most significant bits of the DiffServ field are the differentiated services code point (DSCP) bits and the last two bits are the explicit congestion notification (ECN) bits. Formerly type of service (ToS) field.
 - Time to Live (TTL) – TTL contains an 8-bit binary value that is used to limit packet lifetime. The source device of the IPv4 packet sets the initial TTL value. It is decreased by one each time the packet is processed by a router. If the TTL field decrements to zero, the router discards the packet and sends an Internet Control Message Protocol (ICMP) Time Exceeded message to the source IP address. Because the router decrements the TTL of each packet, the router must also recalculate the Header Checksum.
 - Protocol – This field is used to identify the next level protocol. This 8-bit binary value indicates the data payload type that the packet is carrying, which enables the network layer to pass the data to the appropriate upper-layer protocol. Common values include ICMP (1), TCP (6), and UDP (17).
 - Header Checksum – This is used to detect corruption in the IPv4 header.
