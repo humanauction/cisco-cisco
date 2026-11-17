@@ -1766,9 +1766,73 @@ Assume a threat actor has successfully connected a rogue DHCP server to a switch
    `Rogue server unicasts a reply to` the `client` to `acknowledge` its `request`.
    `Legitimate server stops communicating with the client` because the `request` has `already` been `acknowledged`.
 
-###
+#### Lab - Exploring DNS Traffic
 
-###
+##### Objectives
+
+Part 1: Capture DNS Traffic
+
+b. Clear the DNS cache.
+
+1.  In Windows, enter ipconfig /flushdns in Command Prompt.
+
+2.  For the majority of Linux distributions, one of the following utilities is used for DNS caching: Systemd -Resolved, DNSMasq, and NSCD. If your Linux distribution does not use one of the listed utilities, please perform an internet search for the DNS caching utility for your Linux distribution.
+
+Identify the utility used in your Linux distribution by checking the status:
+
+1.  Systemd-Resolved: systemctl status systemd-resolved.service
+
+2.  DNSMasq: systemctl status dnsmasq.service
+
+3.  NSCD: systemctl status nscd.service
+
+If you are using system-resolved, enter systemd-resolve --flush-caches to flush the cache for Systemd-Resolved before restarting the service. The following commands restart the associated service using elevated privileges:
+
+4.  Systemd-Resolved: sudo systemctl restart systemd-resolved.service
+
+5.  DNSMasq: sudo systemctl restart dnsmasq.service
+
+6.  NSCD: sudo systemctl restart nscd.service
+
+For the macOS, enter sudo killall -HUP mDNSResponder to clear the DNS cache in the Terminal. Perform an internet search for the commands to clear the DNS cache for an older OS.
+c. At a command prompt or terminal, type nslookup enter the interactive mode.
+
+d. Enter the domain name of a website. The domain name www.cisco.com is used in this example.
+
+e. Type exit when finished. Close the command prompt.
+
+Part 2: Explore DNS Query Traffic
+
+A1. source MAC address is associated with the NIC on the PC and the destination MAC address is associated with default gateway.
+local DNS server - the destination MAC address is the MAC address of the local DNS server.
+
+A2. source IP address associated with PC NIC; destination IP address associated with default gateway
+
+A3. source: 57729; destination, default: 53
+
+A4. They are the same
+
+Part 3: Explore DNS Response Traffic
+
+A5. Source/Destination addresses are switched. i.e. SOURCE query packet(IP, MAC address, port number) now === Destination. DESTINATION query packet(IP, MAC, port) now === Source addresses.
+
+A6. Yes, DNS server can handle recursive queries. The DNS server will query other DNS servers to resolve the domain name.
+
+A7. they do not differ - they are the same.
+
+A8. results display other packets e.g. DHCP, ARP. packets and the information contained within idenfify other devices and their functions within the LAN.
+
+A9. learn about other devices and their functions within the LAN; observe network traffic and (if traffic is not encrypted) steal sensitive information using packet details.
+
+### Enterprise Services
+
+####
+
+####
+
+####
+
+####
 
 ###
 
