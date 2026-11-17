@@ -1605,7 +1605,172 @@ TCP segment and UDP datagram information appear immediately after the IP header.
 
 The UDP segment (i.e. datagram) is much smaller than the TCP segment, which makes it very desirable for use by protocols that make simple request and reply transactions such as DNS, DHCP, SNMP, and others. Threat actors can conduct UDP flood attacks which sweep through all the known UDP ports on a server trying to find closed ports. This can create a DoS situation.
 
-## Module 4
+## Module 4: Attacking What We do
+
+### Learning Objectives
+
+| Topic                             | Objectives                                                             |
+| --------------------------------- | ---------------------------------------------------------------------- |
+| IP Services                       | Explain how IP services vulnerabilities enable network attacks         |
+| Enterprise Services               | Explain how network application vulnerabilities enable network attacks |
+| Mitigating Common Network Attacks | Recommend basic threat mitigation measures                             |
+
+### IP Services
+
+#### ARP Vulnerabilites
+
+Hosts broadcast an ARP Request to other hosts on the network segment to determine the MAC address of a host with a particular IP address. All hosts on the subnet receive and process the ARP Request. The host with the matching IP address in the ARP Request sends an ARP Reply.
+
+**Any client can send an unsolicited ARP Reply** called a `gratuitous ARP`. Often `done when a device first boots up to inform all other devices on the local network of the new device’s MAC address`. When a `host sends a gratuitous ARP, other hosts on the subnet store the MAC address and IP address` contained in the `gratuitous ARP in their ARP tables`.
+
+However, **this feature of ARP also means that any host can claim to be the owner of any IP/MAC they choose.** A `threat actor can poison the ARP cache of devices on the local network, creating an MiTM attack to redirect traffic`. The `goal is` to `associate the threat actor’s MAC address with the IP address of the default gateway in the ARP caches of hosts on the LAN segment`. This `positions` the `threat actor` in `between` the `victim and all other systems outside of` the `local subnet`.
+
+#### ARP Cache Poisoning
+
+**ARP cache poisoning**: can be `used to launch various man-in-the-middle attacks`.
+
+##### How ARP cache poisoning works
+
+![ARP Request](img/arpReq.png)
+
+- ARP Request
+  PC-A requires the MAC address of its default gateway (R1);
+  it sends an ARP Request for the MAC address of 192.168.10.1
+
+![ARP Reply](img/arpRep.png)
+
+- ARP Reply
+  R1 updates its ARP cache with the IP and MAC addresses of PC-A. R1 sends an ARP Reply to PC-A, which then updates its ARP cache with the IP and MAC addresses of R1.
+
+![ARP Spoofed](img/ARPspf.png)
+
+- Spoofed gratuitous ARP Reply
+
+    threat actor sends two spoofed gratuitous ARP Replies using its own MAC address for the indicated destination IP addresses. PC-A updates its ARP cache with its default gateway which is now pointing to the threat actor’s host MAC address. R1 also updates its ARP cache with the IP address of PC-A pointing to the threat actor’s MAC address.
+
+N.B. There are **MANY** `tools` available `to create ARP MiTM attacks` including `dsniff, Cain & Abel, ettercap, Yersinia, arpspoof`. These tools can be `used to launch ARP poisoning attacks` and `capture sensitive information` such as `usernames, passwords, and other confidential data`.
+
+The threat actor’s host is executing an ARP poisoning attack. The ARP poisoning attack can be passive or active. Passive ARP poisoning is where threat actors steal confidential information. Active ARP poisoning is where threat actors modify data in transit, or inject malicious data.
+
+#### DNS Attacks
+
+The Domain Name Service (DNS) protocol defines an automated service that matches resource names, such as www.cisco.com, with the required numeric network address, such as the IPv4 or IPv6 address. It includes the format for queries, responses, and data and uses resource records (RR) to identify the type of DNS response.
+
+Securing DNS is often overlooked. However, it is crucial to the operation of a network and should be secured accordingly.
+
+DNS attacks include:
+
+- DNS open resolver attacks
+- DNS stealth attacks
+- DNS domain shadowing attacks
+- DNS tunneling attacks
+
+##### DNS Open Resolver Attacks
+
+`Open Resolver: Type of DNS server that answers queries from clients outside of its administrative domain`.
+Many organizations use the `services of publicly open DNS servers such as GoogleDNS (8.8.8.8) to provide responses to queries`. This `type of DNS server` is `called` an `open resolver`. DNS open resolvers are `vulnerable to multiple malicious activities`.
+
+- DNS Cache Poisoning attacks
+  Threat actors `send spoofed, falsified record resource (RR) information to a DNS resolver` to `redirect users from legitimate sites to malicious sites`. DNS cache poisoning attacks `can all be used to inform the DNS resolver to use a malicious name server` that is `providing RR information for malicious activities`
+
+- DNS Amplification and Reflection attacks
+  Threat actors use `DoS or DDoS attacks on DNS open resolvers to increase` the `volume` of attacks `and` to `hide the true source of` an `attack`. Threat actors s`end DNS messages to the open resolvers using` the `IP address of` a `target host`. These attacks are `possible because` the `open resolver will respond to queries from anyone asking a question`.
+- DNS Resource Utilization attacks
+  DoS attack. Consumes all the available resources to negatively affect DNS open resolver operations. The `impact of DoS attack` may require the `DNS open resolver to be rebooted or services to be stopped and restarted`.
+
+##### DNS Stealth Attacks
+
+To hide their identity, threat actors also use DNS stealth techniques to carry out attacks.
+
+- Fast Flux
+  technique to `hide phishing and malware delivery sites behind` a `quickly-changing network of compromised DNS hosts`. The `DNS IP addresses` are `continuously changed` within minutes. `Botnets` often `employ Fast Flux` techniques `to` effectively `hide malicious servers` detection.
+
+- Double IP Flux
+  technique to `rapidly change` the `hostname to IP address mappings` and to also `change` the `authoritative name server`. This `increases` the `difficulty of identifying` the `attack source`.
+- Domain Generation Algorithms
+  `malware` technique to `randomly generates domain names which act as rendezvous points to their command and control (C&C) servers`.
+
+##### DNS Domain Shadowing Attacks
+
+`Domain shadowing` involves the threat actor `gathering domain account credentials` in order `to silently create multiple sub-domains` to be `used during the attacks`. These `subdomains` typically `point to malicious servers without alerting` the `actual owner of` the `parent domain`.
+
+#### DNS Tunneling
+
+Botnets have become a popular attack method of threat actors. Most often, botnets are used to spread malware or launch DDoS and phishing attacks.
+
+DNS in the enterprise is sometimes overlooked as a protocol which can be used by botnets. Because of this, when DNS traffic is determined to be part of an incident, the attack is often already over. It is necessary for the cybersecurity analyst to be able to detect when an attacker is using DNS tunneling to steal data, and prevent and contain the attack. To accomplish this, the security analyst must implement a solution that can block the outbound communications from the infected hosts.
+
+Threat actors who use DNS tunneling place non-DNS traffic within DNS traffic. This method often circumvents security solutions. For the threat actor to use DNS tunneling, the different types of DNS records such as TXT, MX, SRV, NULL, A, or CNAME are altered. For example, a TXT record can store the commands that are sent to the infected host bots as DNS replies.
+
+##### DNS tunneling attack using TXT
+
+![DNS tunneling attack using TXT](img/tunnel.png)
+a. The data is split into multiple encoded chunks.
+
+b. Each chunk is placed into a lower level domain name label of the DNS query.
+
+c. Because there is no response from the local or networked DNS for the query, the request is sent to the ISP’s recursive DNS servers.
+
+d. The recursive DNS service will forward the query to the attacker’s authoritative name server.
+
+e. The process is repeated until all of the queries containing the chunks are sent.
+
+f. When the attacker’s authoritative name server receives the DNS queries from the infected devices, it sends responses for each DNS query, and contains the encapsulated, encoded commands.
+
+g. The malware on the compromised host recombines the chunks and executes the commands hidden within.
+
+To be able `to stop DNS tunneling` use a filter that inspects DNS traffic. Pay `particular attention` to `DNS queries` that are `longer than average, or` those that have a `suspicious domain name`.
+
+DNS security solutions, e.g. Cisco Umbrella(Cisco OpenDNS), block DNS tunneling traffic by identifying suspicious domains. `Domains associated with Dynamic DNS services` should be `considered highly suspect`.
+
+#### DHCP
+
+DHCP servers dynamically provide IP configuration information to clients.
+
+![DHCP Operation](img/dhcpSO.png)
+
+Normal DHCP Operation
+Client broadcasts a DHCP discover message.
+DHCP server responds with a unicast offer; includes client-use addressing information.
+Client broadcasts a DHCP request to the server, accepts the offer.
+Server responds with a unicast acknowledgment accepting the request.
+
+#### DHCP Attacks
+
+##### DHCP Spoofing Attack
+
+`DHCP spoofing attack` occurs when a `rogue DHCP server is connected to the network and provides false IP configuration parameters to legitimate clients`. A `rogue server can provide` a variety of `misleading information`:
+
+- Wrong default gateway - Threat actor provides an invalid gateway, or the IP address of its host to create a MiTM attack. This may go entirely undetected as the intruder intercepts the data flow through the network.
+- Wrong DNS server - Threat actor provides an incorrect DNS server address pointing the user to a malicious website.
+- Wrong IP address -Threat actor provides an invalid IP address, invalid default gateway IP address, or both. The threat actor then creates a DoS attack on the DHCP client.
+
+Assume a threat actor has successfully connected a rogue DHCP server to a switch port on the same subnet as the target clients. The goal of the rogue server is to provide clients with false IP configuration information.
+![DNS spoof](img/spoof1.png)
+
+1. Client Broadcasts DHCP Discovery Messages
+   Legitimate client connects to the network and requires IP configuration parameters.
+   `Client broadcasts DHCP Discover` request looking for a response from a DHCP server.
+   `Both servers receive` the `message`.
+   ![DNS spoof2](img/spoof2.png)
+2. DHCP Servers Respond with Offers
+   `Legitimate and Rogue DHCP servers` each `respond with valid IP configuration parameters`.
+   `Client replies` to `first offer received`.
+   ![DNS spoof3](img/spoof3.png)
+3. Client Accepts Rogue DHCP Request
+   Client receives the rogue offer first.
+   `Client broadcasts DHCP request` accepting the rogue server parameters.
+   `Legitimate and rogue server each receive` the `request`.
+   ![DNS spoof4](img/spoof4.png)
+4. Rogue DHCP Acknowleges the Request
+   `Rogue server unicasts a reply to` the `client` to `acknowledge` its `request`.
+   `Legitimate server stops communicating with the client` because the `request` has `already` been `acknowledged`.
+
+###
+
+###
+
+###
 
 ## Module 5
 
