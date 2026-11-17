@@ -1977,7 +1977,24 @@ Ways to prevent or reduce XSS attacks:
 
 As with all other security measures, be sure to educate end users. Teach them to identify phishing attacks and notify infosec personnel when they are suspicious of anything security-related.
 
-####
+#### Lab - Install a Virtual Machine on a Personal Computer
+
+Objectives
+
+Part 1: Prepare a Computer for Virtualization
+
+Part 2: Import a Virtual Machine into VirtualBox Inventory
+
+```text
+Q1. What are the IP addresses assigned to your virtual machine?
+A1. 127.0.0.1/8; 10.0.2.15/24
+
+Q2. Can you navigate to your favorite search engine?
+A2. yes
+
+Q3. What options are available?
+A3. shutdown and stop, pause, restart, Save the machine state, Send the shutdown signal and power off the machine
+```
 
 ## Module 5
 
