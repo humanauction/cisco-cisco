@@ -2116,7 +2116,116 @@ Journald  | Advanced features, search capabilities | More complex to configure a
 3. SQL injection occurs when a threat actor sends SQL database commands into an insecure login field.
 4. HTTP 302 cushioning uses HTTP redirect messages to make a browser access a malicious web page.
 
-### Mitigating common Network Attacks
+### Mitigating Common Network Attacks
+
+#### Defending the Network
+
+Constant vigilance and ongoing education are required to defend your network against attack. Best Practice, SOP for securing a network:
+
+- Develop a written security policy for the company.
+- Educate employees about the risks of social engineering, and develop strategies to validate identities over the phone, via email, or in person.
+- Control physical access to systems.
+- Use strong passwords and change them often.
+- Encrypt and password-protect sensitive data.
+- Implement security hardware and software such as firewalls, intrusion prevention systems (IPS), virtual private network (VPN) devices, antivirus software, and content filtering.
+- Perform backups and test the backed-up files on a regular basis.
+- Shut down unnecessary services and ports.
+- Keep patches up-to-date by installing them weekly or daily, if possible, to prevent buffer overflow and privilege escalation attacks.
+- Perform security audits to test the network.
+
+#### Mitigating Malware
+
+Malware, including viruses, worms, and Trojan horses, can cause serious problems on networks and end devices. Network administrators have several means of mitigating these attacks.
+
+N.B. Mitigation techniques AKA "countermeasures".
+
+One way of mitigating virus and Trojan horse attacks is antivirus software. Antivirus software helps prevent hosts from getting infected and spreading malicious code. It requires much more time to clean up infected computers than it does to maintain up-to-date antivirus software and antivirus definitions on the same machines.
+
+Antivirus software is the most widely deployed security product on the market today. Several companies that create antivirus software, such as Symantec, McAfee, and Trend Micro, have been in the business of detecting and eliminating viruses for more than a decade. Many corporations and educational institutions purchase volume licensing for their users. The users are able to log in to a website with their account and download the antivirus software on their desktops, laptops, or servers.
+
+Antivirus products have update automation options so that new virus definitions and new software updates can be downloaded automatically or on demand. This practice is the most critical requirement for keeping a network free of viruses and should be formalized in a network security policy.
+
+Antivirus products are host-based. These products are installed on computers and servers to detect and eliminate viruses. However, they do not prevent viruses from entering the network, so a network security professional must be aware of the major viruses and keep track of security updates regarding emerging viruses.
+
+Another way to mitigate malware threats is to prevent malware files from entering the network at all. Security devices at the network perimeter can identify known malware files based on their indicators of compromise. The files can be removed from the incoming data stream before they can cause an incident. Unfortunately, threat actors are aware of this countermeasure and frequently alter their malware enough that it evades detection. These exploits will enter the network and will also evade antivirus software. No mitigation technique can be 100% effective. Security incidents are going to happen.
+
+#### Mitigating Worms
+
+Worms are more network-based than viruses. Worm mitigation requires diligence and coordination on the part of network security professionals.
+
+Response to a worm attack can be broken down into four phases: Containment, Inoculation, Quarantine, and Treatment (CIQT).
+
+![Worm Mitigation](img/ciqt.png)
+
+##### Containment
+
+The containment phase involves limiting the spread of a worm infection to areas of the network that are already affected. This requires compartmentalization and segmentation of the network to slow down or stop the worm and to prevent currently infected hosts from targeting and infecting other systems. Containment requires using both outgoing and incoming ACLs on routers and firewalls at control points within the network.
+
+##### Inoculation
+
+The inoculation phase runs parallel to or subsequent to the containment phase. During the inoculation phase, all uninfected systems are patched with the appropriate vendor patch. The inoculation process further deprives the worm of any available targets.
+
+##### Quarantine
+
+The quarantine phase involves tracking down and identifying infected machines within the contained areas and disconnecting, blocking, or removing them. This isolates these systems appropriately for the treatment phase.
+
+##### Treatment
+
+The treatment phase involves actively disinfecting infected systems. This can involve terminating the worm process, removing modified files or system settings that the worm introduced, and patching the vulnerability the worm used to exploit the system. Alternatively, in more severe cases, the system may need to be reinstalled to ensure that the worm and its by-products are removed.
+
+#### Mitigating Reconnaissance Attacks
+
+##### Reconnaissance Attack Mitigation Techniques
+
+Reconnaissance attacks are typically the precursor to other attacks that have the intent of gaining unauthorized access to a network or disrupting network functionality. A network security professional can detect when a reconnaissance attack is underway by receiving notifications from preconfigured alarms. These alarms are triggered when certain parameters are exceeded, such as the number of ICMP requests per second. A variety of technologies and devices can be used to monitor this type of activity and generate an alarm. Cisco’s Adaptive Security Appliance (ASA) provides intrusion prevention in a standalone device. Additionally, enterprise routers, such as Cisco Integrated Services Routers (ISR), support network-based intrusion prevention with additional software.
+
+Ways to mitigate Reconnaissance attacks include:
+
+- Implement authentication to ensure proper access.
+- Use encryption to render packet sniffer attacks useless.
+- Use anti-sniffer tools to detect packet sniffer attacks.
+- Implement a switched infrastructure.
+- Use a firewall and IPS.
+
+Anti-sniffer software and hardware tools detect changes in the response time of hosts to determine whether the hosts are processing more traffic than their own traffic loads would indicate. While this does not completely eliminate the threat, as part of an overall mitigation system, it can reduce the number of instances of threat.
+
+Encryption is also effective for mitigating packet sniffer attacks. If traffic is encrypted, using a packet sniffer is of little use because captured data is not readable.
+
+It is impossible to mitigate port scanning but using an `intrusion prevention system (IPS) and firewall can limit the information that can be discovered with a port scanner`. `Ping sweeps can be stopped if ICMP echo and echo-reply are turned off on edge routers`; however, `when these services are turned off, network diagnostic data is lost`. Additionally, `port scans can be run without full ping sweeps`. The scans simply `take longer because inactive IP addresses` are `also scanned`.
+
+#### Mitigating Access Attacks
+
+Several techniques are available for mitigating access attacks. Includes: strong password security, principle of minimum trust, cryptography, applying operating system and application patches.
+
+A surprising number of access attacks are carried out through simple password guessing or brute-force dictionary attacks against passwords. To defend against this, create and enforce a strong authentication policy which includes:
+
+**Use strong passwords** - Strong passwords are at least eight characters and contain uppercase letters, lowercase letters, numbers, and special characters.
+Disable accounts after a specified number of unsuccessful logins has occurred -This practice helps to prevent continuous password attempts.
+The network should also be designed using the principle of minimum trust. This means that systems should not use one another unnecessarily. For example, if an organization has a trusted server that is used by untrusted devices, such as web servers, the trusted server should not trust the untrusted devices unconditionally.
+
+**Cryptography** is a critical component of any modern secure network. Using encryption for remote access to a network is recommended. Routing protocol traffic should also be encrypted. The more that traffic is encrypted, the fewer opportunities hackers have for intercepting data with man-in-the-middle attacks.
+
+The use of encrypted or hashed authentication protocols, along with a strong password policy, greatly reduces the probability of successful access attacks.
+
+Finally, **educate employees** about the risks of social engineering, and **develop strategies to validate identities** over the phone, via email, or in person. **Multifactor authentication (MFA)** has become increasingly common. In this approach, authentication requires two or more independent means of verification. For example, a password may be combined with a code that is sent over a text message. Software or separate devices may be used to generate tokens that are good for only one use. These token values, when provided with a password, provide an additional layer of security that prevents the use of passwords that have been guessed or stolen by threat actors.
+
+In general, access attacks can be detected by reviewing logs, bandwidth utilization, and process loads. The network security policy should specify that logs are formally maintained for all network devices and servers. By reviewing logs, network security personnel can determine if an unusual number of failed login attempts have occurred.
+
+#### Mitigating DoS Attacks
+
+One of the first signs of a DoS attack is a large number of user complaints about unavailable resources or unusually slow network performance. To minimize the number of attacks, a network utilization software package should be running at all times. Network behavior analysis can detect unusual patterns of usage that indicate that a DoS attack is occurring. A means of detecting unusual network behavior should be required by the organization’s network security policy. A network utilization graph showing unusual activity could also indicate a DoS attack.
+
+DoS attacks could be a component of a larger offensive. DoS attacks can lead to problems in the network segments of the computers being attacked. For example, the packet-per-second capacity of a router between the internet and a LAN might be exceeded by an attack, compromising not only the target system but also the network devices that the traffic must pass through. If the attack is conducted on a sufficiently large scale, entire geographical regions of internet connectivity could be compromised.
+
+Historically, many DoS attacks were sourced from spoofed addresses. Cisco routers and switches support a number of antispoofing technologies, such as port security, Dynamic Host Configuration Protocol (DHCP) snooping, IP Source Guard, Dynamic Address Resolution Protocol (DAI) Inspection, and access control lists (ACLs).
+
+#### Lab - Recommend Threat Mitigation Measures
+
+Objectives
+
+Part 1: Review an Incident at a Video Production Company
+
+Part 2: Review an Incident at a Retail Company
 
 ## Module 5
 
