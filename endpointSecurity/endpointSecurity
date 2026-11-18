@@ -1979,11 +1979,8 @@ As with all other security measures, be sure to educate end users. Teach them to
 
 #### Lab - Install a Virtual Machine on a Personal Computer
 
-Objectives
-
-Part 1: Prepare a Computer for Virtualization
-
-Part 2: Import a Virtual Machine into VirtualBox Inventory
+- Part 1: Prepare a Computer for Virtualization
+- Part 2: Import a Virtual Machine into VirtualBox Inventory
 
 ```text
 Q1. What are the IP addresses assigned to your virtual machine?
@@ -1993,7 +1990,66 @@ Q2. Can you navigate to your favorite search engine?
 A2. yes
 
 Q3. What options are available?
-A3. shutdown and stop, pause, restart, Save the machine state, Send the shutdown signal and power off the machine
+A3. shutdown and stop, pause, restart, Save machine state, Send shutdown signal, power off
+
+Q4. Advantages Vs Disadvatages of using VMs
+A4. **good**: contained environment, any OS, testing debugging versioning etc...; **bad**: resource pigs
+```
+
+#### Lab - Attacking a MySQL Database
+
+- Part 1: Open Wireshark and load the PCAP file.
+- Part 2: View the SQL Injection Attack.
+- Part 3: The SQL Injection Attack continues…
+- Part 4: The SQL Injection Attack provides system information.
+- Part 5: The SQL Injection Attack and Table Information
+- Part 6: The SQL Injection Attack Concludes.
+
+```text
+Q1. What are the two IP addresses involved in this SQL injection attack based on the information displayed?
+A1. 10.0.2.4 and 10.0.2.15
+
+Q2. What is the Version
+A2. MySQL 5.7.12-0 ubuntu1.1
+
+Q3. What would the modified command of (1' OR 1=1 UNION SELECT null, column_name FROM INFORMATION_SCHEMA.columns WHERE table_name='users')?
+A3. return shorter output, leave a smaller footprint. because: only filter by users (not null and users).
+
+Q4. Which user has the password hash of 8d3533d75ae2c3966d7e0d4fcc69216b?
+A4. 1337
+
+Q5. https://crackstation.net/, copy the password hash into the password hash cracker - what is the plain-text password?
+A5. charley
+
+Q6. What is the risk of having platforms use the SQL langauge?
+A6. if user input fields and types are not properly sanitized, it can lead to injection type attacks on unsecured SQL databases. SQL allows users to query specific input fields and types, which can be exploited by threat actors to gain access, guage attack surface and move between layers to reach increasingly sensitive information.
+
+Q7. What are 2 methods or steps that can be taken to prevent SQL injection attacks?
+A7. 1. Use parameterized queries or prepared statements, dynamic SQL to ensure that user input is treated as data and not executable code; 2. Implement Regex, input validation and sanitization to filter out potentially malicious characters or patterns from user input.
+other e.g.s: deploy a web application firewall; disable unnecessary database features/capabilities; monitor SQL statements
+```
+
+#### Lab - Reading Server Logs
+
+Complete the following objectives:
+
+- Reading Log Files with cat, more, and less
+- Log Files and Syslog
+- Log Files and journalctl
+
+```text
+Q1.
+A1.
+Q.
+A.
+Q.
+A.
+Q.
+A.
+Q.
+A.
+Q.
+A.
 ```
 
 ## Module 5
