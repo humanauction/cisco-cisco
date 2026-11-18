@@ -2213,7 +2213,7 @@ In general, access attacks can be detected by reviewing logs, bandwidth utilizat
 
 #### Mitigating DoS Attacks
 
-One of the first signs of a DoS attack is a large number of user complaints about unavailable resources or unusually slow network performance. To minimize the number of attacks, a network utilization software package should be running at all times. Network behavior analysis can detect unusual patterns of usage that indicate that a DoS attack is occurring. A means of detecting unusual network behavior should be required by the organization’s network security policy. A network utilization graph showing unusual activity could also indicate a DoS attack.
+One of the first `signs of a DoS attack` is a `large number of user complaints about unavailable resources` or `unusually slow network performance`. To minimize the number of attacks, a network utilization software package should be running at all times. Network behavior analysis can detect unusual patterns of usage that indicate that a DoS attack is occurring. A means of detecting unusual network behavior should be required by the organization’s network security policy. A network utilization graph showing unusual activity could also indicate a DoS attack.
 
 DoS attacks could be a component of a larger offensive. DoS attacks can lead to problems in the network segments of the computers being attacked. For example, the packet-per-second capacity of a router between the internet and a LAN might be exceeded by an attack, compromising not only the target system but also the network devices that the traffic must pass through. If the attack is conducted on a sufficiently large scale, entire geographical regions of internet connectivity could be compromised.
 
@@ -2221,11 +2221,113 @@ Historically, many DoS attacks were sourced from spoofed addresses. Cisco router
 
 #### Lab - Recommend Threat Mitigation Measures
 
-Objectives
+##### Part 1: Review an Incident at a Video Production Company
 
-Part 1: Review an Incident at a Video Production Company
+Q1. What had to happen in order for this attack to occur?
+A1. batch of free usb drives from a recent trade fair in fected with malware and then used for company purposes despite not being approved provider and no checks wer made by the IT department. malware spread across the network to other machines and exploited vulnerabilities in unpatched older versions of content management software.
+A1. official: The infected USB drives were used on computers that are attached to the network.
+Malware scanned the network to identify the IP addresses of servers that are running the content management software.
+The malware targeted known server software vulnerabilities to gain privileged access to the server.
+Threat actors accessed the server from outside the network and installed software that sent files out of the network.
 
-Part 2: Review an Incident at a Retail Company
+Q2. Recommend actionable threat mitigation techniques
+A2. education, policy on external data storage and busines vs personal peripherals: batch of free USB drives that were available at a recent video trade fair were infected with malware.
+auditing, system surveillance, network/layer segmentation: malware infected several hosts on the All Time Video network and also spread across the network to other machines.
+IT maintenance protocols; update, patch schedule: malware scanned the network for several types of content management software and determined the version of the software. The malware then exploited vulnerabilities in an unpatched older version of the software
+network security, VMs, firewalls, healthchecks. port scans: install software that uses DNS tunnelling to gradually steal data from the servers
+A2. official: Educate users about the dangers of bringing potentially unsafe media into the workplace. Configure virus checking software to scan external media.
+Monitor the network for unusual traffic such as scanning activity from internal sources that are not used for network management.
+Keep enterprise software up to date with newest versions and patches.
+Control network access with firewalls or IPS, protect internal assets from external access.
+
+##### Part 2: Review an Incident at a Retail Company
+
+Q1. Read the description of the incident and list the steps in the attack.
+A1. hack suppilers network connection - bruteforce or dictionary
+hack IoT monitor
+escalate to root/server
+SQL injection to exploit user account and weak password to access the customer database
+backdoor SSH tunnel to server
+
+A1. official:
+Access to the internal network was gained through a third-party network.
+Scan for payment server.
+Used weak credentials for access.
+Customer information easy to identify.
+Customer data file stolen.
+
+Q2. For each event that occurred during this incident, recommend measures that could mitigate the event.
+A2. infiltrate the company network through an equipment supplier's network connection - certified secure partners
+connection is to monitor a computer-controlled wood working tool that is used to create guitar necks and bodies - IoT monitor should be secured and monitored for unusual activity
+escalate to root/server - patch and update server, monitor for unusual activity
+Weak security at the supplier enabled threat actors to exploit this connection - implement strict security measures for all third-party connections
+exploited a user account and weak password to access the customer database - establish a password policy and configure measures that ensure that people obey the policy. Limit the segment IP, accountability of users that have access to confidential information.
+customer details were there in an easy-to-read file - encrypt confidential information for transmission and storage, input validation, honeypots, monitor for unusual activity
+backdoor SSH tunnel was used to access the server and steal the customer data file - protocol whitelisting, monitor the network for suspicious traffic including file uploads from sensitive locations.
+A2. official:
+Investigate the security of third-parties that will be granted access to the network. Selected certified secure partners only.
+Prevent network scanning from outside networks. Isolate confidential data from general network access.
+Establish a password policy and configure measures that ensure that people obey the policy. Limit the number of users that have access to confidential information.
+Encrypt confidential information for transmission and storage.
+Monitor the network for suspicious traffic including file uploads from sensitive locations.
+
+Q3a. Where did you find your information? Copy and paste the URL below.
+A3a. https://www.cloudsecuretech.com/insights/smb-cybersecurity-guide/
+Q3b. name of the organization that provided the information?
+A3b. Cloud Secure Tech
+Q4. nature of the information provided by the organization?
+A4. The information provided by the organization is a guide to cybersecurity for small and medium-sized businesses. It includes information on common cyber threats, best practices for securing networks and data, and recommendations for implementing security measures. The guide is intended to help businesses understand the risks they face and how to protect themselves against cyber attacks. It covers topics such as network security, data protection, employee training, and incident response planning.
+Q5. nature of the organization?
+A5. The organization is a technology company that specializes in providing cybersecurity solutions and services to small and medium-sized businesses.
+
+```table
+| threat                                       | mitigation                                                                                                                      |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Third-party and supply-chain compromise      | Investigate the security of third-parties that will be granted access to the network. Selected certified secure partners only.  |
+| social engineering, phishing, spear phishing | Educate employees about the risks of social engineering, develop strategies to validate ID via phone, email or person e.g. MFA s |
+| Ransomware, data extortion                   | Educate employees about the risks of HTML injection, whitelisting and implement a strong email security solution.               |
+| Stolen credentials / account takeover        | Implement multi-factor authentication and regularly review user access privileges.                                              |
+| unpatched systems, exposed vulnerabilities   | Keep all systems and software up to date with the latest security patches.                                                      |
+| Cloud Cloud misconfiguration, data exposure  | Implement a cloud security posture management (CSPM) solution to monitor and remediate misconfigurations in cloud environments. |
+```
+
+#### Module 4 Summary
+
+##### IP Services
+
+Hosts broadcast an ARP Request to other hosts on the network segment to determine the MAC address of a host with a particular IP address. Any client can send an unsolicited ARP Reply called a “gratuitous ARP.” This feature of ARP also means that any host can claim to be the owner of any IP/MAC they choose. A threat actor can poison the ARP cache of devices on the local network, creating an MiTM attack to redirect traffic.
+
+The Domain Name Service (DNS) protocol defines an automated service that matches resource names with the required numeric IP host address. It includes the message format for queries, responses, and data. It uses resource records (RR) to identify the type of DNS response. DNS is crucial to the operation of a network and should be secured accordingly. Many organizations use the services of publicly open DNS servers to provide responses to queries. DNS open resolvers are vulnerable to multiple malicious activities, including DNS cache poisoning, in which falsified records are provided to the open resolver. DNS amplification and reflection attacks are another type of attack in which the benign nature of the DNS protocol is exploited to cause DoS/DDoS attacks. In DNS resource utilization attacks, a DoS attack is launched against the DNS server itself. Threat actors often hide using DNS stealth techniques such as Fast Flux, in which malicious servers will rapidly change their IP address. Threat actors use Double IP Flux, in which threat actors will rapidly change both their domain name to IP mapping and their authoritative name server. Threat actors may also use domain shadowing to hide the source of their attacks by gathering domain account credentials in order to silently create multiple sub-domains to be used during attacks. DNS in the enterprise is sometimes overlooked as a protocol which can be used by botnets. Threat actors who use DNS tunneling place non-DNS traffic within DNS traffic. This method often circumvents security solutions. To be able to stop DNS tunneling, a filter that inspects DNS traffic must be used. Dynamic DNS servers are popular with threat actors and traffic that uses dynamic DNS should be a special concern of the cybersecurity analyst.
+
+DHCP uses a simple exchange of broadcast and unicast messages to provide hosts with addressing information. A DHCP spoofing attack occurs when a rogue DHCP server is connected to the network and provides false IP configuration parameters to legitimate clients. The rogue server might provide incorrect default gateway information, DNS server information, or IP addressing information.
+
+##### Enterpriss Services
+
+World Wide Web browsers are used by almost everyone. Blocking web browsing completely is not an option because businesses need access to the web. Cybersecurity analysts must understand of how a standard web-based attack works. The common stages of a typical web attack include the victim unknowingly visiting a web page that has been compromised by malware. The compromised web page redirects the user to a site that hosts malicious code. The browser is made to visit this site and malicious code infects their computer. This is known as a drive-by download. Regardless of the type of attack being used, the main goal of the threat actor is to ensure the victim’s web browser ends up on the threat actor’s web page, which then serves the malicious exploit to the victim. Some malicious sites take advantage of vulnerable plugins or browser vulnerabilities to compromise the client’s system. Larger networks rely on IDSs to scan downloaded files for malware. If detected, the IDS issues alerts and records the event to log files for later analysis. Server connection logs can often reveal information about the type of scan or attack. The different groups of connection status codes include
+
+Informational 1xx, Successful 2xx, Redirection 3xx, Client Error 4xx and Server Error 5xx To defend against web-based attacks, countermeasures that should be used include always updating the OS and browsers with current patches and updates, using a web proxy to block malicious sites, using the best security practices from the Open Web Application Security Project (OWASP) when developing web applications, and educating end users by showing them how to avoid web-based attacks.
+
+There are a number of attacks that use email to carry malware payloads or to phish for personal information. SMTP servers can also have vulnerabilities and should be kept up to date with patches. Email security appliances can detect and block many types of known email threats including phishing, spam, and malware.
+
+Web applications commonly connect to databases. Because these databases can contain sensitive information, they are a frequent target of attacks. Code injection and SQL injection attacks exploit insufficiently validated input fields to send commands to databases or other applications in order to gain access to private information. Cross-Site Scripting (XSS) attacks occur when browsers execute malicious scripts on the client and provide threat actors with access to sensitive information on the local host.
+
+The OWASP Top 10 Web Application Security Risks is designed to help organizations create secure web applications. It is a useful list of potential vulnerabilities that are commonly exploited by threat actors.
+
+##### Mitigating common network attacks
+
+The following best practices are used for securing a network: develop a written security policy, educate employees, control physical access to systems, use strong passwords, encrypt and password- protect sensitive data, implement security hardware and software, perform backups and test the back up files, shut down unnecessary services and ports, keep patches up-to-date, and perform security audits and tests.
+
+The primary means of mitigating virus and Trojan horse attacks is antivirus software. A network security professional must be aware of the major viruses and keep track of security updates regarding emerging viruses.
+
+Worms are more network-based than viruses. The response to a worm attack can be broken down into four phases: containment, inoculation, quarantine, and treatment.
+
+Reconnaissance attacks can be mitigated in several ways: implement authentication to ensure proper access, use encryption to render packet sniffer attacks useless, use anti-sniffer tools to detect packet sniffer attacks, implement a switched infrastructure, and use a firewall and IPS. Encryption is also effective for mitigating packet sniffer attacks. Several techniques are available for mitigating access attacks: strong password security, principle of minimum trust, cryptography, and applying operating system and application patches.
+
+`To minimize the number of DoS attacks, a network utilization software package should be running at all times`. DoS attacks could be a component of a larger offensive. DoS attacks can lead to problems in the network segments of the computers being attacked. Historically, many DoS attacks were sourced from spoofed addresses.
+
+### Module 4 Quiz
+
+![Module 4 Quiz](img/4ModulePass.png)
 
 ## Module 5
 
