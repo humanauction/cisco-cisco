@@ -2421,7 +2421,8 @@ ASSOCIATE       <-----------> ASSOCIATE
 
 For `successful association, a wireless client and an AP must agree on specific parameters`. `Parameters must then be configured on the AP `and `subsequently` on the `client` to enable the negotiation of a successful association.
 
-- **SSID** - The SSID name appears in the list of available wireless networks on a client. In larger organizations that use multiple VLANs to segment traffic, each SSID is mapped to one VLAN. Depending on the network configuration, several APs on a network can share a common SSID.
+- **SSID** - The SSID name appears in the list of available wireless networks on a client. In larger organizations that use multiple VLANs to segment traffic, each SSID is mapped to one VLAN.
+  Depending on the network configuration, several APs on a network can share a common SSID.
 - **Password** - required from the wireless client to authenticate to the AP.
 - **Network mode** - 802.11a/b/g/n/ac/ad WLAN standards. APs and wireless routers can operate in a Mixed mode meaning that they can simultaneously support clients connecting via multiple standards.
 - **Security mode** - security parameter settings, such as WEP, WPA, or WPA2. Always enable the highest security level supported.
@@ -2505,6 +2506,207 @@ A popular wireless MITM attack is called the “evil twin AP” attack, where an
 Wireless clients attempting to connect to a WLAN would see two APs with the same SSID offering wireless access. Those near the rogue AP find the stronger signal and most likely associate with it. User traffic is now sent to the rogue AP, which in turn captures the data and forwards it to the legitimate AP. Return traffic from the legitimate AP is sent to the rogue AP, captured, and then forwarded to the unsuspecting user. The attacker can steal the user’s passwords, personal information, gain access to their device, and compromise the system.
 
 Defeating an attack like an MITM attack depends on the sophistication of the WLAN infrastructure and the vigilance in monitoring activity on the network. The process begins with identifying legitimate devices on the WLAN. To do this, users must be authenticated. After all of the legitimate devices are known, the network can be monitored for abnormal devices or traffic.
+
+### Secure WLANs
+
+#### SSID Cloaking and MAC Address Filtering
+
+**Wireless signals can travel through solid matter** e.g. ceilings, floors, walls, outside of the home, office space. Without stringent security measures in place, installing a WLAN can be the equivalent of putting Ethernet ports everywhere, even outside.
+
+To address the threats of keeping wireless intruders out and protecting data, two early `security features` were used and are still `available on most routers and APs: SSID cloaking and MAC address filtering.`
+
+##### SSID Cloaking
+
+A`Ps and some wireless routers allow the SSID beacon frame to be disabled`. **Wireless clients must manually configure the SSID to connect to the network.**
+
+##### MAC Addresses Filtering
+
+An `administrator can manually permit or deny clients wireless access based on their physical MAC hardware address`. e.g. router is configured to permit two MAC addresses on 2.4GHz WLAN. Devices with different MAC addresses will not be able to join the 2.4GHz WLAN.
+
+#### Original Authentication Methods
+
+Although these two features would deter most users, the reality is that neither SSID cloaking nor MAC address filtering would deter a crafty intruder. SSIDs are easily discovered even if APs do not broadcast them and MAC addresses can be spoofed. The **best way to secure a wireless network is to use authentication and encryption systems.**
+
+Two types of authentication were introduced with the original 802.11 standard:
+
+##### Open system authentication
+
+Any wireless client should easily be able to connect and should only be used in situations where security is of no concern, such as those providing free internet access like cafes, hotels, and in remote areas. The wireless client is responsible for providing security such as using a virtual private network (VPN) to connect securely. VPNs provide authentication and encryption services. VPNs are beyond the scope of this topic.
+
+##### Shared key authentication
+
+`Provides mechanisms, e.g. WEP, WPA, WPA2, and WPA3 to authenticate and encrypt data between a wireless client and AP`. **password must be pre-shared between both parties to connect.**
+
+```table
+Authentication
+| **Open System**                     | **Shared Key**
+|------------------------------------ | ------------------------------------|
+| No password required                |  WEP
+| Any client can associate            |  WPA
+| free public area internet access.   |  WPA2
+| Client full security responsibility |  WPA3
+```
+
+#### Shared Key Authentication Methods
+
+There are four shared key authentication techniques available. Until the availability of WPA3 devices becomes ubiquitous, wireless networks should use the WPA2 standard.
+
+| Authentication Method | Description                                                                                                                                                                                                                                                                      |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| WEP                   | Wired Equivalent Privacy. The original 802.11 specification designed to secure data. `uses Rivest Cipher 4 (RC4) encryption method with a static key`. weakness: key never changes when exchanging packets, easy to hack. WEP is no longer recommended and should never be used. |
+| WPA                   | Wi-Fi Protected Access. Wi-Fi Alliance standard. **uses much stronger Temporal Key Integrity Protocol (TKIP) encryption algorithm**. `TKIP changes the key for each packet, much more difficult to hack.`                                                                        |
+| WPA2                  | Wi-Fi Protected Access 2. current industry standard for securing wireless networks. uses **Advanced Encryption Standard (AES)** for encryption. `AES is currently considered the strongest encryption protocol`                                                                  |
+| WPA3                  | Wi-Fi Protected Access 3. next generation Wi-Fi security. `WPA3-enabled device use latest security methods, disallow outdated legacy protocols, and require the use of Protected Management Frames (PMF)`. However, devices with WPA3 are not yet readily available.             |
+
+`WPA Personal and WPA2 Personal both use a pre-shared password that wireless clients use to authenticate with the AP.`
+
+#### Authenticating a Home User
+
+Home routers typically have two choices for authentication: WPA and WPA2. WPA2 is the stronger of the two. The figure shows the option to select one of two WPA2 authentication methods:
+
+Personal - Intended for home or small office networks, users authenticate using a pre-shared key (PSK). Wireless clients authenticate with the wireless router using a pre-shared password. No special authentication server is required.
+Enterprise - Intended for enterprise networks but requires a Remote Authentication Dial-In User Service (RADIUS) authentication server. Although more complicated to set up, it provides additional security. The device must be authenticated by the RADIUS server and then users must authenticate using 802.1X standard, which uses the Extensible Authentication Protocol (EAP) for authentication.
+In the figure, the administrator is configuring the wireless router with WPA2 Personal authentication on the 2.4 GHz band.
+
+#### Encryption Methods
+
+Encryption is used to protect data. If an intruder has captured encrypted data, they would not be able to decipher it in any reasonable amount of time.
+`WEP, WPA, WPA2, and WPA3 all use a pre-shared password between the wireless client and the AP`.
+
+The WPA and WPA2 standards use the following encryption protocols:
+
+- **Temporal Key Integrity Protocol (TKIP)**
+  `TKIP is the encryption method used by WPA`. It provides support for legacy WLAN equipment by addressing the original flaws associated with the 802.11 WEP encryption method. `uses WEP, but encrypts the Layer 2 payload using TKIP and carries out a Message Integrity Check (MIC) in the encrypted packet to ensure the message has not been altered`.
+
+- **Advanced Encryption Standard (AES)**
+  `AES is the encryption method used by WPA2`. It is the preferred method because it is a far stronger method of encryption. uses the `Counter Cipher Mode with Block Chaining Message Authentication Code Protocol (CCMP) that allows destination hosts to recognize if the encrypted and non-encrypted bits have been altered.`
+
+The shared key is not a parameter that must be configured on a wireless client. It is only required on the AP to authenticate with the RADIUS server. User authentication and authorization is handled by the 802.1X standard, which provides a centralized, server-based authentication of end users.
+
+The 802.1X login process uses EAP to communicate with the AP and RADIUS server. EAP is a framework for authenticating network access. It can provide a secure authentication mechanism and negotiate a secure private key which can then be used for a wireless encryption session using TKIP or AES encryption.
+
+#### Authentication in the Enterprise
+
+In networks that have stricter security requirements, an additional authentication or login is required to grant wireless clients such access. The Enterprise security mode choice requires an Authentication, Authorization, and Accounting (AAA) RADIUS server.
+
+**RADIUS Server IP address** - This is the reachable address of the RADIUS server.
+**UDP port numbers** - `Officially assigned UDP ports 1812 for RADIUS Authentication, and 1813 for RADIUS Accounting, but can also operate using UDP ports 1645 and 1646`, as shown in the figure.
+**Shared key** - Used to authenticate the AP with the RADIUS server.
+
+#### WPA3
+
+At time of writing, no consumer limited devices that support WPA3 authentication were not readily available. However, WPA2 is no longer considered secure. WPA3, if available, is the recommended 802.11 authentication method. WPA3 includes four features:
+
+- WPA3-Personal
+- WPA3-Enterprise
+- Open Networks
+- Internet of Things (IoT) Onboarding
+
+##### WPA3-Personal
+
+In WPA2-Personal, threat actors can listen in on the “handshake” between a wireless client and the AP and use a brute force attack to try and guess the PSK. WPA3-Personal thwarts this attack by using Simultaneous Authentication of Equals (SAE), a feature specified in the IEEE 802.11-2016. The PSK is never exposed, making it impossible for the threat actor to guess.
+
+##### WPA3-Enterprise
+
+WPA3-Enterprise still uses 802.1X/EAP authentication. However, it requires the use of a 192-bit cryptographic suite and eliminates the mixing of security protocols for previous 802.11 standards. WPA3-Enterprise adheres to the Commercial National Security Algorithm (CNSA) Suite which is commonly used in high security Wi-Fi networks.
+
+##### Open Networks
+
+Open networks in WPA2 send user traffic in unauthenticated, clear text. In WPA3, open or public Wi-Fi networks still do not use any authentication. However, they do use Opportunistic Wireless Encryption (OWE) to encrypt all wireless traffic
+
+##### IoT Onboarding
+
+Although WPA2 included Wi-Fi Protected Setup (WPS) to quickly onboard devices without configuring them first, WPS is vulnerable to a variety of attacks and is not recommended. Furthermore, IoT devices are typically headless, meaning they have no built-in GUI for configuration, and needed any easy way to get connected to the wireless network. The Device Provisioning Protocol (DPP) was designed to address this need. Each headless device has a hardcoded public key. The key is typically stamped on the outside of the device or its packaging as a Quick Response (QR) code. The network administrator can scan the QR code and quickly onboard the device. Although not strictly part of the WPA3 standard, DPP will replace WPS over time.
+
+#### Packet Tracer - Configure Basic Wireless Security
+
+Objectives
+
+- Configure basic wireless security using WPA2 Personal.
+
+Background / Scenario
+
+- A small business owner learns that the wireless networkshould be secured from unauthorized access. He has decided to use WPA2 Personalfor his network.
+
+Summary
+accomplished the following learning objectives:
+
+How to identify a laptop wireless issue
+
+How to access a wireless router to see its configurations
+
+How to connect a laptop to wireless using WPA2-PSK
+
+Reflection Question Answers
+What methods did you use to determine which PC had connectivity issues?
+ping, tracert, or navigate to a web page.
+
+How did you discover the IP address of the wireless router?
+From the PC command prompt, use the ipconfig command to determine the IP address of the default gateway.
+
+What is the difference between using the ping command and the tracert command? Which do you prefer?
+
+The tracert command provides path information to the destination, but the ping command provide information about the destination.
+
+Why is it important to change the default username and password for administrative access to a wireless router?
+The default username and password is published by the manufacturer and readily available on the internet.
+
+How do you feel about the process of troubleshooting a wireless network as a result of completing this activity?
+Some people find the troubleshooting process to be complex and frustrating. Sometimes it seems it is hard to know where to get started. However, troubleshooting can be a very rewarding process because of the satisfaction of knowing that you have helped your organization, team, coworkers, or customers. Using a systematic troubleshooting process can remove much of this frustration and uncertainty.
+What did you learn about your own troubleshooting process during this activity?
+be systematic when troubleshooting. An organized approach that follows a general process will greatly facilitate the troubleshooting process. This knowledge comes with experience and through reading about approaches to troubleshooting.
+
+### Module summary
+
+- Wireless Communications
+  Wireless networking devices connect to an Access Point (AP) or Wireless LAN Controller (WLC) suing the 802.11 standard. The 802.11 frame format is similar to the Ethernet frame format, except that
+  it contains additional fields. WLAN devices use carrier sense multiple access with collision avoidance (CSMA/CA) as the method to determine how and when to send data on the network. To connect to
+  the WLAN, wireless devices complete a three-stage process to discover a wireless AP, to authenticate with the AP, and to associate with the AP.
+
+    APs can be configured autonomously (individually) or by using a WLC to simplify the configuration and monitoring of numerous access points.
+
+- WLAN Threats
+  Wireless networks are susceptible to threats, including: data interception, wireless intruders, DoS attacks, and rogue APs. Wireless DoS attacks can be the result of: improperly configured devices,
+  a malicious user intentionally interfering with the wireless communication, and accidental interference. A rogue AP is an AP or wireless router that has been connected to a corporate network without explicit authorization.
+  When connected, a threat actor can use the rogue AP to capture MAC addresses, capture data packets, gain access to network resources, or launch a MITM attack. In a MITM attack, the threat actor is positioned in between two legitimate
+  entities to read or modify the data that passes between the two parties. A popular wireless MITM attack is called the “evil twin AP” attack, where a threat actor introduces a rogue AP and configures it with the same SSID as a legitimate AP.
+  To prevent the installation of rogue APs, organizations must configure WLCs with rogue AP policies.
+
+- Securing WLANs
+  To keep wireless intruders out and protect data, two early security features are still available on most routers and APs: SSID cloaking and MAC address filtering.
+  There are four shared key authentication techniques available: WEP, WPA, WPA2, and WPA3 (Devices with WPA3 are not yet readily available.).
+  Home routers typically have two choices for authentication: WPA and WPA2. WPA2 is the stronger of the two. Encryption is used to protect data.
+  The WPA and WPA2 standards use the following encryption protocols: TKIP and AES. In networks that have stricter security requirements, an additional authentication or login is required
+  to grant wireless clients access. The Enterprise security mode choice requires an Authentication, Authorization, and Accounting (AAA) RADIUS server.
+
+## Module 5 quiz
+
+Q. For which discovery mode will an AP generate the most traffic on a WLAN?
+A. passive mode
+
+E: `two discovery modes - passive and active`.
+`passive mode` - `AP will generate more traffic as it continually broadcasts beacon frames to potential clients`.
+`active mode` - `the client initiates the discovery process instead of the AP`.
+`Mixed mode` refers to `network mode settings`
+`open mode` refers to `security parameter settings`
+
+Q. Which wireless parameter refers to the frequency bands used to transmit data to a wireless access point?
+A. Channel settings
+
+E: Access Point can be manually set to a specific frequency band or channel to avoid interference with other wireless devices in the area.
+
+Q. Which device can control and manage a large number of corporate APs?
+A: WLC
+E: wireless LAN controller `(WLC) can be configured to manage multiple` lightweight access points (`LWAPs`).
+`On the WLC`, a `network administrator can configure SSIDs, security, IP addressing`, and `other wireless network parameters in a centralized management environment`.
+
+Q. A wireless engineer is comparing the deployment of a network using WPA2 versus WPA3 authentication. How is WPA3 authentication more secure when deployed in an open WLAN network in a newly built company-owned cafe shop?
+A: WPA3 uses OWE to encrypt wireless traffic
+Explanation: `WPA3 uses Opportunistic Wireless Encryption (OWE)encrypts all wireless traffic for open networks`.
+
+![module 5 pass](!img/5ModulePass.png)
+
+## Module 6
 
 ## Module 7
 
