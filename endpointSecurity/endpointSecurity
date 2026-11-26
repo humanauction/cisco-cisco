@@ -2981,9 +2981,245 @@ By configuring ACL logging, an ACL message can be generated and logged when traf
 
 Cisco ACLs can also be configured to only allow TCP traffic that has an ACK or RST bit set, so that only traffic from an established TCP session is permitted. This can be used to deny any TCP traffic from outside the network that is trying to establish a new TCP session.
 
-####
+#### Lab: Packet Tracer - Access Control List Demonstration
 
-####
+##### Objectives
+
+Part 1: Verify Local Connectivity and Test Access Control List
+
+Part 2: Remove Access Control List and Repeat Test
+
+##### Background
+
+observe how an access control list (ACL) can be used to prevent a ping from reaching hosts on remote networks. After removing the ACL from the configuration, the pings will be successful.
+
+##### Instructions
+
+Part 1: Verify Local Connectivity and Test Access Control List
+
+- Step 1: Ping devices on the local network to verify connectivity
+  From the command prompt of PC1, ping PC2.
+  From the command prompt of PC1, ping PC3.
+
+- Question: Why were the pings successful?
+
+- Answer: no restrictions between the two local networks - i.e. layer 1,2,3 fully functional, no policy filtering ICMP messages.
+
+Step 2: Ping devices on remote networks to test ACL functionality.
+
+From the command prompt of PC1, ping PC4.
+From the command prompt of PC1, ping DNS Server..
+
+- Question: Why did the pings fail? (Hint: Use simulation mode or view the router configurations to investigate.)
+
+- Answer: R1 config. ACL set to deny exiting requests inc. ping from i/o serial 0/0/0.
+
+Part 2: Remove ACL and Repeat Test
+
+Step 1: Use show commands to investigate the ACL configuration.
+
+Use the `show run` and `show access-lists` commands to view the currently configured ACLs. To quickly view the current ACLs, use `show access-lists`. `show access-lists ?` command to view available options:
+
+```code
+R1# show access-lists ?
+<1-199> ACL number
+WORD ACL name
+<cr>
+```
+
+If you know the ACL number or name, you can filter the show output further. However, R1 only has one ACL; therefore, the show access-lists command will suffice.
+
+```code
+R1# show access-lists
+Standard IP access list 11
+10 deny 192.168.10.0 0.0.0.255
+20 permit any
+```
+
+The first line of the ACL prevents any packets originating in the 192.168.10.0/24 network, which includes Internet Control Message Protocol (ICMP) echoes (ping requests). The second line of the ACL allows all other ip traffic from any source to transverse the router.
+
+For an ACL to impact router operation, it must be applied to an interface in a specific direction. In this scenario, the ACL is used to filter traffic exiting an interface. Therefore, all traffic leaving the specified interface of R1 will be inspected against ACL 11.
+Although you can view IP information with the show ip interface command, it may be more efficient in some situations to simply use the show run command.
+
+- Question: Using one or both of these commands, to which interface and direction is the ACL applied?
+
+- Answer: Serial 0/0/0, outgoing traffic.
+
+Step 2: Remove access list 11 from the configuration.
+
+You can remove ACLs from the configuration by issuing the no access list [number of the ACL] command. The no access-list command deletes all ACLs configured on the router. The no access-list [number of the ACL] command removes only a specific ACL.
+
+a. Under the Serial0/0/0 interface, remove access-list 11, previously applied to the interface as an outgoing filter:
+
+```code
+R1(config)# int se0/0/0
+R1(config-if)#no ip access-group 11 out
+```
+
+b. In global configuration mode, remove the ACL by entering the following command:
+
+```code
+R1(config)# no access-list 11
+```
+
+c. Verify that PC1 can now ping the DNS Server and PC4.
+Answer: verified.
+
+#### SNMP
+
+Simple Network Management Protocol (SNMP) allows administrators to manage end devices such as servers, workstations, routers, switches, and security appliances, on an IP network. It enables network administrators to monitor and manage network performance, find and solve network problems, and plan for network growth.
+
+SNMP is an application layer protocol that provides a message format for communication between managers and agents.
+
+As shown in the figure, the SNMP system consists of two elements.
+![SNMP](img/snmp.png)
+SNMP manager that runs SNMP management software.
+SNMP agents which are the nodes being monitored and managed.
+The Management Information Base (MIB) is a database on the agents that stores data and operational statistics about the device.
+
+To configure SNMP on a networking device, it is first necessary to define the relationship between the manager and the agent.
+
+The SNMP manager is part of a network management system (NMS). The SNMP manager runs SNMP management software. As shown in the figure, the SNMP manager can collect information from an SNMP agent by using the “get” action and can change configurations on an agent by using the “set” action. In addition, SNMP agents can forward information directly to a network manager by using “traps”.
+The figure shows an S N M P manager collecting information from an S N M P agent. In the figure an S N M P Manager, depicted as a P C, is connected to a router, a switch and a firewall router. The devices connected to the S N M P Manager are labeled as S N M P Agents and Managed Nodes. An arrow labeled trap is pointed to the S N M P Manager indicating that S N M P agent devices send traps to the S N M P manager. There are two arrows pointed towards the S N M P agents labeled Get and Set. These indicate that the S N M P manager sends the S N M P agents Get and Set actions.
+Managed Node SNMP Agent SNMP Agent SNMP Agent trap SNMP Manager set get Managed Node Managed Node
+
+#### NetFlow
+
+NetFlow is a Cisco IOS technology that provides statistics on packets flowing through a Cisco router or multilayer switch. While SNMP attempts to provide a very wide range of network management features and options, NetFlow is focused on providing statistics on IP packets flowing through network devices.
+
+NetFlow provides data to enable network and security monitoring, network planning, traffic analysis to include identification of network bottlenecks, and IP accounting for billing purposes. For example, in the figure, PC 1 connects to PC 2 using an application such as HTTPS.
+
+##### NetFlow in the Network
+
+![NetFlow](img/nf.png)
+NetFlow can monitor that application connection, tracking byte and packet counts for that individual application flow. It then pushes the statistics over to an external server called a NetFlow collector.
+
+NetFlow technology has seen several generations that provide more sophistication in defining traffic flows, but “original NetFlow” distinguished flows using a combination of seven fields. Should one of these fields vary in value from another packet, the packets could be safely determined to be from different flows:
+
+- Source IP address
+- Destination IP address
+- Source port number
+- Destination port number
+- Layer 3 protocol type
+- Type of Service (ToS) marking
+- Input logical interface
+
+The first four of the fields NetFlow uses to identify a flow should be familiar. The source and destination IP addresses, plus the source and destination ports, identify the connection between source and destination application. The Layer 3 protocol type identifies the type of header that follows the IP header (usually TCP or UDP, but other options include ICMP). The ToS byte in the IPv4 header holds information about how devices should apply quality of service (QoS) rules to the packets in that flow.
+
+#### Port Mirroring
+
+##### Traffic Sniffing Using a Switch
+
+A packet analyzer (also known as a packet sniffer or traffic sniffer) is typically software that captures packets entering and exiting the network interface card (NIC). It is not always possible or desirable to have the packet analyzer on the device that is being monitored. Sometimes it is better on a separate station designated to capture the packets.
+
+Because network switches can isolate traffic, traffic sniffers or other network monitors, such as IDS, cannot access all the traffic on a network segment. Port mirroring is a feature that allows a switch to make duplicate copies of traffic passing through a switch, and then send it out a port with a network monitor attached. The original traffic is forwarded in the usual manner. An example of port mirroring is illustrated in the figure.
+
+Traffic Sniffing Using a Switch
+![port mirroring](img/swSnf.png)
+Packet Analyzer Copy of the traffic
+
+#### Syslog Servers
+
+Syslog
+When certain events occur on a network, networking devices have trusted mechanisms to notify the administrator with detailed system messages. These messages can be either non-critical or significant. Network administrators have a variety of options for storing, interpreting, and displaying these messages, and for being alerted to those messages that could have the greatest impact on the network infrastructure.
+
+The most common method of accessing system messages is to use a protocol called syslog.
+
+Many networking devices support syslog, including routers, switches, application servers, firewalls, and other network appliances. The syslog protocol allows networking devices to send their system messages across the network to syslog servers as shown in the figure.
+
+![syslog](img/syslog.png)
+Syslog Server System Messages System Messages
+The syslog logging service provides three primary functions:
+
+The ability to gather logging information for monitoring and troubleshooting
+The ability to select the type of logging information that is captured
+The ability to specify the destination of captured syslog messages
+
+#### NTP
+
+##### NTP Stratum Levels
+It is important to synchronize the time across all devices on the network because all aspects of managing, securing, troubleshooting, and planning networks require accurate and consistent timestamping. When the time is not synchronized between devices, it will be impossible to determine the order of the events that have occurred in different parts of the network.
+
+`Typically`, the` date and time settings on a network device can be set using` one of `two methods`:
+
+- `Manual configuration` of the date and time
+- `Configure the Network Time Protocol (NTP)`
+
+As a network grows, it becomes difficult to ensure that all infrastructure devices are operating with synchronized time. Even in a smaller network environment, the manual method is not ideal. If a device reboots, how will it get an accurate date and timestamp?
+
+A better solution is to configure the NTP on the network. This protocol allows routers on the network to synchronize their time settings with an NTP server. A group of NTP clients that obtain time and date information from a single source have more consistent time settings. When NTP is implemented in the network, it can be set up to synchronize to a private primary clock or it can synchronize to a publicly available NTP server on the Internet.
+
+NTP networks use a hierarchical system of time sources. Each level in this hierarchical system is called a stratum. The stratum level is defined as the number of hop counts from the authoritative source. The synchronized time is distributed across the network using NTP. The figure displays a sample NTP network.
+
+![NTP Stratum Levels](img/strat.png)
+The figure shows the words stratum 0 to the left and two alarm clocks. Each alarm clock has an arrow that points down to a server. To the left of these servers are the words stratum 1. Below the server to the left on stratum 1 are two more servers and arrows point from the server on stratum 1 to each of the two servers on stratum 2. The stratum 1 server on the right has a stratum 2 server below it and an arrow pointing to it. This server has a line with arrows at each end pointing toward the adjacent server to the left. There is also an arrow pointing to a stratum 3 server. The leftmost stratum 2 server has an arrow pointing to a stratum 3 server. The middle stratum 2 server has two stratum 3 servers below it and an arrow going to each of them. There is also a line with arrow on both ends between these two stratum 3 servers.
+Stratum 0 Stratum 3 Stratum 2 Stratum 1
+NTP servers are arranged in three levels known as strata:
+
+- Stratum 0 - An NTP network gets the time from authoritative time sources. These authoritative time sources, also referred to as stratum 0 devices, are high-precision timekeeping devices assumed to be accurate and with little or no delay associated with them.
+- Stratum 1 -The stratum 1 devices are directly connected to the authoritative time sources. They act as the primary network time standard.
+- Stratum 2 and lower strata - The stratum 2 servers are connected to stratum 1 devices through network connections. Stratum 2 devices, such as NTP clients, synchronize their time using the NTP packets from stratum 1 servers. They could also act as servers for stratum 3 devices.
+
+Smaller stratum numbers indicate that the server is closer to the authorized time source than larger stratum numbers. The larger the stratum number, the lower the stratum level. The max hop count is 15. Stratum 16, the lowest stratum level, indicates that a device is unsynchronized. Time servers on the same stratum level can be configured to act as a peer with other time servers on the same stratum level for backup or verification of time.
+
+#### AAA Servers
+
+AAA architectural framework provides three independent security functions.
+
+Authentication
+
+- Users and administrators must prove that they are who they say they are.
+- Authentication can be established using username and password combinations, challenge and response questions, token cards, and other methods.
+- AAA authentication provides a centralized way to control access to the network.
+
+Authorization
+
+- After the user is authenticated, authorization services determine which resources the user can access and which operations the user is allowed to perform.
+- e.g. “User ‘student’ can access host serverXYZ using SSH only.”
+
+Accounting
+
+- Accounting records what the user does, including what is accessed, the amount of time the resource is accessed, and any changes that were made.
+- Accounting keeps track of how network resources are used.
+- e.g. “User ‘student’ accessed host serverXYZ using SSH for 15 minutes.”
+
+Terminal Access Controller Access-Control System Plus (TACACS+) and Remote Authentication Dial-In User Service (RADIUS) are both authentication protocols that are used to communicate with AAA servers. Whether TACACS+ or RADIUS is selected depends on the needs of the organization.
+
+While both protocols can be used to communicate between a router and AAA servers, TACACS+ is considered the more secure protocol. This is because all TACACS+ protocol exchanges are encrypted, while RADIUS only encrypts the user’s password. RADIUS does not encrypt usernames, accounting information, or any other information carried in the RADIUS message.
+
+| Feature         | TACACS+                                                                                         | RADIUS                                                                                               |
+| --------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Functionality   | Separates AAA according to AAA architecture allows modularity of security server implementation | Combines authentication and authorization but separates accounting. less flexibile in implementation |
+| Standard        | mostly cisco                                                                                    | open/RFC standard                                                                                    |
+| Transport       | TCP                                                                                             | UDP                                                                                                  |
+| Protocol CHAP   | Bidirectional challenge+response - Challenge Handshake Authentication Protocol (CHAP)           | Unidirectional challenge+response - RADIUS security server to RADIUS client                          |
+| Confidentiality | Enite packet encryption                                                                         | Only password encryption                                                                             |
+| Customization   | Provides authorization of router commands on a per-user or per-group basis                      | no option to authorize router commands on a per-user or per-group basis                              |
+| Accounting      | Limited                                                                                         | Extensive                                                                                            |
+
+#### VPN
+
+`Virtual Private Network: private network created over a public network, usually the internet.`
+
+Instead of using a dedicated physical connection, a VPN uses virtual connections that are routed through the internet from the organization to the remote site. The first VPNs were strictly IP tunnels that did not include authentication or encryption of the data. For example, Generic Routing Encapsulation (GRE) is a tunneling protocol developed by Cisco that can encapsulate a wide variety of network layer protocol packet types inside IP tunnels. This creates a virtual point-to-point link to Cisco routers at remote points over an IP internetwork.
+
+A VPN is virtual in that it carries information within a private network, but that information is actually transported over a public network. A VPN is private in that the traffic is encrypted to keep the data confidential while it is transported across the public network.
+
+A VPN is a communications environment in which access is strictly controlled to permit peer connections within a defined community of interest. Confidentiality is achieved by encrypting the traffic within the VPN. Today, a secure implementation of VPN with encryption is what is generally equated with the concept of virtual private networking.
+
+In the simplest sense, a VPN connects two endpoints, such as a remote office to a central office, over a public network, to form a logical connection. The logical connections can be made at either Layer 2 or Layer 3. Common examples of Layer 3 VPNs are GRE, Multiprotocol Label Switching (MPLS), and IPsec. Layer 3 VPNs can be point-to-point site connections, such as GRE and IPsec, or they can establish any-to-any connectivity to many sites using MPLS.
+
+IPsec is a suite of protocols developed with the backing of the IETF to achieve secure services over IP packet-switched networks.
+
+IPsec services allow for authentication, integrity, access control, and confidentiality. With IPsec, the information exchanged between remote sites can be encrypted and verified. VPNs are commonly deployed in a site-to-site topology to securely connect central sites with remote locations. They are also deployed in a remote-access topology to provide secure remote access to external users travelling or working from home. Both remote-access and site-to-site VPNs can be deployed using IPsec.
+
+`Port mirroring: feature that allows a switch to make duplicate copies of traffic passing through it, and then send it out a port with a network monitor attached.`
+`ACLs are a series of commands that control whether a device forwards or drops packets based on information found in the packet header.`
+`NetFlow provides statistics on packet flows that are passing through a networking device.`
+`NTP sets the date and time on network devices.`
+`Syslog servers gather a variety of statistics for devices configured to log and send messages.`
+`SNMP allows administrators to monitor and manage network devices.`
+`AAA server authenticates users to access specific network resources and records what the user does while connected to the resource.`
 
 ### Network Security Infrastructure Summary
 
