@@ -2704,7 +2704,7 @@ Q. A wireless engineer is comparing the deployment of a network using WPA2 versu
 A: WPA3 uses OWE to encrypt wireless traffic
 Explanation: `WPA3 uses Opportunistic Wireless Encryption (OWE)encrypts all wireless traffic for open networks`.
 
-![module 5 pass](!img/5ModulePass.png)
+![module 5 pass](img/5ModulePass.png)
 
 ## Module 6: Network Security Infrastructure
 
@@ -2928,9 +2928,9 @@ AMP accesses the collective security intelligence of the Cisco Talos Security In
 **WSA**
 A Cisco Web Security Appliance (WSA) is a secure web gateway that combines leading protections to help organizations address the growing challenges of securing and controlling web traffic. WSA protects the network by automatically blocking risky sites and testing unknown sites before allowing users to access them. WSA provides malware protection, application visibility and control, acceptable use policy controls, insightful reporting and secure mobility.
 
-While WSA protects the network from malware intrusion, it does not provide protection for users who want to connect to the internet directly outside of the protected network, such as at a public Wi-Fi service. In this instance, the user’s PC can be infected with malware which can then spread to other networks and devices. To help protect user PCs from these types of malware infections there is Cisco Cloud Web Security (CWS).
+While WSA protects the network from malware intrusion, it does not provide protection for users who want to connect to the internet directly outside of the protected network, such as at a public Wi-Fi service. the user’s PC might be infected with malware which can then spread to other networks and devices. To help `protect user PCs from these types of malware infections there is Cisco Cloud Web Security (CWS)`.
 
-CWS together with WSA provides comprehensive protection against malware and the associated impacts. The Cisco CWS solution enforces secure communication to and from the internet and provides remote workers the same level of security as onsite employees when using a laptop issued by the employer. Cisco CWS incorporates two main functions, web filtering and web security, and both are accompanied by extensive, centralized reporting.
+CWS together with WSA provides comprehensive protection against malware and the associated impacts. The Cisco CWS solution enforces secure communication to and from the internet and provides remote workers the same level of security as onsite employees when using a laptop issued by the employer. `Cisco CWS incorporates two main functions, web filtering and web security`, and both are accompanied by extensive, centralized reporting.
 
 **ESA**
 Cisco Email Security Appliance (ESA)/ Cisco Cloud Email Security helps to mitigate email-based threats. The Cisco ESA defends mission-critical email systems.
@@ -3147,14 +3147,17 @@ It is important to synchronize the time across all devices on the network becaus
 
 As a network grows, it becomes difficult to ensure that all infrastructure devices are operating with synchronized time. Even in a smaller network environment, the manual method is not ideal. If a device reboots, how will it get an accurate date and timestamp?
 
-A better solution is to configure the NTP on the network. This protocol allows routers on the network to synchronize their time settings with an NTP server. A group of NTP clients that obtain time and date information from a single source have more consistent time settings. When NTP is implemented in the network, it can be set up to synchronize to a private primary clock or it can synchronize to a publicly available NTP server on the Internet.
+A better solution is to configure the `NTP` on the network. This `protocol allows routers on the network to synchronize their time settings with an NTP server`. A group of `NTP clients that obtain time and date information from a single source have more consistent time settings`. When `NTP is implemented in the network, it can be set up to synchronize to a private primary clock or it can synchronize to a publicly available NTP server on the Internet`.
 
-NTP networks use a hierarchical system of time sources. Each level in this hierarchical system is called a stratum. The stratum level is defined as the number of hop counts from the authoritative source. The synchronized time is distributed across the network using NTP. The figure displays a sample NTP network.
+N`TP networks use a hierarchical system of time sources`. Each level in this hierarchical system is called a stratum.
+
+`stratum level: thenumber of hop counts from the authoritative source`.
+
+The synchronized time is distributed across the network using NTP.
 
 ![NTP Stratum Levels](img/strat.png)
-The figure shows the words stratum 0 to the left and two alarm clocks. Each alarm clock has an arrow that points down to a server. To the left of these servers are the words stratum 1. Below the server to the left on stratum 1 are two more servers and arrows point from the server on stratum 1 to each of the two servers on stratum 2. The stratum 1 server on the right has a stratum 2 server below it and an arrow pointing to it. This server has a line with arrows at each end pointing toward the adjacent server to the left. There is also an arrow pointing to a stratum 3 server. The leftmost stratum 2 server has an arrow pointing to a stratum 3 server. The middle stratum 2 server has two stratum 3 servers below it and an arrow going to each of them. There is also a line with arrow on both ends between these two stratum 3 servers.
-Stratum 0 Stratum 3 Stratum 2 Stratum 1
-NTP servers are arranged in three levels known as strata:
+
+NTP servers are arranged in three levels (strata):
 
 - Stratum 0 - An NTP network gets the time from authoritative time sources. These authoritative time sources, also referred to as stratum 0 devices, are high-precision timekeeping devices assumed to be accurate and with little or no delay associated with them.
 - Stratum 1 -The stratum 1 devices are directly connected to the authoritative time sources. They act as the primary network time standard.
@@ -3209,24 +3212,51 @@ A VPN is a communications environment in which access is strictly controlled to 
 
 In the simplest sense, a VPN connects two endpoints, such as a remote office to a central office, over a public network, to form a logical connection. The logical connections can be made at either Layer 2 or Layer 3. Common examples of Layer 3 VPNs are GRE, Multiprotocol Label Switching (MPLS), and IPsec. Layer 3 VPNs can be point-to-point site connections, such as GRE and IPsec, or they can establish any-to-any connectivity to many sites using MPLS.
 
-IPsec is a suite of protocols developed with the backing of the IETF to achieve secure services over IP packet-switched networks.
+`IPsec` is a `suite of protocols` developed with the backing of the IETF `to achieve secure services over IP packet-switched networks`.
 
-IPsec services allow for authentication, integrity, access control, and confidentiality. With IPsec, the information exchanged between remote sites can be encrypted and verified. VPNs are commonly deployed in a site-to-site topology to securely connect central sites with remote locations. They are also deployed in a remote-access topology to provide secure remote access to external users travelling or working from home. Both remote-access and site-to-site VPNs can be deployed using IPsec.
+`IPsec services allow` for `authentication, integrity, access control, and confidentiality`. With IPsec, the `information exchanged between remote sites can be encrypted and verified`.
+
+VPNs are commonly deployed in a site-to-site topology to securely connect central sites with remote locations. They are also deployed in a remote-access topology to provide secure remote access to external users travelling or working from home. Both `remote-access and site-to-site VPNs can be deployed using IPsec`.
+
+#### knowledge check
 
 `Port mirroring: feature that allows a switch to make duplicate copies of traffic passing through it, and then send it out a port with a network monitor attached.`
 `ACLs are a series of commands that control whether a device forwards or drops packets based on information found in the packet header.`
 `NetFlow provides statistics on packet flows that are passing through a networking device.`
 `NTP sets the date and time on network devices.`
 `Syslog servers gather a variety of statistics for devices configured to log and send messages.`
-`SNMP allows administrators to monitor and manage network devices.`
+`SNMP` application layer protocol that `allows administrators to manage and monitor devices on the network`, e.g.routers, switches, servers.
 `AAA server authenticates users to access specific network resources and records what the user does while connected to the resource.`
 
 ### Network Security Infrastructure Summary
 
-## Module 7
+#### Security Devices
 
-## Module 8
+There are several different types of firewalls. Packet filtering (stateless) firewalls provide Layer 3 and sometimes Layer 4 filtering. Firewall design is primarily about device interfaces permitting or denying traffic based on the source, the destination, and the type of traffic. A stateful inspection firewall allows or blocks traffic based on state, port, and protocol. Application gateway firewalls (proxy firewall) filter information at Layers 3, 4, 5, and 7. Next-generation firewalls provide additional services beyond application gateways such as Integrated intrusion prevention, application awareness and control to see and block risky apps, access to future information feeds, and techniques to address evolving security threats. Intrusion prevention systems (IPS) and intrusion detection systems (IDS) are used to detect potential security risks and alert/stop unsafe traffic. IDS/IPS can be implemented as host-based or network based with specific advantages and disadvantages to each implementation. Specialized security appliances are available including Cisco Advanced Malware Protection (AMP), Cisco Web Security Appliance (WSA), and Cisco Email Security Appliance (WSA). These security appliances utilize the services of the Cisco Talos Security Intelligence and Research Group. Talos detects and correlates threats in real time using the largest threat-detection network in the world.
 
-## Module 9
+#### Security Services
 
-## Module 10
+Network security services include the following technologies. ACLs are a series of statements that control whether a device forwards or drops packets based on information found in the packet header. NTP synchronizes the system time across all devices on the network to ensure accurate and consistent timestamping of system messages. Syslog servers compile and provide access to the system messages generated by networking devices. SNMP enables network administrators to monitor and manage network performance, find and solve network problems, and plan for network growth. NetFlow provides statistics on packets that are flowing through a Cisco router or multilayer switch. Port mirroring is a feature that allows a switch to make duplicate copies of traffic that is passing through the switch, and then send it out a port that has a network monitor attached. AAA is a framework for configuring user authentication, authorization, and accounting services. AAA typically uses a TACACS+ or RADIUS server for this purpose. VPNs are private networks that are created between two endpoints across a public network.
+
+### Network Security Infrastructure Quiz
+
+notes
+Q6: image shows 3 APs, so three firewalls. `DMZ: a network area protected by one or more firewalls`. The DMZ typically `contains servers` that are `commonly accessed by external users`. e.g. `web server is commonly contained in a DMZ`.
+
+Q9: Criterion to filter traffic because `standard ACL: only filter` that can be applied is `source IP address`. `extended ACL: filter on such traffic as the source IP address, destination IP address, type of traffic, type of message`.
+
+![Module 6 pass](img/6ModulePass.png)
+
+## Checkpoint Exam: Network Security
+
+## Module 7: Windows OS
+
+## Module 8: Linux Overview
+
+## Module 9: System and Endpoint Protection
+
+## Module 10: Cybersecurity Principles, Practices, Processes
+
+## Checkpoint Exam: OS and Endpoint Security
+
+## Final Exam: Endpoint Security (ESec)
